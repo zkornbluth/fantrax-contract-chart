@@ -28,7 +28,7 @@ function ActivePlayerRow({activePlayer}) {
 function ColumnHeaders() {
   return (
     <tr className="column-headers">
-      <th>Name</th>
+      <th className="column-header-player">Player</th>
       <th>Team</th>
       <th>Pos</th>
       <th>Age</th>

@@ -1,0 +1,112 @@
+Info we want to have for return object:
+- Active Players
+    - Name
+    - Age
+    - Current MLB Team
+    - Primary Position (first in order for hitters, last for pitchers) - will display this
+    - Positional Group (SP/RP/C/IF/OF/DH)
+    - Salary
+    - Final year of contract
+    - Minors? (true/false)
+    - Injured? (true/false)
+- Dead Cap
+    - Name
+    - Cap hit
+    - Final year of cap hit
+- Salary Cap
+- Salary Floor
+
+So here's the structure for TeamCapInfo class:
+- activePlayers: ActivePlayer[]
+- deadCapHits: DeadCap[]
+- salaryCap: number
+- salaryFloor: number
+
+for active players:
+- fetch name, position, team, injured/minors, age, salary, contract
+- remove blanks from last three
+- trim team
+- process position and set pos group
+- add to activePlayers
+
+for dead cap hits:
+- fetch name, cap hit, final year and add to deadCapHits
+
+May want classes for active players and dead cap to take this in
+Constructors would set fields for 2025 -> 2030
+- for active players, field is salary if year <= final year of contract, FA if year == final year of contract + 1, blank otherwise
+- for dead cap, field is cap hit if year <= final year of contract, blank otherwise
+
+Will want functions for:
+- Sums
+    - by positional group
+    - by year
+- Available cap space (takes cap hit and ceiling)
+
+XPATHs for info we need:
+## Active Players:
+# Player name:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[1]
+
+# Player positions:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[1]
+# Note - for batters, want the first position. for pitchers, want the last position (positions split by ,)
+# Check if player is a batter first. We want batters who've made RP appearances to show up as batters
+# Should handle this when scraping and saving to json, not after
+
+# Player team:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[2]
+# Note - comes in with two extra chars at the front (- ), need to strip them out by string index [2:]
+
+# Player injured or minors:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[3]
+# OR
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[4]
+# Injured has class scorer-icon--INJURY_LIST or scorer-icon--INJURED (INJURY_LIST is on IL, INJURED is day-to-day)
+    # Only going to pull INJURY_LIST as that increases potential roster size
+# Minors has class scorer-icon--MINORS
+# Need to check both - if team has a game and player is in or out of lineup, it's span[4], otherwise it's span[3]
+
+# Age:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/table-cell[1]
+
+# Salary:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/table-cell[3]
+
+# Contract length:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/table-cell[4]
+
+# Note for Age/Salary/Contract length - some are blank (if IR/bench/minors aren't full), will need to skip blank ones to line up with others
+# Check testing_selenium.js for how to handle blanks
+
+## Cap and Floor
+# Salary cap:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]
+
+# Salary floor:
+# /html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[4]
+
+## Dead Cap Penalties
+# Player name:
+# /html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[4]/scorer/div/div[1]
+
+# Amount:
+# /html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[1]/span
+
+# Ending Season:
+# /html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[3]
+
+Sample layout for one player (Ryan Jeffers - injured, salary=15, con=2028):
+
+Player Name    Pos - MLB Team     Age     2025    2026    2027    2028    2029    2030
+Ryan Jeffers+  C - MIN            28      15      15      15      15      FA
+
+Sample layout for one dead cap (MJ Melendez - cap hit=1, con=2026):
+
+Player Name     2025    2026    2027    2028    2029    2030
+MJ Melendez     1       1 
+
+Future enhancement ideas:
+- maybe incorporate draft picks. Scrape which ones are there, and pencil in $2 for 5 years for rounds 1-2 and $1 for 3 years for rounds 3-4
+- selenium lets us click on things on the screen. See if we can get to a player's games per position and choose based on highest games played
+- allow user to input just league ID, which hits Fantrax API and pulls team list into a dropdown
