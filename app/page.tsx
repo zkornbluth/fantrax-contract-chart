@@ -82,6 +82,7 @@ function DeadCapRow({deadCapHit}) {
       {deadCapHit.yearlyCapHit.map((salary, index) => {
         let displayValue;
         if (typeof salary === "number") {
+          if (Math.round(salary) !== salary) salary = salary.toFixed(2);
           displayValue = `$${salary.toLocaleString()}`;
         } else {
           displayValue = salary;
