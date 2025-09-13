@@ -11,4 +11,29 @@ h1 {
 
 .column-header-player {
   text-align: left;
+  width: 25%;
+}
+
+.active-player-cell {
+  text-align: center;
+}
+
+.active-players {
+  width: 90%;
+  margin-left: 5%;
+  border-collapse: collapse;
+}
+
+.salary-cell {
+  width: 10%;
+}
+
+tr.player-row { 
+  border: solid #bbbbbb;
+  border-width: 1px 0;
+}
+
+tr.position-group-header td {
+  padding: 20px 0 5px 0;
+  font-size: 20px;
 }
