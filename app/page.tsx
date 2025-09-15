@@ -4,16 +4,19 @@ import React, { useState, useEffect } from 'react';
 import teamCapData from './teamCapInfo.json';
 import './styles.css';
 import injured from './assets/injured.png';
+import dollar from './assets/dollar.png';
 import Image from 'next/image';
 
 function ActivePlayerRow({activePlayer}) {
   return (
     <tr className="player-row">
       <td>
+        <div className="player-name-cell">
         {activePlayer.name}
         {activePlayer.injured && (
           <Image src={injured} alt="Injured" className="injured-icon" />
         )}
+        </div>
       </td>
       <td className="active-player-cell">{activePlayer.team}</td>
       <td className="active-player-cell">{activePlayer.pos}</td>
@@ -97,6 +100,69 @@ function DeadCapRow({deadCapHit}) {
     </tr>
   )
 }
+
+function getCapSpace(year: number) {
+  let ceiling = parseFloat(teamCapData.salaryCap.replace(/[$,]/g, "")); // Scraper saves it as a string
+  return ceiling - getCapHit(year);
+}
+
+function getCapHit(year: number) {
+  let capHit = 0;
+  let index = year - 2025; // index 0 is 2025, index 1 is 2026, etc.
+
+  // Add active players
+  for (let player of teamCapData.activePlayers) {
+    if (typeof(player.yearlyContract[index]) === "number") {
+      capHit += player.yearlyContract[index];
+    }
+  }
+
+  // Add dead cap hits
+  for (let deadCap of teamCapData.deadCapHits) {
+    if (typeof(deadCap.yearlyCapHit[index]) === "number") {
+      capHit += deadCap.yearlyCapHit[index];
+    }
+  }
+
+  return capHit;
+}
+
+function CapSpaceHeader() {
+  let capSpace = getCapSpace(2025);
+
+  return (
+    <HeaderCard text="2025 Cap Space" num={capSpace} />
+  )
+}
+
+function CapHitHeader() {
+  let capHit = getCapHit(2025);
+
+  return (
+    <HeaderCard text="2025 Cap Hit" num={capHit} />
+  )
+}
+
+function HeaderCard({text, num}) { 
+  // Make two of these, for 2025 Cap Hit and 2025 Cap Space
+  // CapHitHeader and CapSpaceHeader should each call it
+  const formattedNum = num.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+
+  return (
+    <div className="header-card">
+      {/* <div>{text}</div> */}
+      <Image src={dollar} alt="Money Icon" className="dollar-icon" />
+      <div className="header-card-text">
+        <div>{text}</div>
+        <div><strong>{formattedNum}</strong></div>
+      </div>
+    </div>
+  )
+}
+
  
 export default function HomePage() {
   const positionOrder = [
@@ -124,14 +190,20 @@ export default function HomePage() {
     groupedPlayers[group].sort((a, b) => {
       const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
       const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
-      return salaryB - salaryA; // Sort by 2025 salary, highest first
+      if (salaryA !== salaryB) {
+        return salaryB - salaryA;
+      }
+      return b.yearsRemaining - a.yearsRemaining;
     });
   });
 
   minorLeaguePlayers.sort((a, b) => {
     const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
     const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
-    return salaryB - salaryA;
+    if (salaryA !== salaryB) {
+      return salaryB - salaryA;
+    }
+    return b.yearsRemaining - a.yearsRemaining;
   });
 
   const deadCapHits = teamCapData.deadCapHits;
@@ -139,12 +211,20 @@ export default function HomePage() {
   deadCapHits.sort((a, b) => {
     const salaryA = typeof a.yearlyCapHit[0] === 'number' ? a.yearlyCapHit[0] : 0;
     const salaryB = typeof b.yearlyCapHit[0] === 'number' ? b.yearlyCapHit[0] : 0;
-    return salaryB - salaryA;
+    if (salaryA !== salaryB) {
+      return salaryB - salaryA;
+    }
+    return b.yearsRemaining - a.yearsRemaining;
   });
 
   return (
     <div>
       <h1>Walker Buehler's Day Off: Multi-Year Payroll Table</h1>
+      {/* Header Cards */}
+      <div className="cap-headers">
+        <CapHitHeader />
+        <CapSpaceHeader />
+      </div>
       <table className="active-players">
         <tbody>
           {/* Major League Players */}
@@ -184,6 +264,12 @@ export default function HomePage() {
               ))}
             </React.Fragment>
           )}
+
+          {/* Summary Table */}
+          {/* lines for active players, dead cap, total payroll, cap space */}
+
+          {/* Positional Summary Table */}
+          {/* lines for each positional group, and minors separate at the bottom */}
         </tbody>
       </table>
     </div>

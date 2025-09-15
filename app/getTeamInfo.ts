@@ -7,6 +7,7 @@ class ActivePlayer {
     minors: boolean;
     injured: boolean;
     yearlyContract: any[] = [];
+    yearsRemaining: number;
 
     constructor(name: string, age: number, team: string, pos: string, salary: number, contractEndYear: number, minors: boolean, injured: boolean) {
         this.name = name;
@@ -15,10 +16,11 @@ class ActivePlayer {
         this.pos = pos;
         this.minors = minors;
         this.injured = injured;
+        this.yearsRemaining = contractEndYear - 2024;
 
         for (let year = 2025; year <= 2030; year++ ) {
             if (year <= contractEndYear) {
-                this.yearlyContract.push(salary) 
+                this.yearlyContract.push(salary);
             } else if (year - contractEndYear == 1) {
                 this.yearlyContract.push("Free Agent");
             } else {
@@ -59,9 +61,11 @@ class ActivePlayer {
 class DeadCap {
     name: string;
     yearlyCapHit: any[] = [];
+    yearsRemaining: number;
 
     constructor(name: string, capHit: number, endYear: number) {
         this.name = name;
+        this.yearsRemaining = endYear - 2024;
 
         for (let year = 2025; year <= 2030; year++ ) {
             year <= endYear 
@@ -257,7 +261,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Salary Cap
-        let currCapHitEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[1]"));
+        let currCapHitEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"));
         let currCapHit = await currCapHitEl.getText();
 
         // Salary Floor

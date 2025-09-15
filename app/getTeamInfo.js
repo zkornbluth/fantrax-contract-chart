@@ -37,8 +37,70 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getTeamInfo = getTeamInfo;
-var ActivePlayer_1 = require("./ActivePlayer");
-var DeadCap_1 = require("./DeadCap");
+var ActivePlayer = /** @class */ (function () {
+    function ActivePlayer(name, age, team, pos, salary, contractEndYear, minors, injured) {
+        this.yearlyContract = [];
+        this.name = name;
+        this.age = age;
+        this.team = team;
+        this.pos = pos;
+        this.minors = minors;
+        this.injured = injured;
+        this.yearsRemaining = contractEndYear - 2024;
+        for (var year = 2025; year <= 2030; year++) {
+            if (year <= contractEndYear) {
+                this.yearlyContract.push(salary);
+            }
+            else if (year - contractEndYear == 1) {
+                this.yearlyContract.push("Free Agent");
+            }
+            else {
+                this.yearlyContract.push("");
+            }
+        }
+        switch (pos) {
+            case "SP":
+                this.posGroup = "Starting Pitcher";
+                break;
+            case "RP":
+                this.posGroup = "Relief Pitcher";
+                break;
+            case "C":
+                this.posGroup = "Catcher";
+                break;
+            case "1B":
+            case "2B":
+            case "SS":
+            case "3B":
+                this.posGroup = "Infielder";
+                break;
+            case "OF": // in our league, all OF are grouped, but include LF/CF/RF in case that varies by league
+            case "LF":
+            case "CF":
+            case "RF":
+                this.posGroup = "Outfielder";
+                break;
+            case "UT": // these are designated hitters, not utility players
+            case "DH": // in our league, all listed as UT but may vary by league
+                this.posGroup = "Designated Hitter";
+                break;
+        }
+    }
+    return ActivePlayer;
+}());
+var DeadCap = /** @class */ (function () {
+    function DeadCap(name, capHit, endYear) {
+        this.yearlyCapHit = [];
+        this.name = name;
+        this.yearsRemaining = endYear - 2024;
+        for (var year = 2025; year <= 2030; year++) {
+            year <= endYear
+                ? this.yearlyCapHit.push(capHit)
+                : this.yearlyCapHit.push("");
+        }
+    }
+    return DeadCap;
+}());
 var TeamCapInfo = /** @class */ (function () {
     function TeamCapInfo(salaryCap, salaryFloor) {
         this.activePlayers = [];
@@ -312,7 +374,7 @@ function getTeamInfo() {
                 case 59:
                     _k++;
                     return [3 /*break*/, 57];
-                case 60: return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[1]"))];
+                case 60: return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"))];
                 case 61:
                     currCapHitEl = _m.sent();
                     return [4 /*yield*/, currCapHitEl.getText()];
@@ -328,13 +390,13 @@ function getTeamInfo() {
                     // Add active players
                     // The info for one player should be all at the same index in each list
                     for (i = 0; i < names.length; i++) {
-                        newPlayer = new ActivePlayer_1.ActivePlayer(names[i], ages[i], teams[i], positions[i], salaries[i], contracts[i], minors[i], injured[i]);
+                        newPlayer = new ActivePlayer(names[i], ages[i], teams[i], positions[i], salaries[i], contracts[i], minors[i], injured[i]);
                         capInfo.addActivePlayer(newPlayer);
                     }
                     // Add dead cap hits
                     // Same as active players, all info for one should be at the same index
                     for (i = 0; i < deadCapNames.length; i++) {
-                        newDeadCapHit = new DeadCap_1.DeadCap(deadCapNames[i], deadCapHits[i], deadEndYears[i]);
+                        newDeadCapHit = new DeadCap(deadCapNames[i], deadCapHits[i], deadEndYears[i]);
                         capInfo.addDeadCapHit(newDeadCapHit);
                     }
                     return [2 /*return*/, capInfo];

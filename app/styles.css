@@ -2,11 +2,20 @@ h1 {
     text-align: center;
 }
 
+.player-name-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .injured-icon {
-  margin-left: 8px;
   width: 16px;
   height: 16px;
-  vertical-align: middle;
+}
+
+.dollar-icon {
+  width: 30px;
+  height: 30px;
 }
 
 .column-header-player {
@@ -36,4 +45,32 @@ tr.player-row {
 tr.position-group-header td {
   padding: 20px 0 5px 0;
   font-size: 20px;
+}
+
+.cap-headers {
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  gap: 10px;
+  /* width: 50%;
+  margin-left: 25%; */
+}
+
+.header-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid #bbbbbb;
+  border-radius: 10px;
+  padding: 25px;
+  font-size: 20px;
+  width: 200px;
+}
+
+.header-card-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
 }
