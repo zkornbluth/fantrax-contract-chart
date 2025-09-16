@@ -83,7 +83,7 @@ function ColumnHeaders({count, type}) {
 }
 
 function PositionGroupHeader({posGroup}) {
-  if (posGroup != "Summary") posGroup = posGroup + "s";
+  if (posGroup != "Summary" && posGroup != "Positional Summary") posGroup = posGroup + "s";
   return (
     <tr className="position-group-header">
       <td colSpan={10}><strong>{posGroup}</strong></td>
@@ -185,6 +185,19 @@ function HeaderCard({text, num}) {
   )
 }
 
+function SummaryTableRow({header, values}) {
+  return (
+    <tr className="player-row">
+        <td colSpan={4}>{header}</td>
+        {values.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+  )
+}
+
 function SummaryTable() {
   let years = [2025, 2026, 2027, 2028, 2029, 2030];
   let yearlyMaximums = new Array(6).fill(teamCapData.salaryCap);
@@ -199,56 +212,66 @@ function SummaryTable() {
       <PositionGroupHeader posGroup="Summary" />
       <ColumnHeaders count={0} type="summary" />
       {/* Cap Ceiling */}
-      <tr className="player-row">
-        <td colSpan={4}>Cap Maximum</td>
-        {yearlyMaximums.map((n, key) => (
-          <td key={key} className="active-player-cell salary-cell">
-            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
-          </td>
-        ))}
-      </tr>
+      <SummaryTableRow header="Cap Maximum" values={yearlyMaximums} />
       {/* Active Payroll */}
-      <tr className="player-row">
-        <td colSpan={4}>Active Payroll</td>
-        {yearlyPayrolls.map((n, key) => (
-          <td key={key} className="active-player-cell salary-cell">
-            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
-          </td>
-        ))}
-      </tr>
+      <SummaryTableRow header="Active Payroll" values={yearlyPayrolls} />
       {/* Dead Cap Hits */}
-      <tr className="player-row">
-        <td colSpan={4}>Dead Cap Hits</td>
-        {yearlyDeadCaps.map((n, key) => (
-          <td key={key} className="active-player-cell salary-cell">
-            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
-          </td>
-        ))}
-      </tr>
+      <SummaryTableRow header="Dead Cap Hits" values={yearlyDeadCaps} />
       {/* Total Payroll */}
-      <tr className="player-row">
-        <td colSpan={4}>Total Payroll</td>
-        {yearlyCapHit.map((n, key) => (
-          <td key={key} className="active-player-cell salary-cell">
-            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
-          </td>
-        ))}
-      </tr>
+      <SummaryTableRow header="Total Payroll" values={yearlyCapHit} />
       {/* Cap Space */}
-      <tr className="player-row">
-        <td colSpan={4}>Cap Space</td>
-        {yearlyCapSpace.map((n, key) => (
-          <td key={key} className="active-player-cell salary-cell">
-            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
-          </td>
-        ))}
-      </tr>
+      <SummaryTableRow header="Cap Space" values={yearlyCapSpace} />
     </React.Fragment>
   )
 }
 
-function PositionalSummaryRow({posGroup}) {
+function getPositionalSum(players, year) {
+  let sum = 0;
+  let index = year - 2025;
 
+  for (let player of players) {
+    if (typeof(player.yearlyContract[index]) === "number") {
+      sum += player.yearlyContract[index];
+    }
+  }
+
+  return sum;
+}
+
+function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
+  let years = [2025, 2026, 2027, 2028, 2029, 2030];
+
+  // Get list of position groups (from major league players)
+  let posGroups = Object.keys(players);
+  let posGroupSums = {};
+
+  // For each position group, sum up salaries for each year
+  for (let posGroup of posGroups) {
+    let posPlayers = players[posGroup];
+    let posSalarySums = years.map((year) => {
+      return getPositionalSum(posPlayers, year);
+    });
+    posGroupSums[posGroup] = posSalarySums;
+  }
+
+  // Keep positions in posOrder, remove any that don't appear in posGroups
+  const displayPosGroups = posOrder.filter(pos => posGroups.includes(pos));
+
+  // Get minor leaguers
+  let minorLeagueSalarySums = years.map((year) => {
+    return getPositionalSum(minorLeaguers, year);
+  })
+
+  return (
+    <React.Fragment>
+      <PositionGroupHeader posGroup="Positional Summary" />
+      <ColumnHeaders count={0} type="summary" />
+      {displayPosGroups.map((posGroup, index) => (
+        <SummaryTableRow key={index} header={posGroup + "s"} values={posGroupSums[posGroup]} />
+      ))}
+      <SummaryTableRow header={"Minor Leagues"} values={minorLeagueSalarySums} />
+    </React.Fragment>
+  )
 }
  
 export default function HomePage() {
@@ -356,6 +379,7 @@ export default function HomePage() {
           <SummaryTable />
 
           {/* Positional Summary Table */}
+          <PositionalSummaryTable players={groupedPlayers} posOrder={positionOrder} minorLeaguers={minorLeaguePlayers} />
           {/* lines for each positional group, and minors separate at the bottom */}
         </tbody>
       </table>
