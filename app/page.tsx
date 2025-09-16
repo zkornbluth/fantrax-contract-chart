@@ -55,10 +55,22 @@ function ColumnHeaders({count, type}) {
         <th>2030</th>
       </tr>
     )
-  } else {
+  } else if (type == "deadCap") {
     return (
       <tr className="column-headers">
         <th className="column-header-player" colSpan={4}>PLAYER ({count})</th>
+        <th>2025</th>
+        <th>2026</th>
+        <th>2027</th>
+        <th>2028</th>
+        <th>2029</th>
+        <th>2030</th>
+      </tr>
+    )
+  } else {
+    return (
+      <tr className="column-headers">
+        <th colSpan={4}></th>
         <th>2025</th>
         <th>2026</th>
         <th>2027</th>
@@ -71,9 +83,10 @@ function ColumnHeaders({count, type}) {
 }
 
 function PositionGroupHeader({posGroup}) {
+  if (posGroup != "Summary") posGroup = posGroup + "s";
   return (
     <tr className="position-group-header">
-      <td colSpan={10}><strong>{posGroup}s</strong></td>
+      <td colSpan={10}><strong>{posGroup}</strong></td>
     </tr>
   )
 }
@@ -102,22 +115,27 @@ function DeadCapRow({deadCapHit}) {
 }
 
 function getCapSpace(year: number) {
-  let ceiling = parseFloat(teamCapData.salaryCap.replace(/[$,]/g, "")); // Scraper saves it as a string
+  let ceiling = teamCapData.salaryCap; 
   return ceiling - getCapHit(year);
 }
 
-function getCapHit(year: number) {
+function getActivePayroll(year: number) {
   let capHit = 0;
-  let index = year - 2025; // index 0 is 2025, index 1 is 2026, etc.
+  let index = year - 2025;
 
-  // Add active players
   for (let player of teamCapData.activePlayers) {
     if (typeof(player.yearlyContract[index]) === "number") {
       capHit += player.yearlyContract[index];
     }
   }
 
-  // Add dead cap hits
+  return capHit;
+}
+
+function getDeadCapSum(year: number) {
+  let capHit = 0;
+  let index = year - 2025;
+
   for (let deadCap of teamCapData.deadCapHits) {
     if (typeof(deadCap.yearlyCapHit[index]) === "number") {
       capHit += deadCap.yearlyCapHit[index];
@@ -125,6 +143,10 @@ function getCapHit(year: number) {
   }
 
   return capHit;
+}
+
+function getCapHit(year: number) {
+  return getActivePayroll(year) + getDeadCapSum(year);
 }
 
 function CapSpaceHeader() {
@@ -163,6 +185,71 @@ function HeaderCard({text, num}) {
   )
 }
 
+function SummaryTable() {
+  let years = [2025, 2026, 2027, 2028, 2029, 2030];
+  let yearlyMaximums = new Array(6).fill(teamCapData.salaryCap);
+  let yearlyPayrolls = years.map(getActivePayroll);
+  let yearlyDeadCaps = years.map(getDeadCapSum);
+  let yearlyCapHit = years.map(getCapHit);
+  let yearlyCapSpace = years.map(getCapSpace);
+
+  // Display the following rows: Cap Maximum, Active Payroll, Dead Cap Hits, Total Payroll, Cap Space
+  return (
+    <React.Fragment>
+      <PositionGroupHeader posGroup="Summary" />
+      <ColumnHeaders count={0} type="summary" />
+      {/* Cap Ceiling */}
+      <tr className="player-row">
+        <td colSpan={4}>Cap Maximum</td>
+        {yearlyMaximums.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+      {/* Active Payroll */}
+      <tr className="player-row">
+        <td colSpan={4}>Active Payroll</td>
+        {yearlyPayrolls.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+      {/* Dead Cap Hits */}
+      <tr className="player-row">
+        <td colSpan={4}>Dead Cap Hits</td>
+        {yearlyDeadCaps.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+      {/* Total Payroll */}
+      <tr className="player-row">
+        <td colSpan={4}>Total Payroll</td>
+        {yearlyCapHit.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+      {/* Cap Space */}
+      <tr className="player-row">
+        <td colSpan={4}>Cap Space</td>
+        {yearlyCapSpace.map((n, key) => (
+          <td key={key} className="active-player-cell salary-cell">
+            {`$${(Math.round(n) !== n ? n.toFixed(2) : n).toLocaleString()}`}
+          </td>
+        ))}
+      </tr>
+    </React.Fragment>
+  )
+}
+
+function PositionalSummaryRow({posGroup}) {
+
+}
  
 export default function HomePage() {
   const positionOrder = [
@@ -266,7 +353,7 @@ export default function HomePage() {
           )}
 
           {/* Summary Table */}
-          {/* lines for active players, dead cap, total payroll, cap space */}
+          <SummaryTable />
 
           {/* Positional Summary Table */}
           {/* lines for each positional group, and minors separate at the bottom */}

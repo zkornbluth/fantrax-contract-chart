@@ -261,15 +261,17 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Salary Cap
-        let currCapHitEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"));
-        let currCapHit = await currCapHitEl.getText();
+        let currCapCeilEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"));
+        let currCapCeil = await currCapCeilEl.getText();
+        let capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
 
         // Salary Floor
         let currCapFloorEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[4]"));
         let currCapFloor = await currCapFloorEl.getText();
+        let capFloor = parseFloat(currCapFloor.replace(/[$,]/g, ""));
 
         // Build TeamCapInfo object and return it
-        let capInfo = new TeamCapInfo(currCapHit, currCapFloor);
+        let capInfo = new TeamCapInfo(capCeil, capFloor);
 
         // Add active players
         // The info for one player should be all at the same index in each list

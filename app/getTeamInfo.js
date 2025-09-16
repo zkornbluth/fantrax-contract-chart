@@ -150,7 +150,7 @@ var leagueID = "upqoky97m4037px3";
 var teamID = "7dwuaijpm4037px9";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _a, ageEls_1, e, t, teamEls, teams, _b, teamEls_1, e, t, posEls, positions, _c, posEls_1, e, t, posList, playerContainerEls, minors, injured, _d, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _e, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _f, salaryEls_1, el, t, allContractEls, contractEls, contracts, _g, contractEls_1, el, t, deadCapNameEls, deadCapNames, _h, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _j, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _k, _l, el, t, currCapHitEl, currCapHit, currCapFloorEl, currCapFloor, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
+        var driver, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _a, ageEls_1, e, t, teamEls, teams, _b, teamEls_1, e, t, posEls, positions, _c, posEls_1, e, t, posList, playerContainerEls, minors, injured, _d, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _e, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _f, salaryEls_1, el, t, allContractEls, contractEls, contracts, _g, contractEls_1, el, t, deadCapNameEls, deadCapNames, _h, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _j, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _k, _l, el, t, currCapCeilEl, currCapCeil, capCeil, currCapFloorEl, currCapFloor, capFloor, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
         return __generator(this, function (_m) {
             switch (_m.label) {
                 case 0:
@@ -376,17 +376,19 @@ function getTeamInfo() {
                     return [3 /*break*/, 57];
                 case 60: return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"))];
                 case 61:
-                    currCapHitEl = _m.sent();
-                    return [4 /*yield*/, currCapHitEl.getText()];
+                    currCapCeilEl = _m.sent();
+                    return [4 /*yield*/, currCapCeilEl.getText()];
                 case 62:
-                    currCapHit = _m.sent();
+                    currCapCeil = _m.sent();
+                    capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
                     return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[4]"))];
                 case 63:
                     currCapFloorEl = _m.sent();
                     return [4 /*yield*/, currCapFloorEl.getText()];
                 case 64:
                     currCapFloor = _m.sent();
-                    capInfo = new TeamCapInfo(currCapHit, currCapFloor);
+                    capFloor = parseFloat(currCapFloor.replace(/[$,]/g, ""));
+                    capInfo = new TeamCapInfo(capCeil, capFloor);
                     // Add active players
                     // The info for one player should be all at the same index in each list
                     for (i = 0; i < names.length; i++) {
