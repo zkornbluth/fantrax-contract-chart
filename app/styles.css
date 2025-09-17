@@ -50,7 +50,7 @@ tr.position-group-header td {
 .cap-headers {
   text-align: center;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: auto auto auto;
   justify-content: center;
   gap: 10px;
 }

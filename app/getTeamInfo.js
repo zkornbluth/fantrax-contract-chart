@@ -102,9 +102,10 @@ var DeadCap = /** @class */ (function () {
     return DeadCap;
 }());
 var TeamCapInfo = /** @class */ (function () {
-    function TeamCapInfo(salaryCap, salaryFloor) {
+    function TeamCapInfo(name, salaryCap, salaryFloor) {
         this.activePlayers = [];
         this.deadCapHits = [];
+        this.teamName = name;
         this.salaryCap = salaryCap;
         this.salaryFloor = salaryFloor;
     }
@@ -150,11 +151,11 @@ var leagueID = "upqoky97m4037px3";
 var teamID = "7dwuaijpm4037px9";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _a, ageEls_1, e, t, teamEls, teams, _b, teamEls_1, e, t, posEls, positions, _c, posEls_1, e, t, posList, playerContainerEls, minors, injured, _d, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _e, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _f, salaryEls_1, el, t, allContractEls, contractEls, contracts, _g, contractEls_1, el, t, deadCapNameEls, deadCapNames, _h, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _j, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _k, _l, el, t, currCapCeilEl, currCapCeil, capCeil, currCapFloorEl, currCapFloor, capFloor, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
+        var driver, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _a, ageEls_1, e, t, teamEls, teams, _b, teamEls_1, e, t, posEls, positions, _c, posEls_1, e, t, posList, playerContainerEls, minors, injured, _d, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _e, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _f, salaryEls_1, el, t, allContractEls, contractEls, contracts, _g, contractEls_1, el, t, deadCapNameEls, deadCapNames, _h, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _j, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _k, _l, el, t, currCapCeilEl, currCapCeil, capCeil, currCapFloorEl, currCapFloor, capFloor, teamNameEl, teamName, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
         return __generator(this, function (_m) {
             switch (_m.label) {
                 case 0:
-                    _m.trys.push([0, 65, 66, 67]);
+                    _m.trys.push([0, 67, 68, 69]);
                     return [4 /*yield*/, new Builder().forBrowser(Browser.CHROME).build()];
                 case 1:
                     driver = _m.sent();
@@ -388,7 +389,13 @@ function getTeamInfo() {
                 case 64:
                     currCapFloor = _m.sent();
                     capFloor = parseFloat(currCapFloor.replace(/[$,]/g, ""));
-                    capInfo = new TeamCapInfo(capCeil, capFloor);
+                    return [4 /*yield*/, driver.findElement(By.xpath("//mat-select-trigger/article/h5"))];
+                case 65:
+                    teamNameEl = _m.sent();
+                    return [4 /*yield*/, teamNameEl.getText()];
+                case 66:
+                    teamName = _m.sent();
+                    capInfo = new TeamCapInfo(teamName, capCeil, capFloor);
                     // Add active players
                     // The info for one player should be all at the same index in each list
                     for (i = 0; i < names.length; i++) {
@@ -402,14 +409,14 @@ function getTeamInfo() {
                         capInfo.addDeadCapHit(newDeadCapHit);
                     }
                     return [2 /*return*/, capInfo];
-                case 65:
+                case 67:
                     e_1 = _m.sent();
                     console.log(e_1);
-                    return [3 /*break*/, 67];
-                case 66:
+                    return [3 /*break*/, 69];
+                case 68:
                     driver.quit();
                     return [7 /*endfinally*/];
-                case 67: return [2 /*return*/];
+                case 69: return [2 /*return*/];
             }
         });
     });

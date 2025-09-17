@@ -76,12 +76,14 @@ class DeadCap {
 }
 
 class TeamCapInfo {
+    teamName: string;
     activePlayers: ActivePlayer[] = [];
     deadCapHits: DeadCap[] = [];
     salaryCap: number;
     salaryFloor: number;
 
-    constructor(salaryCap: number, salaryFloor: number) {
+    constructor(name: string, salaryCap: number, salaryFloor: number) {
+        this.teamName = name;
         this.salaryCap = salaryCap;
         this.salaryFloor = salaryFloor;
     }
@@ -150,7 +152,6 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Position
-        // Need to set up logic for splitting/choosing which position
         let posEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[1]"));
         let positions: string[] = [];
         for (let e of posEls) {
@@ -166,37 +167,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
             }
         }
 
-        // Minors/Injured: set up empty [] for each
-        // await element.getAttribute('class')
-        // check if scorer-icon--INJURY_LIST or scorer-icon--MINORS appear in that string
-        // if it appears, push true, if not push false
-
-        // this failed because very rarely, players will only have one flag, and everything after that player will shift and we may give a player the wrong flag
-        // const firstFlagEls = await driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[3]"));
-        // const secondFlagEls = await driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[4]"));
-        // const minorsClass = "scorer-icon--MINORS";
-        // const injuredClass = "scorer-icon--INJURY_LIST";
-        // let minors: boolean[] = [];
-        // let injured: boolean[] = [];
-        // for (let i=0; firstFlagEls.length; i++) {
-        //     let firstEl = firstFlagEls[i];
-        //     let secondEl = secondFlagEls[i];
-        //     let firstClasses = await firstEl.getAttribute("class");
-        //     let secondClasses = await secondEl.getAttribute("class");
-
-        //     if (firstClasses.includes(minorsClass) || secondClasses.includes(minorsClass)) {
-        //         minors.push(true);
-        //     } else {
-        //         minors.push(false);
-        //     }
-
-        //     if (firstClasses.includes(injuredClass) || secondClasses.includes(injuredClass)) {
-        //         injured.push(true);
-        //     } else {
-        //         injured.push(false);
-        //     }
-        // }
-
+        // Minor League and Injured flags
         const playerContainerEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div[1]/scorer"));
         let minors: boolean[] = [];
         let injured: boolean[] = [];
@@ -270,8 +241,12 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         let currCapFloor = await currCapFloorEl.getText();
         let capFloor = parseFloat(currCapFloor.replace(/[$,]/g, ""));
 
+        // Team Name
+        let teamNameEl = await driver.findElement(By.xpath("//mat-select-trigger/article/h5"));
+        let teamName = await teamNameEl.getText();
+
         // Build TeamCapInfo object and return it
-        let capInfo = new TeamCapInfo(capCeil, capFloor);
+        let capInfo = new TeamCapInfo(teamName, capCeil, capFloor);
 
         // Add active players
         // The info for one player should be all at the same index in each list

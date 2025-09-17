@@ -4,7 +4,9 @@ import React, { useState, useEffect } from 'react';
 import teamCapData from './teamCapInfo.json';
 import './styles.css';
 import injured from './assets/injured.png';
-import dollar from './assets/dollar.png';
+import billstack from './assets/billstack.png';
+import paying from './assets/paying.png';
+import bills from './assets/bills.png';
 import Image from 'next/image';
 
 function ActivePlayerRow({activePlayer}) {
@@ -39,7 +41,7 @@ function ActivePlayerRow({activePlayer}) {
   )
 }
 
-function ColumnHeaders({count, type}) {
+function ColumnHeaders({count=0, type}) {
   if (type == "active") {
     return (
       <tr className="column-headers">
@@ -120,16 +122,7 @@ function getCapSpace(year: number) {
 }
 
 function getActivePayroll(year: number) {
-  let capHit = 0;
-  let index = year - 2025;
-
-  for (let player of teamCapData.activePlayers) {
-    if (typeof(player.yearlyContract[index]) === "number") {
-      capHit += player.yearlyContract[index];
-    }
-  }
-
-  return capHit;
+  return getPositionalSum(teamCapData.activePlayers, year);
 }
 
 function getDeadCapSum(year: number) {
@@ -153,7 +146,7 @@ function CapSpaceHeader() {
   let capSpace = getCapSpace(2025);
 
   return (
-    <HeaderCard text="2025 Cap Space" num={capSpace} />
+    <HeaderCard text="2025 Cap Space" num={capSpace} icon={bills} />
   )
 }
 
@@ -161,11 +154,19 @@ function CapHitHeader() {
   let capHit = getCapHit(2025);
 
   return (
-    <HeaderCard text="2025 Cap Hit" num={capHit} />
+    <HeaderCard text="2025 Total Payroll" num={capHit} icon={paying} />
   )
 }
 
-function HeaderCard({text, num}) { 
+function CapMaxHeader() {
+  let ceil = teamCapData.salaryCap;
+
+  return (
+    <HeaderCard text="2025 Cap Ceiling" num={ceil} icon={billstack} />
+  )
+}
+
+function HeaderCard({text, num, icon}) { 
   // Make two of these, for 2025 Cap Hit and 2025 Cap Space
   // CapHitHeader and CapSpaceHeader should each call it
   const formattedNum = num.toLocaleString('en-US', {
@@ -176,7 +177,7 @@ function HeaderCard({text, num}) {
   return (
     <div className="header-card">
       {/* <div>{text}</div> */}
-      <Image src={dollar} alt="Money Icon" className="dollar-icon" />
+      <Image src={icon} alt="Money Icon" className="dollar-icon" />
       <div className="header-card-text">
         <div>{text}</div>
         <div><strong>{formattedNum}</strong></div>
@@ -210,9 +211,9 @@ function SummaryTable() {
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Summary" />
-      <ColumnHeaders count={0} type="summary" />
+      <ColumnHeaders type="summary" />
       {/* Cap Ceiling */}
-      <SummaryTableRow header="Cap Maximum" values={yearlyMaximums} />
+      <SummaryTableRow header="Cap Ceiling" values={yearlyMaximums} />
       {/* Active Payroll */}
       <SummaryTableRow header="Active Payroll" values={yearlyPayrolls} />
       {/* Dead Cap Hits */}
@@ -265,7 +266,7 @@ function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Positional Summary" />
-      <ColumnHeaders count={0} type="summary" />
+      <ColumnHeaders type="summary" />
       {displayPosGroups.map((posGroup, index) => (
         <SummaryTableRow key={index} header={posGroup + "s"} values={posGroupSums[posGroup]} />
       ))}
@@ -329,9 +330,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>Walker Buehler's Day Off: Multi-Year Payroll Table</h1>
+      <h1>{teamCapData.teamName}: Multi-Year Payroll Table</h1>
       {/* Header Cards */}
       <div className="cap-headers">
+        <CapMaxHeader />
         <CapHitHeader />
         <CapSpaceHeader />
       </div>
@@ -380,7 +382,6 @@ export default function HomePage() {
 
           {/* Positional Summary Table */}
           <PositionalSummaryTable players={groupedPlayers} posOrder={positionOrder} minorLeaguers={minorLeaguePlayers} />
-          {/* lines for each positional group, and minors separate at the bottom */}
         </tbody>
       </table>
     </div>
