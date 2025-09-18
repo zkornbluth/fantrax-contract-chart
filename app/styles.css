@@ -2,6 +2,10 @@ h1 {
     text-align: center;
 }
 
+h2 {
+  font-size: 22px;
+}
+
 .player-name-cell {
   display: inline-flex;
   align-items: center;
@@ -23,11 +27,15 @@ h1 {
   width: 25%;
 }
 
+.column-header-deadcap {
+  text-align: left;
+}
+
 .active-player-cell {
   text-align: center;
 }
 
-.active-players {
+table {
   width: 90%;
   margin-left: 5%;
   border-collapse: collapse;
@@ -45,6 +53,12 @@ tr.player-row {
 tr.position-group-header td {
   padding: 20px 0 5px 0;
   font-size: 20px;
+}
+
+.position-group-header {
+  width: 90%;
+  margin-left: 5%;
+  text-align: left;
 }
 
 .cap-headers {
@@ -71,4 +85,16 @@ tr.position-group-header td {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
+}
+
+tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+  background-color: #ffffff;
+}
+
+th {
+  background-color: #ffffff;
 }

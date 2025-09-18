@@ -60,7 +60,7 @@ function ColumnHeaders({count=0, type}) {
   } else if (type == "deadCap") {
     return (
       <tr className="column-headers">
-        <th className="column-header-player" colSpan={4}>PLAYER ({count})</th>
+        <th className="column-header-deadcap" colSpan={4}>PLAYER ({count})</th>
         <th>2025</th>
         <th>2026</th>
         <th>2027</th>
@@ -87,9 +87,7 @@ function ColumnHeaders({count=0, type}) {
 function PositionGroupHeader({posGroup}) {
   if (posGroup != "Summary" && posGroup != "Positional Summary") posGroup = posGroup + "s";
   return (
-    <tr className="position-group-header">
-      <td colSpan={10}><strong>{posGroup}</strong></td>
-    </tr>
+    <h2 className='position-group-header'>{posGroup}</h2>
   )
 }
 
@@ -211,17 +209,23 @@ function SummaryTable() {
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Summary" />
-      <ColumnHeaders type="summary" />
-      {/* Cap Ceiling */}
-      <SummaryTableRow header="Cap Ceiling" values={yearlyMaximums} />
-      {/* Active Payroll */}
-      <SummaryTableRow header="Active Payroll" values={yearlyPayrolls} />
-      {/* Dead Cap Hits */}
-      <SummaryTableRow header="Dead Cap Hits" values={yearlyDeadCaps} />
-      {/* Total Payroll */}
-      <SummaryTableRow header="Total Payroll" values={yearlyCapHit} />
-      {/* Cap Space */}
-      <SummaryTableRow header="Cap Space" values={yearlyCapSpace} />
+      <table>
+        <thead>
+          <ColumnHeaders type="summary" />
+        </thead>
+        <tbody>
+          {/* Cap Ceiling */}
+          <SummaryTableRow header="Cap Ceiling" values={yearlyMaximums} />
+          {/* Active Payroll */}
+          <SummaryTableRow header="Active Payroll" values={yearlyPayrolls} />
+          {/* Dead Cap Hits */}
+          <SummaryTableRow header="Dead Cap Hits" values={yearlyDeadCaps} />
+          {/* Total Payroll */}
+          <SummaryTableRow header="Total Payroll" values={yearlyCapHit} />
+          {/* Cap Space */}
+          <SummaryTableRow header="Cap Space" values={yearlyCapSpace} />
+        </tbody>
+      </table>
     </React.Fragment>
   )
 }
@@ -266,11 +270,17 @@ function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Positional Summary" />
-      <ColumnHeaders type="summary" />
-      {displayPosGroups.map((posGroup, index) => (
-        <SummaryTableRow key={index} header={posGroup + "s"} values={posGroupSums[posGroup]} />
-      ))}
-      <SummaryTableRow header={"Minor Leagues"} values={minorLeagueSalarySums} />
+      <table>
+        <thead>
+          <ColumnHeaders type="summary" />
+        </thead>
+        <tbody>
+        {displayPosGroups.map((posGroup, index) => (
+          <SummaryTableRow key={index} header={posGroup + "s"} values={posGroupSums[posGroup]} />
+        ))}
+        <SummaryTableRow header={"Minor Leagues"} values={minorLeagueSalarySums} />
+        </tbody>
+      </table>
     </React.Fragment>
   )
 }
@@ -337,53 +347,64 @@ export default function HomePage() {
         <CapHitHeader />
         <CapSpaceHeader />
       </div>
-      <table className="active-players">
-        <tbody>
-          {/* Major League Players */}
-          {positionOrder.map((posGroup) => {
-            const players = groupedPlayers[posGroup];
-            if (!players || players.length === 0) return null;
-            
-            return (
-              <React.Fragment key={posGroup}>
-                <PositionGroupHeader posGroup={posGroup} />
-                <ColumnHeaders count={players.length} type={"active"} />
+      {/* Major League Players */}
+      {positionOrder.map((posGroup) => {
+        const players = groupedPlayers[posGroup];
+        if (!players || players.length === 0) return null;
+
+        return (
+          <React.Fragment key={posGroup}>
+            <PositionGroupHeader posGroup={posGroup} />
+            <table>
+              <thead>
+                <ColumnHeaders count={players.length} type="active" />
+              </thead>
+              <tbody>
                 {players.map((player, index) => (
                   <ActivePlayerRow key={`${posGroup}-${index}`} activePlayer={player} />
                 ))}
-              </React.Fragment>
-            );
-          })}
-          
-          {/* Minor League Players */}
-          {minorLeaguePlayers.length > 0 && (
-            <React.Fragment key="minors">
-              <PositionGroupHeader posGroup="Minor League" />
-              <ColumnHeaders count={minorLeaguePlayers.length} type={"active"} />
+              </tbody>
+            </table>
+          </React.Fragment>
+        )
+      })}
+      {/* Minor League Players */}
+      {minorLeaguePlayers.length > 0 && (
+        <React.Fragment key="minors">
+          <PositionGroupHeader posGroup="Minor League" />
+          <table>
+            <thead>
+              <ColumnHeaders count={minorLeaguePlayers.length} type="active" />
+            </thead>
+            <tbody>
               {minorLeaguePlayers.map((player, index) => (
                 <ActivePlayerRow key={`minors-${index}`} activePlayer={player} />
               ))}
-            </React.Fragment>
-          )}
-
-          {/* Dead Cap Hits */}
-          {deadCapHits.length > 0 && (
-            <React.Fragment key="deadCap">
-              <PositionGroupHeader posGroup="Dead Cap Hit" />
-              <ColumnHeaders count={deadCapHits.length} type={"deadCap"} />
+            </tbody>
+          </table>
+        </React.Fragment>
+      )}
+      {/* Dead Cap Hits */}
+      {deadCapHits.length > 0 && (
+        <React.Fragment key="deadCap">
+          <PositionGroupHeader posGroup="Dead Cap Hit" />
+          <table>
+            <thead>
+              <ColumnHeaders count={deadCapHits.length} type="deadCap" />
+            </thead>
+            <tbody>
               {deadCapHits.map((capHit, index) => (
                 <DeadCapRow key={`deadCap-${index}`} deadCapHit={capHit} />
               ))}
-            </React.Fragment>
-          )}
+            </tbody>
+          </table>
+        </React.Fragment>
+      )}
+      {/* Summary Table */}
+      <SummaryTable />
 
-          {/* Summary Table */}
-          <SummaryTable />
-
-          {/* Positional Summary Table */}
-          <PositionalSummaryTable players={groupedPlayers} posOrder={positionOrder} minorLeaguers={minorLeaguePlayers} />
-        </tbody>
-      </table>
+      {/* Positional Summary Table */}
+      <PositionalSummaryTable players={groupedPlayers} posOrder={positionOrder} minorLeaguers={minorLeaguePlayers} />
     </div>
   );
 }
