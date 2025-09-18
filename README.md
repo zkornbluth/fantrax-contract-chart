@@ -1,30 +1,31 @@
 # Fantrax Contract Chart
 
-Check it out here: [insert link once this is live]
+Check it out here: [zkornbluth.github.io/fantrax-contract-chart](https://zkornbluth.github.io/fantrax-contract-chart)
 
 ## Features
 The Fantrax Contract Chart displays a Spotrac-style payroll table for my dynasty baseball team.
 <!-- Insert image -->
+<img width="1337" height="735" alt="top-view" src="https://github.com/user-attachments/assets/3e8dbd7a-8319-414b-940f-0f46160a0c69" />
 
 Players are divided by positional grouping.
 
 Notes on positional grouping:
-- Pitchers with eligibility a starter and reliever are listed as relievers
+- Pitchers with eligibility at starter and reliever are listed as relievers
 - Batters with eligibility at multiple positions are listed by the position that appears first (ex. a player with 1B,2B,OF eligibility will show up as 1B and appear with infielders)
 
 Major league players on the injured list are designated with an icon next to their names. Players with day-to-day injuries won't have an icon.
-<!-- Insert image -->
 
 Minor league players are grouped together in a "Minor Leagues" section.
-<!-- Insert image -->
+<img width="1321" height="255" alt="minor-leagues" src="https://github.com/user-attachments/assets/37d9061e-7cc8-4343-bc73-c90a93dedae7" />
 
 Dead cap hits are displayed below all players.
-<!-- Insert image -->
+<img width="1322" height="533" alt="dead-cap" src="https://github.com/user-attachments/assets/ba65fee1-7f52-403c-ac5b-a27077710239" />
+
 
 At the bottom, two summary tables are displayed:
 - Cap maximum, total active payroll, total dead cap hits, total payroll, cap space
 - A positional breakdown with the total salary allocated per year for each positional grouping
-<!-- Insert image -->
+<img width="1329" height="399" alt="summary-tables" src="https://github.com/user-attachments/assets/d51201a0-d584-4219-85fa-d30f9903873d" />
 
 ## Getting Started
 
@@ -56,7 +57,7 @@ Don't use the link here as your port may be different.
 
 ## Setting up a Different Team
 
-This should work for teams in other leagues with the same general structure as my league:
+This works for teams in other Fantrax leagues with the same general structure as my league:
 - Salary cap
 - Multi year contracts
 
@@ -80,3 +81,13 @@ node getTeamInfo.js // this runs the JavaScript file that updates the .json file
 ```bash
 npm run dev
 ```
+### Credits
+<a href="https://www.flaticon.com/free-icons/first-aid-kit" title="first aid kit icons">Injury icon created by Good Ware - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/money-stack" title="money stack icons">Money stack icon created by smashingstocks - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/money" title="money icons">Hand with bills icon created by Freepik - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/money" title="money icons">Bills icon created by photo3idea_studio - Flaticon</a>
+
+<a href="https://www.flaticon.com/free-icons/betting" title="betting icons">Bat and dollars icons created by Vitaly Gorbachev - Flaticon</a>
