@@ -80,12 +80,10 @@ class TeamCapInfo {
     activePlayers: ActivePlayer[] = [];
     deadCapHits: DeadCap[] = [];
     salaryCap: number;
-    salaryFloor: number;
 
-    constructor(name: string, salaryCap: number, salaryFloor: number) {
+    constructor(name: string, salaryCap: number) {
         this.teamName = name;
         this.salaryCap = salaryCap;
-        this.salaryFloor = salaryFloor;
     }
 
     addActivePlayer(newPlayer: ActivePlayer): void {
@@ -127,7 +125,12 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         // Scrape and prepare data
         // Active Players
         // Name
+        let divNum = 2;
         let nameEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div/scorer/div/div[1]"));
+        if (nameEls.length == 0) {
+            divNum = 3;
+            nameEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div/scorer/div/div[1]`));
+        }
         let names: string[] = []
         for (let e of nameEls) {
             const t = await e.getText();
@@ -135,7 +138,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Age
-        let allAgeEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/table-cell[1]"));
+        let allAgeEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/table-cell[1]`));
         let ageEls = await removeEmptyElements(allAgeEls);
         let ages: number[] = []
         for (let e of ageEls) {
@@ -144,7 +147,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Team
-        let teamEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[2]"));
+        let teamEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div/scorer/div/div[2]/span[2]`));
         let teams: string[] = [];
         for (let e of teamEls) {
             let t = await e.getText();
@@ -152,7 +155,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Position
-        let posEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div/scorer/div/div[2]/span[1]"));
+        let posEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div/scorer/div/div[2]/span[1]`));
         let positions: string[] = [];
         for (let e of posEls) {
             let t = await e.getText();
@@ -168,7 +171,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Minor League and Injured flags
-        const playerContainerEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div[1]/scorer"));
+        const playerContainerEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div[1]/scorer`));
         let minors: boolean[] = [];
         let injured: boolean[] = [];
 
@@ -188,16 +191,16 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         }
 
         // Salary
-        const allSalaryEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/table-cell[3]"));
+        const allSalaryEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/table-cell[3]`));
         let salaryEls = await removeEmptyElements(allSalaryEls);
         let salaries: number[] = [];
         for (let el of salaryEls) {
             const t = await el.getText();
-            salaries.push(parseFloat(t));
+            salaries.push(parseFloat(t.replace(/[$,]/g, "")));
         }
 
         // Contract end year
-        const allContractEls = await driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/table-cell[4]"));
+        const allContractEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/table-cell[4]`));
         let contractEls = await removeEmptyElements(allContractEls);
         let contracts: number[] = [];
         for (let el of contractEls) {
@@ -219,7 +222,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         const deadCapHits: number[] = [];
         for (let el of deadCapHitEls) {
             const t = await el.getText();
-            const val = parseFloat(t.slice(1));
+            const val = parseFloat(t.replace(/[$,]/g, ""));
             deadCapHits.push(val);
         }
 
@@ -236,17 +239,12 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
         let currCapCeil = await currCapCeilEl.getText();
         let capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
 
-        // Salary Floor
-        let currCapFloorEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[4]"));
-        let currCapFloor = await currCapFloorEl.getText();
-        let capFloor = parseFloat(currCapFloor.replace(/[$,]/g, ""));
-
         // Team Name
         let teamNameEl = await driver.findElement(By.xpath("//mat-select-trigger/article/h5"));
         let teamName = await teamNameEl.getText();
 
         // Build TeamCapInfo object and return it
-        let capInfo = new TeamCapInfo(teamName, capCeil, capFloor);
+        let capInfo = new TeamCapInfo(teamName, capCeil);
 
         // Add active players
         // The info for one player should be all at the same index in each list

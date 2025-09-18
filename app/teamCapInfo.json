@@ -950,7 +950,7 @@
       "team": "KC",
       "pos": "SP",
       "minors": false,
-      "injured": true,
+      "injured": false,
       "yearsRemaining": 1,
       "posGroup": "Starting Pitcher"
     },
@@ -1000,7 +1000,7 @@
         ""
       ],
       "name": "Tekoah Roby",
-      "age": 23,
+      "age": 24,
       "team": "STL",
       "pos": "SP",
       "minors": true,
@@ -1282,6 +1282,5 @@
     }
   ],
   "teamName": "Walker Buehler's Day Off",
-  "salaryCap": 2000,
-  "salaryFloor": 1250
+  "salaryCap": 2000
 }

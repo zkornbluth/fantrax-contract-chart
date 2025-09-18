@@ -1,6 +1,10 @@
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const metadata = {
   title: 'Fantrax Cap Tracker',
-  description: '',
+  icons: {
+    icon: `${basePath}baseball.png`,
+  }
 }
 
 export default function RootLayout({
