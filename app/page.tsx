@@ -1,6 +1,11 @@
+/** 
+ * @fileoverview Creates the HomePage with the contract chart display
+ * @author Zachary Kornbluth <github.com/zkornbluth>
+ */
+
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import teamCapData from './teamCapInfo.json';
 import './styles.css';
 import injured from './assets/injured.png';
@@ -9,7 +14,7 @@ import paying from './assets/paying.png';
 import bills from './assets/bills.png';
 import Image from 'next/image';
 
-function ActivePlayerRow({activePlayer}) {
+function ActivePlayerRow({activePlayer}) { // Generates one row for one active player
   return (
     <tr className="player-row">
       <td>
@@ -41,7 +46,7 @@ function ActivePlayerRow({activePlayer}) {
   )
 }
 
-function ColumnHeaders({count=0, type}) {
+function ColumnHeaders({count=0, type}) { // Generates column headers for each pos group/section
   if (type == "active") {
     return (
       <tr className="column-headers">
@@ -84,14 +89,14 @@ function ColumnHeaders({count=0, type}) {
   }
 }
 
-function PositionGroupHeader({posGroup}) {
+function PositionGroupHeader({posGroup}) { // Generates h2 with either position group name or other headline
   if (posGroup != "Summary" && posGroup != "Positional Summary") posGroup = posGroup + "s";
   return (
     <h2 className='position-group-header'>{posGroup}</h2>
   )
 }
 
-function DeadCapRow({deadCapHit}) {
+function DeadCapRow({deadCapHit}) { // Generates one row for one dead cap hit
   return (
     <tr className="player-row">
       <td colSpan={4}>{deadCapHit.name}</td>
@@ -114,16 +119,16 @@ function DeadCapRow({deadCapHit}) {
   )
 }
 
-function getCapSpace(year: number) {
+function getCapSpace(year: number) { // Gets cap space given scraped cap ceiling
   let ceiling = teamCapData.salaryCap; 
   return ceiling - getCapHit(year);
 }
 
-function getActivePayroll(year: number) {
+function getActivePayroll(year: number) { // Gets total active payroll for specific year
   return getPositionalSum(teamCapData.activePlayers, year);
 }
 
-function getDeadCapSum(year: number) {
+function getDeadCapSum(year: number) { // Gets total dead cap hits for specific year
   let capHit = 0;
   let index = year - 2025;
 
@@ -165,8 +170,8 @@ function CapMaxHeader() {
 }
 
 function HeaderCard({text, num, icon}) { 
-  // Make two of these, for 2025 Cap Hit and 2025 Cap Space
-  // CapHitHeader and CapSpaceHeader should each call it
+  // Make three of these, for 2025 Cap Hit, 2025 Cap Space, and 2025 Cap Max
+  // CapHitHeader, CapSpaceHeader, CapMaxHeader each call it
   const formattedNum = num.toLocaleString('en-US', {
     style: 'currency',
     currency: 'USD'
@@ -174,7 +179,6 @@ function HeaderCard({text, num, icon}) {
 
   return (
     <div className="header-card">
-      {/* <div>{text}</div> */}
       <Image src={icon} alt="Money Icon" className="dollar-icon" />
       <div className="header-card-text">
         <div>{text}</div>
@@ -184,7 +188,7 @@ function HeaderCard({text, num, icon}) {
   )
 }
 
-function SummaryTableRow({header, values}) {
+function SummaryTableRow({header, values}) { // Creates row for either summary or positional summary table
   return (
     <tr className="player-row">
         <td colSpan={4}>{header}</td>
@@ -230,7 +234,10 @@ function SummaryTable() {
   )
 }
 
-function getPositionalSum(players, year) {
+function getPositionalSum(players, year) { 
+  // Get sum of all salaries for group of players and specific year
+  // Position determined before calling this
+  // getActivePayroll passes in all players
   let sum = 0;
   let index = year - 2025;
 
@@ -286,6 +293,7 @@ function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
 }
  
 export default function HomePage() {
+  // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [
     'Starting Pitcher',
     'Relief Pitcher',
@@ -307,6 +315,7 @@ export default function HomePage() {
     return groups;
   }, {});
 
+  // Within each group, sort players by salary descending then contract length descending
   Object.keys(groupedPlayers).forEach(group => {
     groupedPlayers[group].sort((a, b) => {
       const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
@@ -318,6 +327,7 @@ export default function HomePage() {
     });
   });
 
+  // Sort minor leaguers the same way
   minorLeaguePlayers.sort((a, b) => {
     const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
     const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
@@ -329,6 +339,7 @@ export default function HomePage() {
 
   const deadCapHits = teamCapData.deadCapHits;
 
+  // Sort dead cap hits the same way
   deadCapHits.sort((a, b) => {
     const salaryA = typeof a.yearlyCapHit[0] === 'number' ? a.yearlyCapHit[0] : 0;
     const salaryB = typeof b.yearlyCapHit[0] === 'number' ? b.yearlyCapHit[0] : 0;

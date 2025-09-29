@@ -1,5 +1,9 @@
+/** 
+ * @author Zachary Kornbluth <github.com/zkornbluth>
+ */
+
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
-const repoName = 'fantrax-contract-chart'; // replace with your actual repo name
+const repoName = 'fantrax-contract-chart';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {

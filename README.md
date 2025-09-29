@@ -1,3 +1,5 @@
+<!-- Author: Zachary Kornbluth -->
+<!-- GitHub: github.com/zkornbluth -->
 # Fantrax Contract Chart
 
 Check it out here: [zkornbluth.github.io/fantrax-contract-chart](https://zkornbluth.github.io/fantrax-contract-chart)

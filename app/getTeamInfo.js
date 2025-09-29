@@ -1,4 +1,8 @@
 "use strict";
+/**
+ * @fileoverview Scrapes Fantrax site and outputs to teamCapInfo.json
+ * @author Zachary Kornbluth <github.com/zkornbluth>
+ */
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -144,8 +148,7 @@ function removeEmptyElements(elements) {
     });
 }
 var _a = require('selenium-webdriver'), By = _a.By, Builder = _a.Builder, Browser = _a.Browser;
-// Will eventually want these as inputs
-// Future idea (not for MVP) - input league, use Fantrax API to get teams in league and put them in a dropdown to select from
+// Future idea - input just league ID, scrape all teams, let user change between which team they're viewing
 var leagueID = "upqoky97m4037px3";
 var teamID = "7dwuaijpm4037px9";
 function getTeamInfo() {

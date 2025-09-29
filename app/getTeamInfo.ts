@@ -1,3 +1,8 @@
+/** 
+ * @fileoverview Scrapes Fantrax site and outputs to teamCapInfo.json
+ * @author Zachary Kornbluth <github.com/zkornbluth>
+ */
+
 class ActivePlayer {
     name: string;
     age: number;
@@ -108,8 +113,7 @@ async function removeEmptyElements(elements) { // necessary because Age/Salary/C
 }
 
 const {By, Builder, Browser} = require('selenium-webdriver');
-// Will eventually want these as inputs
-// Future idea (not for MVP) - input league, use Fantrax API to get teams in league and put them in a dropdown to select from
+// Future idea - input just league ID, scrape all teams, let user change between which team they're viewing
 const leagueID = "upqoky97m4037px3"
 const teamID = "7dwuaijpm4037px9"
 
@@ -217,7 +221,7 @@ export async function getTeamInfo(): Promise<TeamCapInfo> {
             deadCapNames.push(t);
         }
 
-        // Cap Hit (have to slice the $ so it can be a number)
+        // Cap Hit (have to replace the $ and , so it can be a number)
         const deadCapHitEls = await driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[1]/span"));
         const deadCapHits: number[] = [];
         for (let el of deadCapHitEls) {
