@@ -102,3 +102,19 @@ tr:nth-child(even) {
 th {
   background-color: #ffffff;
 }
+
+.team-selector {
+  margin: 20px 0;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-dropdown {
+  margin-left: 10px;
+  padding: 8px 12px;
+  font-size: 16px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

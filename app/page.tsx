@@ -5,7 +5,7 @@
 
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import teamCapData from './teamCapInfo.json';
 import './styles.css';
 import injured from './assets/injured.png';
@@ -119,20 +119,24 @@ function DeadCapRow({deadCapHit}) { // Generates one row for one dead cap hit
   )
 }
 
-function getCapSpace(year: number) { // Gets cap space given scraped cap ceiling
-  let ceiling = teamCapData.salaryCap; 
-  return ceiling - getCapHit(year);
+function getCapSpace(selectedTeam, year: number) { // Gets cap space given scraped cap ceiling
+  let ceiling = selectedTeam.salaryCap; 
+  return ceiling - getCapHit(selectedTeam, year);
 }
 
-function getActivePayroll(year: number) { // Gets total active payroll for specific year
-  return getPositionalSum(teamCapData.activePlayers, year);
+function getActivePayroll(selectedTeam, year: number) { // Gets total active payroll for specific year
+  return getPositionalSum(selectedTeam.activePlayers, year);
 }
 
-function getDeadCapSum(year: number) { // Gets total dead cap hits for specific year
+function getDeadCapSum(selectedTeam, year: number) { // Gets total dead cap hits for specific year
   let capHit = 0;
   let index = year - 2025;
 
-  for (let deadCap of teamCapData.deadCapHits) {
+  if (!selectedTeam.deadCapHits || !Array.isArray(selectedTeam.deadCapHits)) {
+    return capHit;
+  }
+
+  for (let deadCap of selectedTeam.deadCapHits) {
     if (typeof(deadCap.yearlyCapHit[index]) === "number") {
       capHit += deadCap.yearlyCapHit[index];
     }
@@ -141,31 +145,31 @@ function getDeadCapSum(year: number) { // Gets total dead cap hits for specific 
   return capHit;
 }
 
-function getCapHit(year: number) {
-  return getActivePayroll(year) + getDeadCapSum(year);
+function getCapHit(selectedTeam, year) {
+  return getActivePayroll(selectedTeam, year) + getDeadCapSum(selectedTeam, year);
 }
 
-function CapSpaceHeader() {
-  let capSpace = getCapSpace(2025);
+function CapSpaceHeader({selectedTeam}) {
+  let capSpace = getCapSpace(selectedTeam, 2026);
 
   return (
-    <HeaderCard text="2025 Cap Space" num={capSpace} icon={bills} />
+    <HeaderCard text="2026 Cap Space" num={capSpace} icon={bills} />
   )
 }
 
-function CapHitHeader() {
-  let capHit = getCapHit(2025);
+function CapHitHeader({selectedTeam}) {
+  let capHit = getCapHit(selectedTeam, 2026);
 
   return (
-    <HeaderCard text="2025 Total Payroll" num={capHit} icon={paying} />
+    <HeaderCard text="2026 Total Payroll" num={capHit} icon={paying} />
   )
 }
 
-function CapMaxHeader() {
-  let ceil = teamCapData.salaryCap;
+function CapMaxHeader({selectedTeam}) {
+  let ceil = selectedTeam.salaryCap;
 
   return (
-    <HeaderCard text="2025 Cap Ceiling" num={ceil} icon={billstack} />
+    <HeaderCard text="2026 Cap Ceiling" num={ceil} icon={billstack} />
   )
 }
 
@@ -201,13 +205,13 @@ function SummaryTableRow({header, values}) { // Creates row for either summary o
   )
 }
 
-function SummaryTable() {
+function SummaryTable({selectedTeam}) {
   let years = [2025, 2026, 2027, 2028, 2029, 2030];
-  let yearlyMaximums = new Array(6).fill(teamCapData.salaryCap);
-  let yearlyPayrolls = years.map(getActivePayroll);
-  let yearlyDeadCaps = years.map(getDeadCapSum);
-  let yearlyCapHit = years.map(getCapHit);
-  let yearlyCapSpace = years.map(getCapSpace);
+  let yearlyMaximums = new Array(6).fill(selectedTeam.salaryCap);
+  let yearlyPayrolls = years.map((year) => getActivePayroll(selectedTeam, year));
+  let yearlyDeadCaps = years.map((year) => getDeadCapSum(selectedTeam, year));
+  let yearlyCapHit = years.map((year) => getCapHit(selectedTeam, year));
+  let yearlyCapSpace = years.map((year) => getCapSpace(selectedTeam, year));
 
   // Display the following rows: Cap Maximum, Active Payroll, Dead Cap Hits, Total Payroll, Cap Space
   return (
@@ -240,6 +244,10 @@ function getPositionalSum(players, year) {
   // getActivePayroll passes in all players
   let sum = 0;
   let index = year - 2025;
+
+  if (!players || !Array.isArray(players)) {
+    return sum;
+  }
 
   for (let player of players) {
     if (typeof(player.yearlyContract[index]) === "number") {
@@ -293,6 +301,8 @@ function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
 }
  
 export default function HomePage() {
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(7); // Default to my team
+  const selectedTeam = teamCapData.teams[selectedTeamIndex];
   // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [
     'Starting Pitcher',
@@ -303,8 +313,8 @@ export default function HomePage() {
     'Designated Hitter'
   ];
 
-  const majorLeaguePlayers = teamCapData.activePlayers.filter(player => !player.minors);
-  const minorLeaguePlayers = teamCapData.activePlayers.filter(player => player.minors);
+  const majorLeaguePlayers = selectedTeam.activePlayers.filter(player => !player.minors);
+  const minorLeaguePlayers = selectedTeam.activePlayers.filter(player => player.minors);
 
   const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
     const group = player.posGroup || 'Unknown';
@@ -337,7 +347,7 @@ export default function HomePage() {
     return b.yearsRemaining - a.yearsRemaining;
   });
 
-  const deadCapHits = teamCapData.deadCapHits;
+  const deadCapHits = selectedTeam.deadCapHits;
 
   // Sort dead cap hits the same way
   deadCapHits.sort((a, b) => {
@@ -351,12 +361,30 @@ export default function HomePage() {
 
   return (
     <div>
-      <h1>{teamCapData.teamName}: Multi-Year Payroll Table</h1>
+      <h1>{teamCapData.name}: Multi-Year Payroll Table</h1>
+      
+      {/* Team Selector Dropdown */}
+      <div className="team-selector">
+        <label htmlFor="team-select">Select Team: </label>
+        <select 
+          id="team-select"
+          value={selectedTeamIndex} 
+          onChange={(e) => setSelectedTeamIndex(Number(e.target.value))}
+          className="team-dropdown"
+        >
+          {teamCapData.teams.map((team, index) => (
+            <option key={index} value={index}>
+              {team.teamName}
+            </option>
+          ))}
+        </select>
+      </div>
+
       {/* Header Cards */}
       <div className="cap-headers">
-        <CapMaxHeader />
-        <CapHitHeader />
-        <CapSpaceHeader />
+        <CapMaxHeader selectedTeam={selectedTeam} />
+        <CapHitHeader selectedTeam={selectedTeam} />
+        <CapSpaceHeader selectedTeam={selectedTeam} />
       </div>
       {/* Major League Players */}
       {positionOrder.map((posGroup) => {
@@ -412,7 +440,7 @@ export default function HomePage() {
         </React.Fragment>
       )}
       {/* Summary Table */}
-      <SummaryTable />
+      <SummaryTable selectedTeam={selectedTeam} />
 
       {/* Positional Summary Table */}
       <PositionalSummaryTable players={groupedPlayers} posOrder={positionOrder} minorLeaguers={minorLeaguePlayers} />
