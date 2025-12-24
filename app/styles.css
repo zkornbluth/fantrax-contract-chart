@@ -78,11 +78,14 @@ tr.position-group-header td {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  border: 1px solid #bbbbbb;
-  border-radius: 10px;
   padding: 25px;
   font-size: 20px;
   width: 200px;
+}
+
+.header-card-bordered {
+  border: 1px solid #bbbbbb;
+  border-radius: 10px;
 }
 
 .header-card-text {

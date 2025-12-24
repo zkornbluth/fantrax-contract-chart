@@ -169,11 +169,11 @@ function CapMaxHeader({selectedTeam}) {
   let ceil = selectedTeam.salaryCap;
 
   return (
-    <HeaderCard text="2026 Cap Ceiling" num={ceil} icon={billstack} />
+    <HeaderCard text="Cap Ceiling" num={ceil} icon={billstack} bordered={false} />
   )
 }
 
-function HeaderCard({text, num, icon}) { 
+function HeaderCard({text, num, icon, bordered=true}) { 
   // Make three of these, for 2025 Cap Hit, 2025 Cap Space, and 2025 Cap Max
   // CapHitHeader, CapSpaceHeader, CapMaxHeader each call it
   const formattedNum = num.toLocaleString('en-US', {
@@ -182,7 +182,7 @@ function HeaderCard({text, num, icon}) {
   });
 
   return (
-    <div className="header-card">
+    <div className={"header-card" + (bordered ? " header-card-bordered" : "")}>
       <Image src={icon} alt="Money Icon" className="dollar-icon" />
       <div className="header-card-text">
         <div>{text}</div>
