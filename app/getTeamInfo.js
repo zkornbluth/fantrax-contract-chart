@@ -50,8 +50,8 @@ var ActivePlayer = /** @class */ (function () {
         this.pos = pos;
         this.minors = minors;
         this.injured = injured;
-        this.yearsRemaining = contractEndYear - 2024;
-        for (var year = 2025; year <= 2030; year++) {
+        this.yearsRemaining = contractEndYear - 2025;
+        for (var year = 2026; year <= 2031; year++) {
             if (year <= contractEndYear) {
                 this.yearlyContract.push(salary);
             }
@@ -96,8 +96,8 @@ var DeadCap = /** @class */ (function () {
     function DeadCap(name, capHit, endYear) {
         this.yearlyCapHit = [];
         this.name = name;
-        this.yearsRemaining = endYear - 2024;
-        for (var year = 2025; year <= 2030; year++) {
+        this.yearsRemaining = endYear - 2025;
+        for (var year = 2026; year <= 2031; year++) {
             year <= endYear
                 ? this.yearlyCapHit.push(capHit)
                 : this.yearlyCapHit.push("");
@@ -170,8 +170,7 @@ function getLeagueInfo(leagueID) {
     });
 }
 var _a = require('selenium-webdriver'), By = _a.By, Builder = _a.Builder, Browser = _a.Browser;
-// Future idea - input just league ID, scrape all teams, let user change between which team they're viewing
-var leagueID = "upqoky97m4037px3";
+var leagueID = "0xhc53jbmgiftfp0";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
         var driver, capInfoList, _a, name_1, teams, _i, teams_1, teamID, divNum, nameEls, names, _b, nameEls_1, e, t, allAgeEls, ageEls, ages, _c, ageEls_1, e, t, teamEls, teams_2, _d, teamEls_1, e, t, posEls, positions, _e, posEls_1, e, t, posList, playerContainerEls, minors, injured, _f, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _g, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _h, salaryEls_1, el, t, allContractEls, contractEls, contracts, _j, contractEls_1, el, t, deadCapNameEls, deadCapNames, _k, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _l, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _m, _o, el, t, currCapCeilEl, currCapCeil, capCeil, teamNameEl, teamName, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
@@ -310,7 +309,7 @@ function getTeamInfo() {
                     classes = _p.sent();
                     if (classes.includes("scorer-icon--MINORS"))
                         isMinors = true;
-                    if (classes.includes("scorer-icon--INJURY_LIST"))
+                    if (classes.includes("scorer-icon--INJURY_LIST") || classes.includes("scorer-icon--INJURED_OUT"))
                         isInjured = true;
                     _p.label = 34;
                 case 34:

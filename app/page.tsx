@@ -54,36 +54,36 @@ function ColumnHeaders({count=0, type}) { // Generates column headers for each p
         <th>TEAM</th>
         <th>POS</th>
         <th>AGE</th>
-        <th>2025</th>
         <th>2026</th>
         <th>2027</th>
         <th>2028</th>
         <th>2029</th>
         <th>2030</th>
+        <th>2031</th>
       </tr>
     )
   } else if (type == "deadCap") {
     return (
       <tr className="column-headers">
         <th className="column-header-deadcap" colSpan={4}>PLAYER ({count})</th>
-        <th>2025</th>
         <th>2026</th>
         <th>2027</th>
         <th>2028</th>
         <th>2029</th>
         <th>2030</th>
+        <th>2031</th>
       </tr>
     )
   } else {
     return (
       <tr className="column-headers">
         <th colSpan={4}></th>
-        <th>2025</th>
         <th>2026</th>
         <th>2027</th>
         <th>2028</th>
         <th>2029</th>
         <th>2030</th>
+        <th>2031</th>
       </tr>
     )
   }
@@ -130,7 +130,7 @@ function getActivePayroll(selectedTeam, year: number) { // Gets total active pay
 
 function getDeadCapSum(selectedTeam, year: number) { // Gets total dead cap hits for specific year
   let capHit = 0;
-  let index = year - 2025;
+  let index = year - 2026;
 
   if (!selectedTeam.deadCapHits || !Array.isArray(selectedTeam.deadCapHits)) {
     return capHit;
@@ -206,7 +206,7 @@ function SummaryTableRow({header, values}) { // Creates row for either summary o
 }
 
 function SummaryTable({selectedTeam}) {
-  let years = [2025, 2026, 2027, 2028, 2029, 2030];
+  let years = [2026, 2027, 2028, 2029, 2030, 2031];
   let yearlyMaximums = new Array(6).fill(selectedTeam.salaryCap);
   let yearlyPayrolls = years.map((year) => getActivePayroll(selectedTeam, year));
   let yearlyDeadCaps = years.map((year) => getDeadCapSum(selectedTeam, year));
@@ -243,7 +243,7 @@ function getPositionalSum(players, year) {
   // Position determined before calling this
   // getActivePayroll passes in all players
   let sum = 0;
-  let index = year - 2025;
+  let index = year - 2026;
 
   if (!players || !Array.isArray(players)) {
     return sum;
@@ -259,7 +259,7 @@ function getPositionalSum(players, year) {
 }
 
 function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
-  let years = [2025, 2026, 2027, 2028, 2029, 2030];
+  let years = [2026, 2027, 2028, 2029, 2030, 2031];
 
   // Get list of position groups (from major league players)
   let posGroups = Object.keys(players);
@@ -301,7 +301,7 @@ function PositionalSummaryTable({players, posOrder, minorLeaguers}) {
 }
  
 export default function HomePage() {
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState(7); // Default to my team
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(13); // Default to my team
   const selectedTeam = teamCapData.teams[selectedTeamIndex];
   // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [

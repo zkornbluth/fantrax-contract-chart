@@ -21,9 +21,9 @@ class ActivePlayer {
         this.pos = pos;
         this.minors = minors;
         this.injured = injured;
-        this.yearsRemaining = contractEndYear - 2024;
+        this.yearsRemaining = contractEndYear - 2025;
 
-        for (let year = 2025; year <= 2030; year++ ) {
+        for (let year = 2026; year <= 2031; year++ ) {
             if (year <= contractEndYear) {
                 this.yearlyContract.push(salary);
             } else if (year - contractEndYear == 1) {
@@ -70,9 +70,9 @@ class DeadCap {
 
     constructor(name: string, capHit: number, endYear: number) {
         this.name = name;
-        this.yearsRemaining = endYear - 2024;
+        this.yearsRemaining = endYear - 2025;
 
-        for (let year = 2025; year <= 2030; year++ ) {
+        for (let year = 2026; year <= 2031; year++ ) {
             year <= endYear 
                 ? this.yearlyCapHit.push(capHit) 
                 : this.yearlyCapHit.push("");
@@ -140,8 +140,7 @@ async function getLeagueInfo(leagueID: string): Promise<League> {
 }
 
 const {By, Builder, Browser} = require('selenium-webdriver');
-// Future idea - input just league ID, scrape all teams, let user change between which team they're viewing
-const leagueID = "upqoky97m4037px3"
+const leagueID = "0xhc53jbmgiftfp0";
 
 export async function getTeamInfo(): Promise<LeagueCapInfo> {
     let driver;
@@ -216,7 +215,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
                 for (const span of flagSpans) {
                     const classes = await span.getAttribute("class");
                     if (classes.includes("scorer-icon--MINORS")) isMinors = true;
-                    if (classes.includes("scorer-icon--INJURY_LIST")) isInjured = true;
+                    if (classes.includes("scorer-icon--INJURY_LIST") || classes.includes("scorer-icon--INJURED_OUT")) isInjured = true;
                 }
 
                 minors.push(isMinors);
