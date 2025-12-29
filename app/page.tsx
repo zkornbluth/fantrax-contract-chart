@@ -174,7 +174,7 @@ function CapMaxHeader({selectedTeam}) {
 }
 
 function HeaderCard({text, num, icon, bordered=true}) { 
-  // Make three of these, for 2025 Cap Hit, 2025 Cap Space, and 2025 Cap Max
+  // Make three of these, for 2026 Cap Hit, 2026 Cap Space, and Cap Max
   // CapHitHeader, CapSpaceHeader, CapMaxHeader each call it
   const formattedNum = num.toLocaleString('en-US', {
     style: 'currency',
@@ -396,7 +396,7 @@ export default function HomePage() {
             <PositionGroupHeader posGroup={posGroup} />
             <table>
               <thead>
-                <ColumnHeaders count={players.length} type="active" />
+                <ColumnHeaders count={players.filter(player => player.yearsRemaining > 0).length} type="active" />
               </thead>
               <tbody>
                 {players.map((player, index) => (
@@ -413,7 +413,7 @@ export default function HomePage() {
           <PositionGroupHeader posGroup="Minor League" />
           <table>
             <thead>
-              <ColumnHeaders count={minorLeaguePlayers.length} type="active" />
+              <ColumnHeaders count={minorLeaguePlayers.filter(player => player.yearsRemaining > 0).length} type="active" />
             </thead>
             <tbody>
               {minorLeaguePlayers.map((player, index) => (
