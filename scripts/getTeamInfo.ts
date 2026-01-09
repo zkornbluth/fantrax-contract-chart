@@ -311,7 +311,7 @@ if (require.main === module) {
     const teamInfo = await getTeamInfo();
 
     if (teamInfo) {
-      const filePath = "./teamCapInfo.json";
+      const filePath = "data/teamCapInfo.json";
       fs.writeFileSync(filePath, JSON.stringify(teamInfo, null, 2));
       console.log(`Saved team info to ${filePath}`);
     } else {

@@ -468,7 +468,7 @@ if (require.main === module) {
                 case 1:
                     teamInfo = _a.sent();
                     if (teamInfo) {
-                        filePath = "./teamCapInfo.json";
+                        filePath = "data/teamCapInfo.json";
                         fs.writeFileSync(filePath, JSON.stringify(teamInfo, null, 2));
                         console.log("Saved team info to ".concat(filePath));
                     }

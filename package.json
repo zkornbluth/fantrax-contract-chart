@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "next dev"
+    "dev": "next dev",
+    "refresh-team-info": "node scripts/getTeamInfo.js"
   },
   "dependencies": {
     "next": "^15.5.2",

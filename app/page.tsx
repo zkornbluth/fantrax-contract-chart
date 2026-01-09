@@ -6,7 +6,7 @@
 'use client';
 
 import React, {useState} from 'react';
-import teamCapData from './teamCapInfo.json';
+import teamCapData from '../data/teamCapInfo.json';
 import './styles.css';
 import ActivePlayerRow from './components/ActivePlayerRow';
 import { CapHitHeader, CapMaxHeader, CapSpaceHeader } from './components/CapHeaders';
