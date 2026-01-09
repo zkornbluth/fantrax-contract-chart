@@ -5,9 +5,12 @@
 Check it out here: [zkornbluth.github.io/fantrax-contract-chart](https://zkornbluth.github.io/fantrax-contract-chart)
 
 ## Features
-The Fantrax Contract Chart displays a Spotrac-style payroll table for my dynasty baseball team.
+The Fantrax Contract Chart displays a Spotrac-style payroll table for teams in my dynasty baseball league.
 <!-- Insert image -->
-<img width="1337" height="735" alt="top-view" src="https://github.com/user-attachments/assets/3e8dbd7a-8319-414b-940f-0f46160a0c69" />
+<!-- <img width="1337" height="735" alt="top-view" src="https://github.com/user-attachments/assets/3e8dbd7a-8319-414b-940f-0f46160a0c69" /> -->
+<img width="1391" height="742" alt="Screenshot 2026-01-09 at 1 42 06 PM" src="https://github.com/user-attachments/assets/e41e200f-09f1-4fbf-98e8-3308b363ee6f" />
+
+Select a team using the dropdown.
 
 Players are divided by positional grouping.
 
@@ -65,18 +68,17 @@ This works for teams in other Fantrax leagues with the same general structure as
 
 If your league doesn't have a minor league system, that section won't appear.
 
-### 1. Find your league and team ID
-Clicking 'Roster' in the sidebar won't get you both. Click 'Standings' then click your team name in the standings. The league and team ID will both be in the URL.
-![findingurl](https://github.com/user-attachments/assets/faf4aeab-2672-4543-86fd-f1d49175746d)
+### 1. Find your league ID
+The league ID is in the URL of any page within your league. For example, your roster page is "https://www.fantrax.com/fantasy/league/[leagueID]/team/roster"
 
 ### 2. Set your league and team ID in the code
-In `getTeamInfo.ts`, replace my leagueID and teamID with yours
-[https://github.com/zkornbluth/fantrax-contract-chart/blob/9e591f40098b0384281a77f435d0b5fcf5cd1127/app/getTeamInfo.ts#L113-L114](https://github.com/zkornbluth/fantrax-contract-chart/blob/9e591f40098b0384281a77f435d0b5fcf5cd1127/app/getTeamInfo.ts#L113-L114)
+In `getTeamInfo.ts`, replace my leagueID with yours
+[https://github.com/zkornbluth/fantrax-contract-chart/blob/8ca0336e4d4a86cd405cc2893b67f87d9d4d642c/scripts/getTeamInfo.ts#L143](https://github.com/zkornbluth/fantrax-contract-chart/blob/8ca0336e4d4a86cd405cc2893b67f87d9d4d642c/scripts/getTeamInfo.ts#L143)
 
 ### 3. Generate your own teamCapInfo.json
 ```bash
-tsc getTeamInfo.ts // this converts the TypeScript file to JavaScript
-node getTeamInfo.js // this runs the JavaScript file that updates the .json file
+tsc scripts/getTeamInfo.ts // this converts the TypeScript file to JavaScript
+npm run refresh-team-info // this runs the JavaScript file that updates the .json file
 ```
 
 ### 4. Run
