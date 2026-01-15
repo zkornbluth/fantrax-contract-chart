@@ -120,13 +120,6 @@ var TeamCapInfo = /** @class */ (function () {
     };
     return TeamCapInfo;
 }());
-var LeagueCapInfo = /** @class */ (function () {
-    function LeagueCapInfo(name, teams) {
-        this.name = name;
-        this.teams = teams;
-    }
-    return LeagueCapInfo;
-}());
 function removeEmptyElements(elements) {
     return __awaiter(this, void 0, void 0, function () {
         var filteredElements, _i, elements_1, element, text;
@@ -173,7 +166,7 @@ var _a = require('selenium-webdriver'), By = _a.By, Builder = _a.Builder, Browse
 var leagueID = "0xhc53jbmgiftfp0";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, capInfoList, _a, name_1, teams, _i, teams_1, teamID, divNum, nameEls, names, _b, nameEls_1, e, t, allAgeEls, ageEls, ages, _c, ageEls_1, e, t, teamEls, teams_2, _d, teamEls_1, e, t, posEls, positions, _e, posEls_1, e, t, posList, playerContainerEls, minors, injured, _f, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _g, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _h, salaryEls_1, el, t, allContractEls, contractEls, contracts, _j, contractEls_1, el, t, deadCapNameEls, deadCapNames, _k, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _l, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _m, _o, el, t, currCapCeilEl, currCapCeil, capCeil, teamNameEl, teamName, capInfo, i, newPlayer, i, newDeadCapHit, e_1;
+        var driver, capInfoList, _a, name_1, teams, _i, teams_1, teamID, divNum, nameEls, names, _b, nameEls_1, e, t, allAgeEls, ageEls, ages, _c, ageEls_1, e, t, teamEls, teams_2, _d, teamEls_1, e, t, posEls, positions, _e, posEls_1, e, t, posList, playerContainerEls, minors, injured, _f, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _g, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _h, salaryEls_1, el, t, allContractEls, contractEls, contracts, _j, contractEls_1, el, t, deadCapNameEls, deadCapNames, _k, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _l, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _m, _o, el, t, currCapCeilEl, currCapCeil, capCeil, teamNameEl, teamName, capInfo, i, newPlayer, i, newDeadCapHit, timestamp, e_1;
         return __generator(this, function (_p) {
             switch (_p.label) {
                 case 0:
@@ -445,7 +438,9 @@ function getTeamInfo() {
                 case 69:
                     _i++;
                     return [3 /*break*/, 3];
-                case 70: return [2 /*return*/, new LeagueCapInfo(name_1, capInfoList)];
+                case 70:
+                    timestamp = new Date().toLocaleString() + " EST";
+                    return [2 /*return*/, { name: name_1, teams: capInfoList, timestamp: timestamp }];
                 case 71:
                     e_1 = _p.sent();
                     console.log(e_1);

@@ -100,14 +100,10 @@ class TeamCapInfo {
     }
 }
 
-class LeagueCapInfo {
+interface LeagueCapInfo {
     name: string;
     teams: TeamCapInfo[];
-
-    constructor(name: string, teams: TeamCapInfo[]) {
-        this.name = name;
-        this.teams = teams;
-    }
+    timestamp: string;
 }
 
 interface League {
@@ -295,7 +291,8 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             }
             capInfoList.push(capInfo);
         }
-        return new LeagueCapInfo(name, capInfoList);
+        const timestamp = new Date().toLocaleString() + " EST";
+        return {name: name, teams: capInfoList, timestamp: timestamp};
 
     } catch(e) {
         console.log(e);

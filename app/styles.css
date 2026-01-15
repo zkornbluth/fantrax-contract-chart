@@ -121,3 +121,10 @@ th {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
+.timestamp {
+  font-size: 12px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+}

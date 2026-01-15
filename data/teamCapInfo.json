@@ -428,7 +428,7 @@
           ],
           "name": "Nolan Arenado",
           "age": 34,
-          "team": "STL",
+          "team": "ARI",
           "pos": "3B",
           "minors": false,
           "injured": false,
@@ -644,7 +644,7 @@
           ],
           "name": "Pierce Johnson",
           "age": 34,
-          "team": "(N/A)",
+          "team": "CIN",
           "pos": "RP",
           "minors": false,
           "injured": false,
@@ -841,7 +841,7 @@
             ""
           ],
           "name": "Jackson Ferris",
-          "age": 21,
+          "age": 22,
           "team": "LAD",
           "pos": "SP",
           "minors": true,
@@ -1021,7 +1021,7 @@
           "team": "TEX",
           "pos": "SS",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -2850,10 +2850,10 @@
           ],
           "name": "Jesus Tinoco",
           "age": 30,
-          "team": "(N/A)",
+          "team": "MIA",
           "pos": "RP",
-          "minors": false,
-          "injured": true,
+          "minors": true,
+          "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Relief Pitcher"
         },
@@ -3446,7 +3446,7 @@
           ],
           "name": "Alex Bregman",
           "age": 31,
-          "team": "(N/A)",
+          "team": "CHC",
           "pos": "3B",
           "minors": false,
           "injured": false,
@@ -3503,7 +3503,7 @@
           "team": "BOS",
           "pos": "1B",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -4075,7 +4075,7 @@
             ""
           ],
           "name": "Noble Meyer",
-          "age": 20,
+          "age": 21,
           "team": "MIA",
           "pos": "SP",
           "minors": true,
@@ -4294,7 +4294,7 @@
           ],
           "name": "Jake McCarthy",
           "age": 28,
-          "team": "ARI",
+          "team": "COL",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -4440,7 +4440,7 @@
           "age": 23,
           "team": "BOS",
           "pos": "2B",
-          "minors": true,
+          "minors": false,
           "injured": false,
           "yearsRemaining": 4,
           "posGroup": "Infielder"
@@ -4996,7 +4996,7 @@
           ],
           "name": "Ryan Weathers",
           "age": 26,
-          "team": "MIA",
+          "team": "NYY",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -5925,7 +5925,7 @@
           "team": "BOS",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
@@ -6283,7 +6283,7 @@
             ""
           ],
           "name": "J.P. Crawford",
-          "age": 30,
+          "age": 31,
           "team": "SEA",
           "pos": "SS",
           "minors": false,
@@ -7521,7 +7521,7 @@
             ""
           ],
           "name": "Triston Casas",
-          "age": 25,
+          "age": 26,
           "team": "BOS",
           "pos": "1B",
           "minors": false,
@@ -7594,7 +7594,7 @@
           ],
           "name": "Michael Toglia",
           "age": 27,
-          "team": "COL",
+          "team": "CIN",
           "pos": "1B",
           "minors": true,
           "injured": false,
@@ -10004,7 +10004,7 @@
           ],
           "name": "Ranger Suarez",
           "age": 30,
-          "team": "(N/A)",
+          "team": "BOS",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -10201,7 +10201,7 @@
             ""
           ],
           "name": "Janson Junk",
-          "age": 29,
+          "age": 30,
           "team": "MIA",
           "pos": "SP",
           "minors": false,
@@ -11573,7 +11573,7 @@
             ""
           ],
           "name": "Brayan Rocchio",
-          "age": 24,
+          "age": 25,
           "team": "CLE",
           "pos": "2B",
           "minors": false,
@@ -12041,7 +12041,7 @@
             ""
           ],
           "name": "Justin Crawford",
-          "age": 21,
+          "age": 22,
           "team": "PHI",
           "pos": "OF",
           "minors": true,
@@ -12667,7 +12667,7 @@
             ""
           ],
           "name": "Elly De La Cruz",
-          "age": 23,
+          "age": 24,
           "team": "CIN",
           "pos": "SS",
           "minors": false,
@@ -14938,7 +14938,7 @@
             ""
           ],
           "name": "Mitch Garver",
-          "age": 34,
+          "age": 35,
           "team": "(N/A)",
           "pos": "C",
           "minors": false,
@@ -15991,7 +15991,7 @@
           "name": "Angel Genao",
           "age": 21,
           "team": "CLE",
-          "pos": "SS",
+          "pos": "3B",
           "minors": true,
           "injured": false,
           "yearsRemaining": 2,
@@ -16531,5 +16531,6 @@
       "teamName": "Wolverines",
       "salaryCap": 2000
     }
-  ]
+  ],
+  "timestamp": "1/15/2026, 10:58:40 AM EST"
 }

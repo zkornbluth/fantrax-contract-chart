@@ -78,6 +78,7 @@ export default function HomePage() {
 
   return (
     <div>
+      <div className="timestamp">Last refreshed: {teamCapData.timestamp}</div>
       <h1>{teamCapData.name}: Multi-Year Payroll Table</h1>
       
       {/* Team Selector Dropdown */}
