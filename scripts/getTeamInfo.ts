@@ -130,19 +130,28 @@ interface LeagueTeamsResponse {
 
 async function getLeagueInfo(leagueID: string): Promise<League> {
     const response: LeagueTeamsResponse = await fetch(`https://www.fantrax.com/fxea/general/getLeagueInfo?leagueId=${leagueID}`).then(r => r.json());
-    const name = response.leagueName;
-    const teams = Object.keys(response.teamInfo);
+    const name: string = response.leagueName;
+    const teams: string[] = Object.keys(response.teamInfo);
     return {name, teams};
 }
 
-const {By, Builder, Browser} = require('selenium-webdriver');
+const {By, Builder} = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
 const leagueID = "0xhc53jbmgiftfp0";
 
 export async function getTeamInfo(): Promise<LeagueCapInfo> {
     let driver;
 
     try {
-        driver = await new Builder().forBrowser(Browser.CHROME).build();
+        let options = new chrome.Options();
+        options.addArguments('--headless=new');
+        options.addArguments('--disable-dev-shm-usage');
+        options.addArguments('--window-size=1920,1080');
+
+        driver = await new Builder()
+            .forBrowser('chrome')
+            .setChromeOptions(options)
+            .build();
         let capInfoList: TeamCapInfo[] = [];
         const {name, teams} = await getLeagueInfo(leagueID);
         for (const teamID of teams) {
