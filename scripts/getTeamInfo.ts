@@ -305,7 +305,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
 
             console.log(`Successfully scraped data for team: ${teamName}`);
         }
-        const timestamp = new Date().toLocaleString() + " EST";
+        const timestamp = new Date().toLocaleString("en-US", { timeZone: "EST" }) + " EST";
         return {name: name, teams: capInfoList, timestamp: timestamp};
 
     } catch(e) {

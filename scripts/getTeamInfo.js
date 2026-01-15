@@ -452,7 +452,7 @@ function getTeamInfo() {
                     _i++;
                     return [3 /*break*/, 3];
                 case 70:
-                    timestamp = new Date().toLocaleString() + " EST";
+                    timestamp = new Date().toLocaleString("en-US", { timeZone: "EST" }) + " EST";
                     return [2 /*return*/, { name: name_1, teams: capInfoList, timestamp: timestamp }];
                 case 71:
                     e_1 = _p.sent();

@@ -1,7 +1,7 @@
 # Author: Zachary Kornbluth <github.com/zkornbluth>
 
 name: Refresh Fantrax Data
-run-name: Weekly Fantrax Data Refresh
+run-name: ${{ github.event_name == 'schedule' && 'Weekly' || 'Manual' }} Fantrax Data Refresh
 
 on:
   schedule:
