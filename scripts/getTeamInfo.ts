@@ -147,6 +147,8 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
         options.addArguments('--headless=new');
         options.addArguments('--disable-dev-shm-usage');
         options.addArguments('--window-size=1920,1080');
+        options.addArguments('--no-sandbox');
+        options.addArguments('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
 
         driver = await new Builder()
             .forBrowser('chrome')
@@ -154,12 +156,17 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             .build();
         let capInfoList: TeamCapInfo[] = [];
         const {name, teams} = await getLeagueInfo(leagueID);
+        console.log(`Scraping for league: ${name}. ${teams.length} teams to scrape.`)
         for (const teamID of teams) {
             await driver.get(`https://www.fantrax.com/fantasy/league/${leagueID}/team/roster;teamId=${teamID}`);
+            await driver.sleep(2000); // short delay to render the table
     
-            await driver.manage().setTimeouts({implicit: 5000});
-
             // Scrape and prepare data
+            // Team Name
+            let teamNameEl = await driver.findElement(By.xpath("//mat-select-trigger/article/h5"));
+            let teamName = await teamNameEl.getText();
+            console.log(`Processing team: ${teamName}...`);
+
             // Active Players
             // Name
             let divNum = 2;
@@ -276,10 +283,6 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             let currCapCeil = await currCapCeilEl.getText();
             let capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
 
-            // Team Name
-            let teamNameEl = await driver.findElement(By.xpath("//mat-select-trigger/article/h5"));
-            let teamName = await teamNameEl.getText();
-
             // Build TeamCapInfo object and return it
             let capInfo = new TeamCapInfo(teamName, capCeil);
 
@@ -299,6 +302,8 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
                 capInfo.addDeadCapHit(newDeadCapHit);
             }
             capInfoList.push(capInfo);
+
+            console.log(`Successfully scraped data for team: ${teamName}`);
         }
         const timestamp = new Date().toLocaleString() + " EST";
         return {name: name, teams: capInfoList, timestamp: timestamp};

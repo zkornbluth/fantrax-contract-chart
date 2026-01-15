@@ -167,7 +167,7 @@ var chrome = require('selenium-webdriver/chrome');
 var leagueID = "0xhc53jbmgiftfp0";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, options, capInfoList, _a, name_1, teams, _i, teams_1, teamID, divNum, nameEls, names, _b, nameEls_1, e, t, allAgeEls, ageEls, ages, _c, ageEls_1, e, t, teamEls, teams_2, _d, teamEls_1, e, t, posEls, positions, _e, posEls_1, e, t, posList, playerContainerEls, minors, injured, _f, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _g, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _h, salaryEls_1, el, t, allContractEls, contractEls, contracts, _j, contractEls_1, el, t, deadCapNameEls, deadCapNames, _k, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _l, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _m, _o, el, t, currCapCeilEl, currCapCeil, capCeil, teamNameEl, teamName, capInfo, i, newPlayer, i, newDeadCapHit, timestamp, e_1;
+        var driver, options, capInfoList, _a, name_1, teams, _i, teams_1, teamID, teamNameEl, teamName, divNum, nameEls, names, _b, nameEls_1, e, t, allAgeEls, ageEls, ages, _c, ageEls_1, e, t, teamEls, teams_2, _d, teamEls_1, e, t, posEls, positions, _e, posEls_1, e, t, posList, playerContainerEls, minors, injured, _f, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _g, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _h, salaryEls_1, el, t, allContractEls, contractEls, contracts, _j, contractEls_1, el, t, deadCapNameEls, deadCapNames, _k, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _l, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _m, _o, el, t, currCapCeilEl, currCapCeil, capCeil, capInfo, i, newPlayer, i, newDeadCapHit, timestamp, e_1;
         return __generator(this, function (_p) {
             switch (_p.label) {
                 case 0:
@@ -176,6 +176,8 @@ function getTeamInfo() {
                     options.addArguments('--headless=new');
                     options.addArguments('--disable-dev-shm-usage');
                     options.addArguments('--window-size=1920,1080');
+                    options.addArguments('--no-sandbox');
+                    options.addArguments('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
                     return [4 /*yield*/, new Builder()
                             .forBrowser('chrome')
                             .setChromeOptions(options)
@@ -186,6 +188,7 @@ function getTeamInfo() {
                     return [4 /*yield*/, getLeagueInfo(leagueID)];
                 case 2:
                     _a = _p.sent(), name_1 = _a.name, teams = _a.teams;
+                    console.log("Scraping for league: ".concat(name_1, ". ").concat(teams.length, " teams to scrape."));
                     _i = 0, teams_1 = teams;
                     _p.label = 3;
                 case 3:
@@ -194,82 +197,89 @@ function getTeamInfo() {
                     return [4 /*yield*/, driver.get("https://www.fantrax.com/fantasy/league/".concat(leagueID, "/team/roster;teamId=").concat(teamID))];
                 case 4:
                     _p.sent();
-                    return [4 /*yield*/, driver.manage().setTimeouts({ implicit: 5000 })];
+                    return [4 /*yield*/, driver.sleep(2000)];
                 case 5:
-                    _p.sent();
+                    _p.sent(); // short delay to render the table
+                    return [4 /*yield*/, driver.findElement(By.xpath("//mat-select-trigger/article/h5"))];
+                case 6:
+                    teamNameEl = _p.sent();
+                    return [4 /*yield*/, teamNameEl.getText()];
+                case 7:
+                    teamName = _p.sent();
+                    console.log("Processing team: ".concat(teamName, "..."));
                     divNum = 2;
                     return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[2]/div/div/scorer/div/div[1]"))];
-                case 6:
+                case 8:
                     nameEls = _p.sent();
-                    if (!(nameEls.length == 0)) return [3 /*break*/, 8];
+                    if (!(nameEls.length == 0)) return [3 /*break*/, 10];
                     divNum = 3;
                     return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div/scorer/div/div[1]")))];
-                case 7:
+                case 9:
                     nameEls = _p.sent();
-                    _p.label = 8;
-                case 8:
+                    _p.label = 10;
+                case 10:
                     names = [];
                     _b = 0, nameEls_1 = nameEls;
-                    _p.label = 9;
-                case 9:
-                    if (!(_b < nameEls_1.length)) return [3 /*break*/, 12];
-                    e = nameEls_1[_b];
-                    return [4 /*yield*/, e.getText()];
-                case 10:
-                    t = _p.sent();
-                    names.push(t);
                     _p.label = 11;
                 case 11:
-                    _b++;
-                    return [3 /*break*/, 9];
-                case 12: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[1]")))];
+                    if (!(_b < nameEls_1.length)) return [3 /*break*/, 14];
+                    e = nameEls_1[_b];
+                    return [4 /*yield*/, e.getText()];
+                case 12:
+                    t = _p.sent();
+                    names.push(t);
+                    _p.label = 13;
                 case 13:
+                    _b++;
+                    return [3 /*break*/, 11];
+                case 14: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[1]")))];
+                case 15:
                     allAgeEls = _p.sent();
                     return [4 /*yield*/, removeEmptyElements(allAgeEls)];
-                case 14:
+                case 16:
                     ageEls = _p.sent();
                     ages = [];
                     _c = 0, ageEls_1 = ageEls;
-                    _p.label = 15;
-                case 15:
-                    if (!(_c < ageEls_1.length)) return [3 /*break*/, 18];
-                    e = ageEls_1[_c];
-                    return [4 /*yield*/, e.getText()];
-                case 16:
-                    t = _p.sent();
-                    ages.push(parseInt(t));
                     _p.label = 17;
                 case 17:
-                    _c++;
-                    return [3 /*break*/, 15];
-                case 18: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div/scorer/div/div[2]/span[2]")))];
+                    if (!(_c < ageEls_1.length)) return [3 /*break*/, 20];
+                    e = ageEls_1[_c];
+                    return [4 /*yield*/, e.getText()];
+                case 18:
+                    t = _p.sent();
+                    ages.push(parseInt(t));
+                    _p.label = 19;
                 case 19:
+                    _c++;
+                    return [3 /*break*/, 17];
+                case 20: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div/scorer/div/div[2]/span[2]")))];
+                case 21:
                     teamEls = _p.sent();
                     teams_2 = [];
                     _d = 0, teamEls_1 = teamEls;
-                    _p.label = 20;
-                case 20:
-                    if (!(_d < teamEls_1.length)) return [3 /*break*/, 23];
-                    e = teamEls_1[_d];
-                    return [4 /*yield*/, e.getText()];
-                case 21:
-                    t = _p.sent();
-                    teams_2.push(t.slice(2));
                     _p.label = 22;
                 case 22:
-                    _d++;
-                    return [3 /*break*/, 20];
-                case 23: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div/scorer/div/div[2]/span[1]")))];
+                    if (!(_d < teamEls_1.length)) return [3 /*break*/, 25];
+                    e = teamEls_1[_d];
+                    return [4 /*yield*/, e.getText()];
+                case 23:
+                    t = _p.sent();
+                    teams_2.push(t.slice(2));
+                    _p.label = 24;
                 case 24:
+                    _d++;
+                    return [3 /*break*/, 22];
+                case 25: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div/scorer/div/div[2]/span[1]")))];
+                case 26:
                     posEls = _p.sent();
                     positions = [];
                     _e = 0, posEls_1 = posEls;
-                    _p.label = 25;
-                case 25:
-                    if (!(_e < posEls_1.length)) return [3 /*break*/, 28];
+                    _p.label = 27;
+                case 27:
+                    if (!(_e < posEls_1.length)) return [3 /*break*/, 30];
                     e = posEls_1[_e];
                     return [4 /*yield*/, e.getText()];
-                case 26:
+                case 28:
                     t = _p.sent();
                     posList = t.split(",");
                     if (posList.length == 1) { // if posList is one item, player has 1 position - add it
@@ -281,153 +291,147 @@ function getTeamInfo() {
                     else { // player is a batter, we want the first one
                         positions.push(posList[0]);
                     }
-                    _p.label = 27;
-                case 27:
-                    _e++;
-                    return [3 /*break*/, 25];
-                case 28: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div[1]/scorer")))];
+                    _p.label = 29;
                 case 29:
+                    _e++;
+                    return [3 /*break*/, 27];
+                case 30: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/div[1]/scorer")))];
+                case 31:
                     playerContainerEls = _p.sent();
                     minors = [];
                     injured = [];
                     _f = 0, playerContainerEls_1 = playerContainerEls;
-                    _p.label = 30;
-                case 30:
-                    if (!(_f < playerContainerEls_1.length)) return [3 /*break*/, 37];
+                    _p.label = 32;
+                case 32:
+                    if (!(_f < playerContainerEls_1.length)) return [3 /*break*/, 39];
                     container = playerContainerEls_1[_f];
                     return [4 /*yield*/, container.findElements(By.xpath(".//div/div[2]/span"))];
-                case 31:
+                case 33:
                     flagSpans = _p.sent();
                     isMinors = false;
                     isInjured = false;
                     _g = 0, flagSpans_1 = flagSpans;
-                    _p.label = 32;
-                case 32:
-                    if (!(_g < flagSpans_1.length)) return [3 /*break*/, 35];
+                    _p.label = 34;
+                case 34:
+                    if (!(_g < flagSpans_1.length)) return [3 /*break*/, 37];
                     span = flagSpans_1[_g];
                     return [4 /*yield*/, span.getAttribute("class")];
-                case 33:
+                case 35:
                     classes = _p.sent();
                     if (classes.includes("scorer-icon--MINORS"))
                         isMinors = true;
                     if (classes.includes("scorer-icon--INJURY_LIST") || classes.includes("scorer-icon--INJURED_OUT"))
                         isInjured = true;
-                    _p.label = 34;
-                case 34:
-                    _g++;
-                    return [3 /*break*/, 32];
-                case 35:
-                    minors.push(isMinors);
-                    injured.push(isInjured);
                     _p.label = 36;
                 case 36:
-                    _f++;
-                    return [3 /*break*/, 30];
-                case 37: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[3]")))];
+                    _g++;
+                    return [3 /*break*/, 34];
+                case 37:
+                    minors.push(isMinors);
+                    injured.push(isInjured);
+                    _p.label = 38;
                 case 38:
+                    _f++;
+                    return [3 /*break*/, 32];
+                case 39: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[3]")))];
+                case 40:
                     allSalaryEls = _p.sent();
                     return [4 /*yield*/, removeEmptyElements(allSalaryEls)];
-                case 39:
+                case 41:
                     salaryEls = _p.sent();
                     salaries = [];
                     _h = 0, salaryEls_1 = salaryEls;
-                    _p.label = 40;
-                case 40:
-                    if (!(_h < salaryEls_1.length)) return [3 /*break*/, 43];
-                    el = salaryEls_1[_h];
-                    return [4 /*yield*/, el.getText()];
-                case 41:
-                    t = _p.sent();
-                    salaries.push(parseFloat(t.replace(/[$,]/g, "")));
                     _p.label = 42;
                 case 42:
-                    _h++;
-                    return [3 /*break*/, 40];
-                case 43: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[4]")))];
+                    if (!(_h < salaryEls_1.length)) return [3 /*break*/, 45];
+                    el = salaryEls_1[_h];
+                    return [4 /*yield*/, el.getText()];
+                case 43:
+                    t = _p.sent();
+                    salaries.push(parseFloat(t.replace(/[$,]/g, "")));
+                    _p.label = 44;
                 case 44:
+                    _h++;
+                    return [3 /*break*/, 42];
+                case 45: return [4 /*yield*/, driver.findElements(By.xpath("//league-team-roster-tables/div/div[".concat(divNum, "]/div/table-cell[4]")))];
+                case 46:
                     allContractEls = _p.sent();
                     return [4 /*yield*/, removeEmptyElements(allContractEls)];
-                case 45:
+                case 47:
                     contractEls = _p.sent();
                     contracts = [];
                     _j = 0, contractEls_1 = contractEls;
-                    _p.label = 46;
-                case 46:
-                    if (!(_j < contractEls_1.length)) return [3 /*break*/, 49];
-                    el = contractEls_1[_j];
-                    return [4 /*yield*/, el.getText()];
-                case 47:
-                    t = _p.sent();
-                    contracts.push(parseInt(t));
                     _p.label = 48;
                 case 48:
-                    _j++;
-                    return [3 /*break*/, 46];
-                case 49: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[4]/scorer/div/div[1]"))];
+                    if (!(_j < contractEls_1.length)) return [3 /*break*/, 51];
+                    el = contractEls_1[_j];
+                    return [4 /*yield*/, el.getText()];
+                case 49:
+                    t = _p.sent();
+                    contracts.push(parseInt(t));
+                    _p.label = 50;
                 case 50:
+                    _j++;
+                    return [3 /*break*/, 48];
+                case 51: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[4]/scorer/div/div[1]"))];
+                case 52:
                     deadCapNameEls = _p.sent();
                     deadCapNames = [];
                     _k = 0, deadCapNameEls_1 = deadCapNameEls;
-                    _p.label = 51;
-                case 51:
-                    if (!(_k < deadCapNameEls_1.length)) return [3 /*break*/, 54];
-                    el = deadCapNameEls_1[_k];
-                    return [4 /*yield*/, el.getText()];
-                case 52:
-                    t = _p.sent();
-                    deadCapNames.push(t);
                     _p.label = 53;
                 case 53:
-                    _k++;
-                    return [3 /*break*/, 51];
-                case 54: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[1]/span"))];
+                    if (!(_k < deadCapNameEls_1.length)) return [3 /*break*/, 56];
+                    el = deadCapNameEls_1[_k];
+                    return [4 /*yield*/, el.getText()];
+                case 54:
+                    t = _p.sent();
+                    deadCapNames.push(t);
+                    _p.label = 55;
                 case 55:
+                    _k++;
+                    return [3 /*break*/, 53];
+                case 56: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[1]/span"))];
+                case 57:
                     deadCapHitEls = _p.sent();
                     deadCapHits = [];
                     _l = 0, deadCapHitEls_1 = deadCapHitEls;
-                    _p.label = 56;
-                case 56:
-                    if (!(_l < deadCapHitEls_1.length)) return [3 /*break*/, 59];
+                    _p.label = 58;
+                case 58:
+                    if (!(_l < deadCapHitEls_1.length)) return [3 /*break*/, 61];
                     el = deadCapHitEls_1[_l];
                     return [4 /*yield*/, el.getText()];
-                case 57:
+                case 59:
                     t = _p.sent();
                     val = parseFloat(t.replace(/[$,]/g, ""));
                     deadCapHits.push(val);
-                    _p.label = 58;
-                case 58:
-                    _l++;
-                    return [3 /*break*/, 56];
-                case 59: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[3]"))];
+                    _p.label = 60;
                 case 60:
+                    _l++;
+                    return [3 /*break*/, 58];
+                case 61: return [4 /*yield*/, driver.findElements(By.xpath("/html/body/app-root/section/app-league-team-roster/section/div[3]/div[2]/div/div[3]"))];
+                case 62:
                     deadEndYearEls = _p.sent();
                     deadEndYears = [];
                     _m = 0, _o = deadEndYearEls.slice(1);
-                    _p.label = 61;
-                case 61:
-                    if (!(_m < _o.length)) return [3 /*break*/, 64];
-                    el = _o[_m];
-                    return [4 /*yield*/, el.getText()];
-                case 62:
-                    t = _p.sent();
-                    deadEndYears.push(parseInt(t));
                     _p.label = 63;
                 case 63:
-                    _m++;
-                    return [3 /*break*/, 61];
-                case 64: return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"))];
+                    if (!(_m < _o.length)) return [3 /*break*/, 66];
+                    el = _o[_m];
+                    return [4 /*yield*/, el.getText()];
+                case 64:
+                    t = _p.sent();
+                    deadEndYears.push(parseInt(t));
+                    _p.label = 65;
                 case 65:
+                    _m++;
+                    return [3 /*break*/, 63];
+                case 66: return [4 /*yield*/, driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"))];
+                case 67:
                     currCapCeilEl = _p.sent();
                     return [4 /*yield*/, currCapCeilEl.getText()];
-                case 66:
+                case 68:
                     currCapCeil = _p.sent();
                     capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
-                    return [4 /*yield*/, driver.findElement(By.xpath("//mat-select-trigger/article/h5"))];
-                case 67:
-                    teamNameEl = _p.sent();
-                    return [4 /*yield*/, teamNameEl.getText()];
-                case 68:
-                    teamName = _p.sent();
                     capInfo = new TeamCapInfo(teamName, capCeil);
                     // Add active players
                     // The info for one player should be all at the same index in each list
@@ -442,6 +446,7 @@ function getTeamInfo() {
                         capInfo.addDeadCapHit(newDeadCapHit);
                     }
                     capInfoList.push(capInfo);
+                    console.log("Successfully scraped data for team: ".concat(teamName));
                     _p.label = 69;
                 case 69:
                     _i++;

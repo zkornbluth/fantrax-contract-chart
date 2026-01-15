@@ -18,7 +18,7 @@ import SummaryTable from './components/SummaryTable';
 import TeamSelector from './components/TeamSelector';
  
 export default function HomePage() {
-  const [selectedTeamIndex, setSelectedTeamIndex] = useState(13); // Default to my team
+  const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
   const selectedTeam = teamCapData.teams[selectedTeamIndex];
   // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [
