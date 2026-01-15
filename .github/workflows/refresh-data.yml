@@ -1,4 +1,5 @@
 name: Weekly Fantrax Data Refresh
+run-name: Refresh Fantrax Data
 
 on:
   schedule:
@@ -23,7 +24,7 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        uses: npm install
+        run: npm install
 
       - name: Run scraper
         run: npm run refresh-team-info
