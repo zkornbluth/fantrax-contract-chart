@@ -8,7 +8,7 @@
 import React, {useState} from 'react';
 import teamCapData from '../data/teamCapInfo.json';
 import './styles.css';
-import { CapHitHeader, CapMaxHeader, CapSpaceHeader } from './components/CapHeaders';
+import CapHeaders from './components/CapHeaders';
 import PositionalSummaryTable from './components/PositionalSummaryTable';
 import SummaryTable from './components/SummaryTable';
 import TeamSelector from './components/TeamSelector';
@@ -101,11 +101,7 @@ export default function HomePage() {
       </div>
 
       {/* Header Cards */}
-      <div className="cap-headers">
-        <CapMaxHeader selectedTeam={selectedTeam} />
-        <CapHitHeader selectedTeam={selectedTeam} />
-        <CapSpaceHeader selectedTeam={selectedTeam} />
-      </div>
+      <CapHeaders selectedTeam={selectedTeam} />
 
       {/* Major League Players */}
       {groupByPosition ? <GroupedMajorLeagueTable positionOrder={positionOrder} groupedPlayers={groupedPlayers} />

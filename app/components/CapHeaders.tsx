@@ -1,5 +1,5 @@
 /** 
- * @fileoverview Creates the CapSpaceHeader, CapHitHeader, and CapMaxHeader components
+ * @fileoverview Creates the CapHeaders, CapSpaceHeader, CapHitHeader, and CapMaxHeader components
  * @author Zachary Kornbluth <github.com/zkornbluth>
  */
 
@@ -19,7 +19,7 @@ interface HeaderCardsProps {
   selectedTeam: Team;
 }
 
-export function CapSpaceHeader({selectedTeam}: HeaderCardsProps) {
+function CapSpaceHeader({selectedTeam}: HeaderCardsProps) {
   let capSpace = getCapSpace(selectedTeam, 2026);
 
   return (
@@ -27,7 +27,7 @@ export function CapSpaceHeader({selectedTeam}: HeaderCardsProps) {
   )
 }
 
-export function CapHitHeader({selectedTeam}: HeaderCardsProps) {
+function CapHitHeader({selectedTeam}: HeaderCardsProps) {
   let capHit = getCapHit(selectedTeam, 2026);
 
   return (
@@ -35,10 +35,20 @@ export function CapHitHeader({selectedTeam}: HeaderCardsProps) {
   )
 }
 
-export function CapMaxHeader({selectedTeam}: HeaderCardsProps) {
+function CapMaxHeader({selectedTeam}: HeaderCardsProps) {
   let ceil = selectedTeam.salaryCap;
 
   return (
     <HeaderCard text="Cap Ceiling" num={ceil} icon={billstack} bordered={false} />
+  )
+}
+
+export default function CapHeaders({selectedTeam}) {
+  return (
+    <div className="cap-headers">
+      <CapMaxHeader selectedTeam={selectedTeam} />
+      <CapHitHeader selectedTeam={selectedTeam} />
+      <CapSpaceHeader selectedTeam={selectedTeam} />
+    </div>
   )
 }
