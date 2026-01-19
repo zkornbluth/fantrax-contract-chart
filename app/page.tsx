@@ -15,6 +15,7 @@ import TeamSelector from './components/TeamSelector';
 import {GroupedMajorLeagueTable, UngroupedMajorLeagueTable} from './components/MajorLeagueTables';
 import MinorLeagueTable from './components/MinorLeagueTable';
 import DeadCapTable from './components/DeadCapTable';
+import GroupByPosition from './components/GroupByPosition';
  
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
@@ -87,17 +88,7 @@ export default function HomePage() {
           selectedTeamIndex={selectedTeamIndex}
           onTeamChange={setSelectedTeamIndex}
         />
-        <span className='group-by-position'>
-          <label htmlFor="groupByPos">
-            Group Major League Players by Position
-          </label>
-          <input
-            type="checkbox"
-            id="groupByPos"
-            checked={groupByPosition}
-            onChange={() => setGroupByPosition(!groupByPosition)}
-          />
-        </span>
+        <GroupByPosition groupByPosition={groupByPosition} setGroupByPosition={setGroupByPosition} />
       </div>
 
       {/* Header Cards */}
