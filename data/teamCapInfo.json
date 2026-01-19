@@ -53,7 +53,7 @@
           "team": "NYM",
           "pos": "2B",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Infielder"
         },
@@ -3283,7 +3283,7 @@
             ""
           ],
           "name": "Kyle Tucker",
-          "age": 28,
+          "age": 29,
           "team": "LAD",
           "pos": "OF",
           "minors": false,
@@ -6571,7 +6571,7 @@
             ""
           ],
           "name": "Tommy Troy",
-          "age": 23,
+          "age": 24,
           "team": "ARI",
           "pos": "2B",
           "minors": true,
@@ -7629,7 +7629,7 @@
             ""
           ],
           "name": "Zyhir Hope",
-          "age": 20,
+          "age": 21,
           "team": "LAD",
           "pos": "OF",
           "minors": true,
@@ -9737,7 +9737,7 @@
           "team": "STL",
           "pos": "SS",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -10485,7 +10485,7 @@
             ""
           ],
           "name": "Brendan Donovan",
-          "age": 28,
+          "age": 29,
           "team": "STL",
           "pos": "2B",
           "minors": false,
@@ -10774,7 +10774,7 @@
           ],
           "name": "Bo Bichette",
           "age": 27,
-          "team": "(N/A)",
+          "team": "NYM",
           "pos": "SS",
           "minors": false,
           "injured": false,
@@ -12596,7 +12596,7 @@
           ],
           "name": "J.T. Realmuto",
           "age": 34,
-          "team": "(N/A)",
+          "team": "PHI",
           "pos": "C",
           "minors": false,
           "injured": false,
@@ -14106,6 +14106,24 @@
         },
         {
           "yearlyContract": [
+            1,
+            1,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Orelvis Martinez",
+          "age": 24,
+          "team": "WSH",
+          "pos": "2B",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 2,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
             2,
             2,
             2,
@@ -14120,24 +14138,6 @@
           "minors": true,
           "injured": false,
           "yearsRemaining": 4,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            1,
-            1,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Orelvis Martinez",
-          "age": 24,
-          "team": "TOR",
-          "pos": "SS",
-          "minors": true,
-          "injured": false,
-          "yearsRemaining": 2,
           "posGroup": "Infielder"
         },
         {
@@ -14996,7 +14996,7 @@
           "team": "ATL",
           "pos": "SS",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -15029,7 +15029,7 @@
           ],
           "name": "Jorge Mateo",
           "age": 30,
-          "team": "(N/A)",
+          "team": "ATL",
           "pos": "SS",
           "minors": false,
           "injured": false,
@@ -15208,7 +15208,7 @@
             ""
           ],
           "name": "Max Fried",
-          "age": 31,
+          "age": 32,
           "team": "NYY",
           "pos": "SP",
           "minors": false,
@@ -15774,7 +15774,7 @@
           ],
           "name": "Victor Caratini",
           "age": 32,
-          "team": "(N/A)",
+          "team": "MIN",
           "pos": "C",
           "minors": false,
           "injured": false,
@@ -16532,5 +16532,5 @@
       "salaryCap": 2000
     }
   ],
-  "timestamp": "1/16/2026, 12:08:00 PM EST"
+  "timestamp": "1/19/2026, 1:51:23 PM EST"
 }

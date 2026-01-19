@@ -8,17 +8,17 @@
 import React, {useState} from 'react';
 import teamCapData from '../data/teamCapInfo.json';
 import './styles.css';
-import ActivePlayerRow from './components/ActivePlayerRow';
 import { CapHitHeader, CapMaxHeader, CapSpaceHeader } from './components/CapHeaders';
-import ColumnHeaders from './components/ColumnHeaders';
-import DeadCapRow from './components/DeadCapRow';
-import PositionGroupHeader from './components/PositionGroupHeader';
 import PositionalSummaryTable from './components/PositionalSummaryTable';
 import SummaryTable from './components/SummaryTable';
 import TeamSelector from './components/TeamSelector';
+import {GroupedMajorLeagueTable, UngroupedMajorLeagueTable} from './components/MajorLeagueTables';
+import MinorLeagueTable from './components/MinorLeagueTable';
+import DeadCapTable from './components/DeadCapTable';
  
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
+  const [groupByPosition, setGroupByPosition] = useState(true);
   const selectedTeam = teamCapData.teams[selectedTeamIndex];
   // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [
@@ -33,25 +33,14 @@ export default function HomePage() {
   const majorLeaguePlayers = selectedTeam.activePlayers.filter(player => !player.minors);
   const minorLeaguePlayers = selectedTeam.activePlayers.filter(player => player.minors);
 
-  const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
-    const group = player.posGroup || 'Unknown';
-    if (!groups[group]) {
-      groups[group] = [];
+  // Sort major leaguers by salary descending then contract length descending
+  majorLeaguePlayers.sort((a, b) => {
+    const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
+    const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
+    if (salaryA !== salaryB) {
+      return salaryB - salaryA;
     }
-    groups[group].push(player);
-    return groups;
-  }, {});
-
-  // Within each group, sort players by salary descending then contract length descending
-  Object.keys(groupedPlayers).forEach(group => {
-    groupedPlayers[group].sort((a, b) => {
-      const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
-      const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
-      if (salaryA !== salaryB) {
-        return salaryB - salaryA;
-      }
-      return b.yearsRemaining - a.yearsRemaining;
-    });
+    return b.yearsRemaining - a.yearsRemaining;
   });
 
   // Sort minor leaguers the same way
@@ -63,6 +52,16 @@ export default function HomePage() {
     }
     return b.yearsRemaining - a.yearsRemaining;
   });
+
+  // Group major leaguers for grouped view
+  const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
+    const group = player.posGroup || 'Unknown';
+    if (!groups[group]) {
+      groups[group] = [];
+    }
+    groups[group].push(player);
+    return groups;
+  }, {});
 
   const deadCapHits = selectedTeam.deadCapHits;
 
@@ -81,12 +80,25 @@ export default function HomePage() {
       <div className="timestamp">Last refreshed: {teamCapData.timestamp}</div>
       <h1>{teamCapData.name}: Multi-Year Payroll Table</h1>
       
-      {/* Team Selector Dropdown */}
-      <TeamSelector 
-        teams={teamCapData.teams}
-        selectedTeamIndex={selectedTeamIndex}
-        onTeamChange={setSelectedTeamIndex}
-      />
+      <div className="filters-wrap">
+        {/* Team Selector Dropdown */}
+        <TeamSelector 
+          teams={teamCapData.teams}
+          selectedTeamIndex={selectedTeamIndex}
+          onTeamChange={setSelectedTeamIndex}
+        />
+        <span className='group-by-position'>
+          <label htmlFor="groupByPos">
+            Group Major League Players by Position
+          </label>
+          <input
+            type="checkbox"
+            id="groupByPos"
+            checked={groupByPosition}
+            onChange={() => setGroupByPosition(!groupByPosition)}
+          />
+        </span>
+      </div>
 
       {/* Header Cards */}
       <div className="cap-headers">
@@ -96,60 +108,14 @@ export default function HomePage() {
       </div>
 
       {/* Major League Players */}
-      {positionOrder.map((posGroup) => {
-        const players = groupedPlayers[posGroup];
-        if (!players || players.length === 0) return null;
-
-        return (
-          <React.Fragment key={posGroup}>
-            <PositionGroupHeader posGroup={posGroup} />
-            <table>
-              <thead>
-                <ColumnHeaders count={players.filter(player => player.yearsRemaining > 0).length} type="active" />
-              </thead>
-              <tbody>
-                {players.map((player, index) => (
-                  <ActivePlayerRow key={`${posGroup}-${index}`} activePlayer={player} />
-                ))}
-              </tbody>
-            </table>
-          </React.Fragment>
-        )
-      })}
+      {groupByPosition ? <GroupedMajorLeagueTable positionOrder={positionOrder} groupedPlayers={groupedPlayers} />
+      : <UngroupedMajorLeagueTable players={majorLeaguePlayers} />}
 
       {/* Minor League Players */}
-      {minorLeaguePlayers.length > 0 && (
-        <React.Fragment key="minors">
-          <PositionGroupHeader posGroup="Minor League" />
-          <table>
-            <thead>
-              <ColumnHeaders count={minorLeaguePlayers.filter(player => player.yearsRemaining > 0).length} type="active" />
-            </thead>
-            <tbody>
-              {minorLeaguePlayers.map((player, index) => (
-                <ActivePlayerRow key={`minors-${index}`} activePlayer={player} />
-              ))}
-            </tbody>
-          </table>
-        </React.Fragment>
-      )}
+      {minorLeaguePlayers.length > 0 && <MinorLeagueTable minorLeaguePlayers={minorLeaguePlayers} />}
 
       {/* Dead Cap Hits */}
-      {deadCapHits.length > 0 && (
-        <React.Fragment key="deadCap">
-          <PositionGroupHeader posGroup="Dead Cap Hit" />
-          <table>
-            <thead>
-              <ColumnHeaders count={deadCapHits.length} type="deadCap" />
-            </thead>
-            <tbody>
-              {deadCapHits.map((capHit, index) => (
-                <DeadCapRow key={`deadCap-${index}`} deadCapHit={capHit} />
-              ))}
-            </tbody>
-          </table>
-        </React.Fragment>
-      )}
+      {deadCapHits.length > 0 && <DeadCapTable deadCapHits={deadCapHits} />}
 
       {/* Summary Table */}
       <SummaryTable selectedTeam={selectedTeam} />

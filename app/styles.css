@@ -107,7 +107,6 @@ th {
 }
 
 .team-selector {
-  margin: 20px 0;
   font-size: 16px;
   display: flex;
   justify-content: center;
@@ -124,7 +123,19 @@ th {
 
 .timestamp {
   font-size: 12px;
-  position: fixed;
+  position: absolute;
   top: 10px;
   right: 10px;
+}
+
+.filters-wrap {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.group-by-position {
+  font-size: 16px;
 }

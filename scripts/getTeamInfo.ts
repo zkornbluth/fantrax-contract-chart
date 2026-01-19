@@ -148,7 +148,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
         options.addArguments('--disable-dev-shm-usage');
         options.addArguments('--window-size=1920,1080');
         options.addArguments('--no-sandbox');
-        options.addArguments('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+        options.addArguments('--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
 
         driver = await new Builder()
             .forBrowser('chrome')
@@ -156,7 +156,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             .build();
         let capInfoList: TeamCapInfo[] = [];
         const {name, teams} = await getLeagueInfo(leagueID);
-        console.log(`Scraping for league: ${name}. ${teams.length} teams to scrape.`)
+        console.log(`Scraping for league: ${name}. ${teams.length} teams to scrape.`);
         for (const teamID of teams) {
             await driver.get(`https://www.fantrax.com/fantasy/league/${leagueID}/team/roster;teamId=${teamID}`);
             await driver.sleep(2000); // short delay to render the table
@@ -175,7 +175,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
                 divNum = 3;
                 nameEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div/scorer/div/div[1]`));
             }
-            let names: string[] = []
+            let names: string[] = [];
             for (let e of nameEls) {
                 const t = await e.getText();
                 names.push(t);
@@ -184,7 +184,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             // Age
             let allAgeEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/table-cell[1]`));
             let ageEls = await removeEmptyElements(allAgeEls);
-            let ages: number[] = []
+            let ages: number[] = [];
             for (let e of ageEls) {
                 const t = await e.getText();
                 ages.push(parseInt(t));
