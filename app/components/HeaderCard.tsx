@@ -21,11 +21,11 @@ export default function HeaderCard({text, num, icon, bordered=true}: HeaderCardP
   });
 
   return (
-    <div className={"header-card" + (bordered ? " header-card-bordered" : "")}>
-      <Image src={icon} alt="Money Icon" className="dollar-icon" />
-      <div className="header-card-text">
-        <div>{text}</div>
-        <div><strong>{formattedNum}</strong></div>
+    <div className={`flex items-center justify-center gap-5 p-6 text-xl w-[275px] ${bordered ? 'border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm' : ''}`}>
+      <Image src={icon} alt="Money Icon" className="w-[30px] h-[30px] dark:invert" />
+      <div className="flex flex-col leading-tight">
+        <div className="text-gray-900 dark:text-white">{text}</div>
+        <div className="font-bold text-gray-900 dark:text-white">{formattedNum}</div>
       </div>
     </div>
   )

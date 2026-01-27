@@ -12,7 +12,7 @@ export default function MinorLeagueTable({minorLeaguePlayers}) {
     return (
         <React.Fragment key="minors">
             <PositionGroupHeader posGroup="Minor League" />
-                <table>
+                <table className="w-[90%] ml-[5%] border-collapse mb-6">
                     <thead>
                         <ColumnHeaders count={minorLeaguePlayers.filter(player => player.yearsRemaining > 0).length} type="active" />
                     </thead>

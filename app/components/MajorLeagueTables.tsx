@@ -17,7 +17,7 @@ function GroupedMajorLeagueTable({positionOrder, groupedPlayers}) {
             return (
                 <React.Fragment key={posGroup}>
                     <PositionGroupHeader posGroup={posGroup} />
-                    <table>
+                    <table className="w-[90%] ml-[5%] border-collapse mb-6">
                         <thead>
                         <ColumnHeaders count={players.filter(player => player.yearsRemaining > 0).length} type="active" />
                         </thead>
@@ -38,7 +38,7 @@ function UngroupedMajorLeagueTable({players}) {
     return (
         <React.Fragment key='major-leagues'>
             <PositionGroupHeader posGroup='Major League' />
-            <table>
+            <table className="w-[90%] ml-[5%] border-collapse mb-6">
                 <thead>
                     <ColumnHeaders count={players.filter(player => player.yearsRemaining > 0).length} type="active" />
                 </thead>
@@ -52,4 +52,7 @@ function UngroupedMajorLeagueTable({players}) {
     )
 }
 
-export {GroupedMajorLeagueTable, UngroupedMajorLeagueTable};
+export default function MajorLeagueTable({groupByPosition, positionOrder, groupedPlayers, majorLeaguePlayers}) {
+    return groupByPosition ? <GroupedMajorLeagueTable positionOrder={positionOrder} groupedPlayers={groupedPlayers} />
+          : <UngroupedMajorLeagueTable players={majorLeaguePlayers} />
+}

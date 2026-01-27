@@ -1,0 +1,25 @@
+/* 
+Author: Zachary Kornbluth <github.com/zkornbluth>
+*/
+
+@import "tailwindcss";
+
+/* Configure dark mode variant for Tailwind v4 */
+@variant dark (.dark &);
+
+/* Base styles for smooth transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Ensure html element can have dark class */
+html {
+  color-scheme: light dark;
+}
+
+/* Dark mode - ensure .dark class works */
+html.dark {
+  color-scheme: dark;
+}

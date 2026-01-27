@@ -12,7 +12,7 @@ export default function DeadCapTable({deadCapHits}) {
     return (
          <React.Fragment key="deadCap">
             <PositionGroupHeader posGroup="Dead Cap Hit" />
-            <table>
+            <table className="w-[90%] ml-[5%] border-collapse mb-6">
                 <thead>
                     <ColumnHeaders count={deadCapHits.length} type="deadCap" />
                 </thead>

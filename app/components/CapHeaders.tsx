@@ -45,7 +45,7 @@ function CapMaxHeader({selectedTeam}: HeaderCardsProps) {
 
 export default function CapHeaders({selectedTeam}) {
   return (
-    <div className="cap-headers">
+    <div className="text-center grid grid-cols-[auto_auto_auto] justify-center gap-2.5 mb-6">
       <CapMaxHeader selectedTeam={selectedTeam} />
       <CapHitHeader selectedTeam={selectedTeam} />
       <CapSpaceHeader selectedTeam={selectedTeam} />

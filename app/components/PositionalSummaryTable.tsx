@@ -42,7 +42,7 @@ export default function PositionalSummaryTable({players, posOrder, minorLeaguers
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Positional Summary" />
-      <table>
+      <table className="w-[90%] ml-[5%] border-collapse mb-6">
         <thead>
           <ColumnHeaders type="summary" />
         </thead>

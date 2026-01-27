@@ -12,8 +12,8 @@ interface DeadCapRowProps {
 
 export default function DeadCapRow({deadCapHit}: DeadCapRowProps) { // Generates one row for one dead cap hit
   return (
-    <tr className="player-row">
-      <td colSpan={4}>{deadCapHit.name}</td>
+    <tr className="border-y border-gray-300 dark:border-gray-600 odd:bg-gray-50 dark:odd:bg-gray-800/50 even:bg-white dark:even:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+      <td colSpan={4} className="py-0.5 px-4 text-gray-900 dark:text-white">{deadCapHit.name}</td>
       {deadCapHit.yearlyCapHit.map((salary, index) => {
         let displayValue;
         if (typeof salary === "number") {
@@ -24,7 +24,7 @@ export default function DeadCapRow({deadCapHit}: DeadCapRowProps) { // Generates
         }
 
         return (
-          <td key={index} className="active-player-cell salary-cell">
+          <td key={index} className="text-center py-0.5 px-4 text-gray-900 dark:text-white w-[10%]">
             {displayValue}
           </td>
         );

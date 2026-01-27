@@ -11,6 +11,8 @@ export const metadata = {
   }
 }
 
+import './globals.css';
+
 export default function RootLayout({
   children,
 }: {
@@ -18,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="min-h-screen bg-white dark:bg-gray-900">{children}</body>
     </html>
   )
 }

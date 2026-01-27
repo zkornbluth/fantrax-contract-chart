@@ -6,16 +6,17 @@
 'use client';
 
 import React, {useState} from 'react';
+import './globals.css';
 import teamCapData from '../data/teamCapInfo.json';
-import './styles.css';
 import CapHeaders from './components/CapHeaders';
 import PositionalSummaryTable from './components/PositionalSummaryTable';
 import SummaryTable from './components/SummaryTable';
 import TeamSelector from './components/TeamSelector';
-import {GroupedMajorLeagueTable, UngroupedMajorLeagueTable} from './components/MajorLeagueTables';
+import MajorLeagueTable from './components/MajorLeagueTables';
 import MinorLeagueTable from './components/MinorLeagueTable';
 import DeadCapTable from './components/DeadCapTable';
 import GroupByPosition from './components/GroupByPosition';
+import DarkModeToggle from './components/DarkModeToggle';
  
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
@@ -33,6 +34,7 @@ export default function HomePage() {
 
   const majorLeaguePlayers = selectedTeam.activePlayers.filter(player => !player.minors);
   const minorLeaguePlayers = selectedTeam.activePlayers.filter(player => player.minors);
+  const deadCapHits = selectedTeam.deadCapHits;
 
   // Sort major leaguers by salary descending then contract length descending
   majorLeaguePlayers.sort((a, b) => {
@@ -54,18 +56,6 @@ export default function HomePage() {
     return b.yearsRemaining - a.yearsRemaining;
   });
 
-  // Group major leaguers for grouped view
-  const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
-    const group = player.posGroup || 'Unknown';
-    if (!groups[group]) {
-      groups[group] = [];
-    }
-    groups[group].push(player);
-    return groups;
-  }, {});
-
-  const deadCapHits = selectedTeam.deadCapHits;
-
   // Sort dead cap hits the same way
   deadCapHits.sort((a, b) => {
     const salaryA = typeof a.yearlyCapHit[0] === 'number' ? a.yearlyCapHit[0] : 0;
@@ -76,12 +66,27 @@ export default function HomePage() {
     return b.yearsRemaining - a.yearsRemaining;
   });
 
+  // Group major leaguers for grouped view
+  const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
+    const group = player.posGroup || 'Unknown';
+    if (!groups[group]) {
+      groups[group] = [];
+    }
+    groups[group].push(player);
+    return groups;
+  }, {});
+
   return (
     <div>
-      <div className="timestamp">Last refreshed: {teamCapData.timestamp}</div>
-      <h1>{teamCapData.name}: Multi-Year Payroll Table</h1>
+      <DarkModeToggle />
+      <div className="absolute top-2.5 right-2.5 text-xs text-gray-600 dark:text-gray-400">
+        Last refreshed: {teamCapData.timestamp}
+      </div>
+      <h1 className="text-center text-3xl font-bold pt-6 pb-2 text-gray-900 dark:text-white">
+        {teamCapData.name}: Multi-Year Payroll Table
+      </h1>
       
-      <div className="filters-wrap">
+      <div className="my-5 flex justify-center items-center gap-5 flex-wrap">
         {/* Team Selector Dropdown */}
         <TeamSelector 
           teams={teamCapData.teams}
@@ -95,8 +100,12 @@ export default function HomePage() {
       <CapHeaders selectedTeam={selectedTeam} />
 
       {/* Major League Players */}
-      {groupByPosition ? <GroupedMajorLeagueTable positionOrder={positionOrder} groupedPlayers={groupedPlayers} />
-      : <UngroupedMajorLeagueTable players={majorLeaguePlayers} />}
+      <MajorLeagueTable 
+        groupByPosition={groupByPosition} 
+        positionOrder={positionOrder} 
+        groupedPlayers={groupedPlayers} 
+        majorLeaguePlayers={majorLeaguePlayers} 
+      />
 
       {/* Minor League Players */}
       {minorLeaguePlayers.length > 0 && <MinorLeagueTable minorLeaguePlayers={minorLeaguePlayers} />}

@@ -25,7 +25,7 @@ export default function SummaryTable({selectedTeam}: SummaryTableProps) {
   return (
     <React.Fragment>
       <PositionGroupHeader posGroup="Summary" />
-      <table>
+      <table className="w-[90%] ml-[5%] border-collapse mb-6">
         <thead>
           <ColumnHeaders type="summary" />
         </thead>
