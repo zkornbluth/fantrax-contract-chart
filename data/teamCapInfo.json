@@ -355,7 +355,7 @@
             ""
           ],
           "name": "Luis Matos",
-          "age": 23,
+          "age": 24,
           "team": "SF",
           "pos": "OF",
           "minors": true,
@@ -467,7 +467,7 @@
           "team": "TEX",
           "pos": "OF",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Outfielder"
         },
@@ -571,7 +571,7 @@
             ""
           ],
           "name": "Bryan Woo",
-          "age": 25,
+          "age": 26,
           "team": "SEA",
           "pos": "SP",
           "minors": false,
@@ -1917,7 +1917,7 @@
             ""
           ],
           "name": "Matt Manning",
-          "age": 27,
+          "age": 28,
           "team": "PHI",
           "pos": "RP",
           "minors": true,
@@ -2579,7 +2579,7 @@
             ""
           ],
           "name": "Hunter Renfroe",
-          "age": 33,
+          "age": 34,
           "team": "KC",
           "pos": "OF",
           "minors": true,
@@ -2940,10 +2940,10 @@
           ],
           "name": "Zack Thompson",
           "age": 28,
-          "team": "(N/A)",
+          "team": "STL",
           "pos": "RP",
-          "minors": false,
-          "injured": true,
+          "minors": true,
+          "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Relief Pitcher"
         },
@@ -3193,7 +3193,7 @@
             ""
           ],
           "name": "Jazz Chisholm Jr.",
-          "age": 27,
+          "age": 28,
           "team": "NYY",
           "pos": "2B",
           "minors": false,
@@ -3214,24 +3214,6 @@
           "age": 26,
           "team": "PIT",
           "pos": "2B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Spencer Steer",
-          "age": 28,
-          "team": "CIN",
-          "pos": "1B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 0,
@@ -3275,6 +3257,24 @@
         },
         {
           "yearlyContract": [
+            2,
+            2,
+            2,
+            2,
+            "Free Agent",
+            ""
+          ],
+          "name": "Cam Smith",
+          "age": 22,
+          "team": "HOU",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 4,
+          "posGroup": "Outfielder"
+        },
+        {
+          "yearlyContract": [
             "Free Agent",
             "",
             "",
@@ -3311,6 +3311,24 @@
         },
         {
           "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Spencer Steer",
+          "age": 28,
+          "team": "CIN",
+          "pos": "1B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
             3,
             3,
             "Free Agent",
@@ -3326,24 +3344,6 @@
           "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            2,
-            2,
-            "Free Agent",
-            ""
-          ],
-          "name": "Cam Smith",
-          "age": 22,
-          "team": "HOU",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 4,
-          "posGroup": "Outfielder"
         },
         {
           "yearlyContract": [
@@ -3380,6 +3380,24 @@
           "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Catcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Willson Contreras",
+          "age": 33,
+          "team": "BOS",
+          "pos": "1B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Infielder"
         },
         {
           "yearlyContract": [
@@ -3473,6 +3491,24 @@
         },
         {
           "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Zach Neto",
+          "age": 25,
+          "team": "LAA",
+          "pos": "SS",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
             2,
             2,
             2,
@@ -3488,42 +3524,6 @@
           "injured": false,
           "yearsRemaining": 4,
           "posGroup": "Outfielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Willson Contreras",
-          "age": 33,
-          "team": "BOS",
-          "pos": "1B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Zach Neto",
-          "age": 24,
-          "team": "LAA",
-          "pos": "SS",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Infielder"
         },
         {
           "yearlyContract": [
@@ -3815,6 +3815,42 @@
         },
         {
           "yearlyContract": [
+            8,
+            8,
+            8,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Chase Dollander",
+          "age": 24,
+          "team": "COL",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 3,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            62,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Luis Garcia",
+          "age": 29,
+          "team": "(N/A)",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
             5,
             "Free Agent",
             "",
@@ -3828,6 +3864,42 @@
           "pos": "SP",
           "minors": false,
           "injured": false,
+          "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            2,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Rhett Lowder",
+          "age": 23,
+          "team": "CIN",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            55,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Seth Lugo",
+          "age": 36,
+          "team": "KC",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
           "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
         },
@@ -3851,6 +3923,24 @@
         },
         {
           "yearlyContract": [
+            29,
+            29,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Joe Musgrove",
+          "age": 33,
+          "team": "SD",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 2,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
             2,
             2,
             2,
@@ -3859,7 +3949,7 @@
             ""
           ],
           "name": "Ryne Nelson",
-          "age": 27,
+          "age": 28,
           "team": "ARI",
           "pos": "RP",
           "minors": false,
@@ -3938,96 +4028,6 @@
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Relief Pitcher"
-        },
-        {
-          "yearlyContract": [
-            8,
-            8,
-            8,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Chase Dollander",
-          "age": 24,
-          "team": "COL",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 3,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            62,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Luis Garcia",
-          "age": 29,
-          "team": "(N/A)",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            2,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Rhett Lowder",
-          "age": 23,
-          "team": "CIN",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            55,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Seth Lugo",
-          "age": 36,
-          "team": "KC",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            29,
-            29,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Joe Musgrove",
-          "age": 33,
-          "team": "SD",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 2,
-          "posGroup": "Starting Pitcher"
         },
         {
           "yearlyContract": [
@@ -4440,7 +4440,7 @@
           "age": 23,
           "team": "BOS",
           "pos": "2B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 4,
           "posGroup": "Infielder"
@@ -4582,9 +4582,9 @@
           ],
           "name": "Erick Fedde",
           "age": 32,
-          "team": "MIL",
+          "team": "(N/A)",
           "pos": "RP",
-          "minors": true,
+          "minors": false,
           "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Relief Pitcher"
@@ -4852,7 +4852,7 @@
           ],
           "name": "Jordan Hicks",
           "age": 29,
-          "team": "BOS",
+          "team": "CHW",
           "pos": "RP",
           "minors": false,
           "injured": true,
@@ -4942,10 +4942,10 @@
           ],
           "name": "Derek Law",
           "age": 35,
-          "team": "(N/A)",
+          "team": "ARI",
           "pos": "RP",
-          "minors": false,
-          "injured": true,
+          "minors": true,
+          "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Relief Pitcher"
         },
@@ -5475,7 +5475,7 @@
           "team": "ARI",
           "pos": "1B",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -5489,7 +5489,7 @@
             ""
           ],
           "name": "Hyeseong Kim",
-          "age": 26,
+          "age": 27,
           "team": "LAD",
           "pos": "2B",
           "minors": false,
@@ -5580,7 +5580,7 @@
           ],
           "name": "Jose Siri",
           "age": 30,
-          "team": "NYM",
+          "team": "LAA",
           "pos": "OF",
           "minors": true,
           "injured": false,
@@ -6318,10 +6318,46 @@
             "",
             ""
           ],
+          "name": "Adley Rutschman",
+          "age": 27,
+          "team": "BAL",
+          "pos": "C",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Catcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "name": "Rhys Hoskins",
           "age": 32,
           "team": "(N/A)",
           "pos": "1B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Marcus Semien",
+          "age": 35,
+          "team": "NYM",
+          "pos": "2B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 0,
@@ -6356,7 +6392,7 @@
           ],
           "name": "Yanquiel Fernandez",
           "age": 23,
-          "team": "COL",
+          "team": "(N/A)",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -6470,42 +6506,6 @@
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Outfielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Adley Rutschman",
-          "age": 27,
-          "team": "BAL",
-          "pos": "C",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Catcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Marcus Semien",
-          "age": 35,
-          "team": "NYM",
-          "pos": "2B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Infielder"
         },
         {
           "yearlyContract": [
@@ -6805,7 +6805,7 @@
             ""
           ],
           "name": "Matt Svanson",
-          "age": 26,
+          "age": 27,
           "team": "STL",
           "pos": "RP",
           "minors": false,
@@ -6851,6 +6851,24 @@
         },
         {
           "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Cody Bradford",
+          "age": 27,
+          "team": "TEX",
+          "pos": "RP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 0,
+          "posGroup": "Relief Pitcher"
+        },
+        {
+          "yearlyContract": [
             15,
             "Free Agent",
             "",
@@ -6865,6 +6883,24 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Tanner Houck",
+          "age": 29,
+          "team": "BOS",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
         {
@@ -6901,60 +6937,6 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 2,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Ryan Helsley",
-          "age": 31,
-          "team": "BAL",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Relief Pitcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Cody Bradford",
-          "age": 27,
-          "team": "TEX",
-          "pos": "RP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 0,
-          "posGroup": "Relief Pitcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Tanner Houck",
-          "age": 29,
-          "team": "BOS",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
         {
@@ -7009,6 +6991,24 @@
           "minors": false,
           "injured": true,
           "yearsRemaining": 1,
+          "posGroup": "Relief Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Ryan Helsley",
+          "age": 31,
+          "team": "BAL",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
           "posGroup": "Relief Pitcher"
         },
         {
@@ -7252,7 +7252,7 @@
           ],
           "name": "Eugenio Suarez",
           "age": 34,
-          "team": "(N/A)",
+          "team": "CIN",
           "pos": "3B",
           "minors": false,
           "injured": false,
@@ -8381,7 +8381,7 @@
             ""
           ],
           "name": "Ke'Bryan Hayes",
-          "age": 28,
+          "age": 29,
           "team": "CIN",
           "pos": "3B",
           "minors": false,
@@ -8399,7 +8399,7 @@
             ""
           ],
           "name": "Angel Martinez",
-          "age": 23,
+          "age": 24,
           "team": "CLE",
           "pos": "2B",
           "minors": false,
@@ -8453,7 +8453,7 @@
             ""
           ],
           "name": "Colby Thomas",
-          "age": 24,
+          "age": 25,
           "team": "ATH",
           "pos": "OF",
           "minors": false,
@@ -8777,7 +8777,7 @@
             ""
           ],
           "name": "Munetaka Murakami",
-          "age": 25,
+          "age": 26,
           "team": "CHW",
           "pos": "3B",
           "minors": true,
@@ -11592,9 +11592,9 @@
           ],
           "name": "Dylan Moore",
           "age": 33,
-          "team": "(N/A)",
+          "team": "PHI",
           "pos": "2B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Infielder"
@@ -11646,7 +11646,7 @@
           ],
           "name": "Austin Hays",
           "age": 30,
-          "team": "(N/A)",
+          "team": "CHW",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -11933,7 +11933,7 @@
             ""
           ],
           "name": "James Triantos",
-          "age": 22,
+          "age": 23,
           "team": "CHC",
           "pos": "2B",
           "minors": true,
@@ -12994,7 +12994,7 @@
           "age": 37,
           "team": "(N/A)",
           "pos": "2B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
@@ -13225,7 +13225,7 @@
             ""
           ],
           "name": "Kodai Senga",
-          "age": 32,
+          "age": 33,
           "team": "NYM",
           "pos": "SP",
           "minors": true,
@@ -13755,7 +13755,7 @@
           ],
           "name": "Harrison Bader",
           "age": 31,
-          "team": "(N/A)",
+          "team": "SF",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -13952,7 +13952,7 @@
             ""
           ],
           "name": "Bryan Reynolds",
-          "age": 30,
+          "age": 31,
           "team": "PIT",
           "pos": "OF",
           "minors": false,
@@ -15513,20 +15513,20 @@
         },
         {
           "yearlyContract": [
-            88,
-            88,
-            88,
-            88,
+            1,
             "Free Agent",
+            "",
+            "",
+            "",
             ""
           ],
-          "name": "Luis Arraez",
-          "age": 28,
-          "team": "(N/A)",
-          "pos": "1B",
+          "name": "Cole Young",
+          "age": 22,
+          "team": "SEA",
+          "pos": "2B",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 4,
+          "yearsRemaining": 1,
           "posGroup": "Infielder"
         },
         {
@@ -15542,42 +15542,6 @@
           "age": 33,
           "team": "SD",
           "pos": "3B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            2,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Carson Williams",
-          "age": 22,
-          "team": "TB",
-          "pos": "SS",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Sal Stewart",
-          "age": 22,
-          "team": "CIN",
-          "pos": "1B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 0,
@@ -15610,13 +15574,49 @@
             "",
             ""
           ],
-          "name": "Isaac Collins",
-          "age": 28,
-          "team": "KC",
-          "pos": "OF",
+          "name": "Sal Stewart",
+          "age": 22,
+          "team": "CIN",
+          "pos": "1B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 0,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            45,
+            45,
+            45,
+            45,
+            "Free Agent",
+            ""
+          ],
+          "name": "Jonathan India",
+          "age": 29,
+          "team": "KC",
+          "pos": "2B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 4,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            2,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Roman Anthony",
+          "age": 21,
+          "team": "BOS",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3,
           "posGroup": "Outfielder"
         },
         {
@@ -15801,6 +15801,24 @@
         },
         {
           "yearlyContract": [
+            88,
+            88,
+            88,
+            88,
+            "Free Agent",
+            ""
+          ],
+          "name": "Luis Arraez",
+          "age": 28,
+          "team": "SF",
+          "pos": "1B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 4,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
             54,
             "Free Agent",
             "",
@@ -15812,42 +15830,6 @@
           "age": 33,
           "team": "MIN",
           "pos": "1B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            45,
-            45,
-            45,
-            45,
-            "Free Agent",
-            ""
-          ],
-          "name": "Jonathan India",
-          "age": 29,
-          "team": "KC",
-          "pos": "2B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 4,
-          "posGroup": "Infielder"
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Cole Young",
-          "age": 22,
-          "team": "SEA",
-          "pos": "2B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1,
@@ -15870,6 +15852,60 @@
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            2,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Carson Williams",
+          "age": 22,
+          "team": "TB",
+          "pos": "SS",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Andrew Benintendi",
+          "age": 31,
+          "team": "CHW",
+          "pos": "OF",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 0,
+          "posGroup": "Outfielder"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Isaac Collins",
+          "age": 28,
+          "team": "KC",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Outfielder"
         },
         {
           "yearlyContract": [
@@ -15904,42 +15940,6 @@
           "pos": "OF",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Outfielder"
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            2,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Roman Anthony",
-          "age": 21,
-          "team": "BOS",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3,
-          "posGroup": "Outfielder"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Andrew Benintendi",
-          "age": 31,
-          "team": "CHW",
-          "pos": "OF",
-          "minors": false,
-          "injured": true,
           "yearsRemaining": 0,
           "posGroup": "Outfielder"
         },
@@ -16017,24 +16017,6 @@
         },
         {
           "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Ryan Bergert",
-          "age": 25,
-          "team": "KC",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
             33,
             "Free Agent",
             "",
@@ -16043,12 +16025,30 @@
             ""
           ],
           "name": "Matthew Boyd",
-          "age": 34,
+          "age": 35,
           "team": "CHC",
           "pos": "SP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Sonny Gray",
+          "age": 36,
+          "team": "BOS",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
         {
@@ -16071,24 +16071,6 @@
         },
         {
           "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Luis Morales",
-          "age": 23,
-          "team": "ATH",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
             38,
             "Free Agent",
             "",
@@ -16107,38 +16089,38 @@
         },
         {
           "yearlyContract": [
+            20,
             "Free Agent",
-            "",
             "",
             "",
             "",
             ""
           ],
-          "name": "Mike Burrows",
-          "age": 26,
-          "team": "HOU",
+          "name": "Jameson Taillon",
+          "age": 34,
+          "team": "CHC",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 0,
+          "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
         },
         {
           "yearlyContract": [
+            80,
             "Free Agent",
-            "",
             "",
             "",
             "",
             ""
           ],
-          "name": "Eric Lauer",
-          "age": 30,
-          "team": "TOR",
+          "name": "Jon Gray",
+          "age": 34,
+          "team": "(N/A)",
           "pos": "RP",
           "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
+          "injured": true,
+          "yearsRemaining": 1,
           "posGroup": "Relief Pitcher"
         },
         {
@@ -16168,6 +16150,24 @@
             "",
             ""
           ],
+          "name": "Phil Maton",
+          "age": 32,
+          "team": "CHC",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Relief Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
           "name": "Dennis Santana",
           "age": 29,
           "team": "PIT",
@@ -16176,6 +16176,60 @@
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Relief Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Ryan Bergert",
+          "age": 25,
+          "team": "KC",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Kris Bubic",
+          "age": 28,
+          "team": "KC",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 0,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Mike Burrows",
+          "age": 26,
+          "team": "HOU",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
+          "posGroup": "Starting Pitcher"
         },
         {
           "yearlyContract": [
@@ -16197,6 +16251,24 @@
         },
         {
           "yearlyContract": [
+            71,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Bowden Francis",
+          "age": 29,
+          "team": "TOR",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
             "Free Agent",
             "",
             "",
@@ -16204,14 +16276,14 @@
             "",
             ""
           ],
-          "name": "Sonny Gray",
-          "age": 36,
-          "team": "BOS",
-          "pos": "SP",
+          "name": "Eric Lauer",
+          "age": 30,
+          "team": "TOR",
+          "pos": "RP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 0,
-          "posGroup": "Starting Pitcher"
+          "posGroup": "Relief Pitcher"
         },
         {
           "yearlyContract": [
@@ -16241,7 +16313,7 @@
             ""
           ],
           "name": "Sean Manaea",
-          "age": 33,
+          "age": 34,
           "team": "NYM",
           "pos": "SP",
           "minors": false,
@@ -16269,78 +16341,6 @@
         },
         {
           "yearlyContract": [
-            20,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Jameson Taillon",
-          "age": 34,
-          "team": "CHC",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Phil Maton",
-          "age": 32,
-          "team": "CHC",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 0,
-          "posGroup": "Relief Pitcher"
-        },
-        {
-          "yearlyContract": [
-            "Free Agent",
-            "",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Kris Bubic",
-          "age": 28,
-          "team": "KC",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 0,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            71,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Bowden Francis",
-          "age": 29,
-          "team": "TOR",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
             5,
             5,
             5,
@@ -16355,6 +16355,24 @@
           "minors": false,
           "injured": true,
           "yearsRemaining": 3,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
+            "Free Agent",
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Luis Morales",
+          "age": 23,
+          "team": "ATH",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
         {
@@ -16374,24 +16392,6 @@
           "injured": true,
           "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
-            80,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Jon Gray",
-          "age": 34,
-          "team": "(N/A)",
-          "pos": "RP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1,
-          "posGroup": "Relief Pitcher"
         },
         {
           "yearlyContract": [
@@ -16532,5 +16532,5 @@
       "salaryCap": 2000
     }
   ],
-  "timestamp": "1/26/2026, 3:42:56 AM EST"
+  "timestamp": "2/2/2026, 3:55:15 AM EST"
 }
