@@ -323,7 +323,7 @@
           "team": "SF",
           "pos": "2B",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -1381,7 +1381,7 @@
           "team": "(N/A)",
           "pos": "UT",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Designated Hitter"
         },
@@ -2151,7 +2151,7 @@
           "team": "TB",
           "pos": "OF",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Outfielder"
         },
@@ -2238,7 +2238,7 @@
           ],
           "name": "Ramon Urias",
           "age": 31,
-          "team": "(N/A)",
+          "team": "STL",
           "pos": "2B",
           "minors": false,
           "injured": false,
@@ -2817,7 +2817,7 @@
           "team": "LAD",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
         },
@@ -3265,7 +3265,7 @@
             ""
           ],
           "name": "Cam Smith",
-          "age": 22,
+          "age": 23,
           "team": "HOU",
           "pos": "OF",
           "minors": false,
@@ -3935,7 +3935,7 @@
           "team": "SD",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Starting Pitcher"
         },
@@ -4168,9 +4168,9 @@
           ],
           "name": "Adam Frazier",
           "age": 34,
-          "team": "(N/A)",
+          "team": "LAA",
           "pos": "2B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
@@ -4330,10 +4330,10 @@
           ],
           "name": "Mike Tauchman",
           "age": 35,
-          "team": "(N/A)",
+          "team": "NYM",
           "pos": "OF",
-          "minors": false,
-          "injured": true,
+          "minors": true,
+          "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Outfielder"
         },
@@ -4419,7 +4419,7 @@
             ""
           ],
           "name": "Harry Ford",
-          "age": 22,
+          "age": 23,
           "team": "WSH",
           "pos": "C",
           "minors": false,
@@ -4635,7 +4635,7 @@
             ""
           ],
           "name": "Justin Verlander",
-          "age": 42,
+          "age": 43,
           "team": "DET",
           "pos": "SP",
           "minors": false,
@@ -4747,7 +4747,7 @@
           "team": "MIN",
           "pos": "SP",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
         },
@@ -4959,7 +4959,7 @@
             ""
           ],
           "name": "Ty Madden",
-          "age": 25,
+          "age": 26,
           "team": "DET",
           "pos": "SP",
           "minors": false,
@@ -5363,7 +5363,7 @@
             ""
           ],
           "name": "Jurickson Profar",
-          "age": 32,
+          "age": 33,
           "team": "ATL",
           "pos": "OF",
           "minors": false,
@@ -5759,7 +5759,7 @@
             ""
           ],
           "name": "Luis Severino",
-          "age": 31,
+          "age": 32,
           "team": "ATH",
           "pos": "SP",
           "minors": false,
@@ -5853,7 +5853,7 @@
           "team": "BOS",
           "pos": "SP",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
@@ -5939,7 +5939,7 @@
             ""
           ],
           "name": "J.P. Sears",
-          "age": 29,
+          "age": 30,
           "team": "SD",
           "pos": "SP",
           "minors": false,
@@ -6340,7 +6340,7 @@
           "age": 32,
           "team": "(N/A)",
           "pos": "1B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
@@ -6845,7 +6845,7 @@
           "team": "TOR",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
@@ -6859,7 +6859,7 @@
             ""
           ],
           "name": "Cody Bradford",
-          "age": 27,
+          "age": 28,
           "team": "TEX",
           "pos": "RP",
           "minors": false,
@@ -7543,7 +7543,7 @@
           "team": "KC",
           "pos": "OF",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Outfielder"
         },
@@ -7647,7 +7647,7 @@
             ""
           ],
           "name": "Walker Jenkins",
-          "age": 20,
+          "age": 21,
           "team": "MIN",
           "pos": "OF",
           "minors": true,
@@ -8763,7 +8763,7 @@
           "team": "PHI",
           "pos": "3B",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -8831,7 +8831,7 @@
             ""
           ],
           "name": "Ethan Holliday",
-          "age": 18,
+          "age": 19,
           "team": "COL",
           "pos": "SS",
           "minors": true,
@@ -9047,7 +9047,7 @@
             ""
           ],
           "name": "Chris Bassitt",
-          "age": 36,
+          "age": 37,
           "team": "BAL",
           "pos": "SP",
           "minors": false,
@@ -9104,8 +9104,8 @@
           "age": 24,
           "team": "SEA",
           "pos": "SP",
-          "minors": true,
-          "injured": false,
+          "minors": false,
+          "injured": true,
           "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
         },
@@ -9267,7 +9267,7 @@
           "team": "TB",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Starting Pitcher"
         },
@@ -10449,7 +10449,7 @@
             ""
           ],
           "name": "Ben Rice",
-          "age": 26,
+          "age": 27,
           "team": "NYY",
           "pos": "C",
           "minors": false,
@@ -10809,7 +10809,7 @@
             ""
           ],
           "name": "Dalton Rushing",
-          "age": 24,
+          "age": 25,
           "team": "LAD",
           "pos": "C",
           "minors": false,
@@ -10827,7 +10827,7 @@
             ""
           ],
           "name": "Thairo Estrada",
-          "age": 29,
+          "age": 30,
           "team": "(N/A)",
           "pos": "2B",
           "minors": false,
@@ -12365,7 +12365,7 @@
             ""
           ],
           "name": "Clarke Schmidt",
-          "age": 29,
+          "age": 30,
           "team": "NYY",
           "pos": "SP",
           "minors": false,
@@ -12387,7 +12387,7 @@
           "team": "NYM",
           "pos": "SP",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 3,
           "posGroup": "Starting Pitcher"
         },
@@ -12631,7 +12631,7 @@
             ""
           ],
           "name": "Jordan Westburg",
-          "age": 26,
+          "age": 27,
           "team": "BAL",
           "pos": "3B",
           "minors": false,
@@ -12883,7 +12883,7 @@
             ""
           ],
           "name": "Ryan Mountcastle",
-          "age": 28,
+          "age": 29,
           "team": "BAL",
           "pos": "1B",
           "minors": false,
@@ -13045,7 +13045,7 @@
             ""
           ],
           "name": "Isaac Paredes",
-          "age": 26,
+          "age": 27,
           "team": "HOU",
           "pos": "3B",
           "minors": false,
@@ -13478,10 +13478,10 @@
           ],
           "name": "Drew Smith",
           "age": 32,
-          "team": "(N/A)",
+          "team": "WSH",
           "pos": "RP",
-          "minors": false,
-          "injured": true,
+          "minors": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Relief Pitcher"
         },
@@ -13592,7 +13592,7 @@
             ""
           ],
           "name": "Bo Naylor",
-          "age": 25,
+          "age": 26,
           "team": "CLE",
           "pos": "C",
           "minors": false,
@@ -13844,7 +13844,7 @@
             ""
           ],
           "name": "Caleb Durbin",
-          "age": 25,
+          "age": 26,
           "team": "BOS",
           "pos": "3B",
           "minors": false,
@@ -13938,7 +13938,7 @@
           "team": "CLE",
           "pos": "OF",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Outfielder"
         },
@@ -13992,7 +13992,7 @@
           "team": "CHC",
           "pos": "UT",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2,
           "posGroup": "Designated Hitter"
         },
@@ -14046,7 +14046,7 @@
           "team": "TB",
           "pos": "SS",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
         },
@@ -14168,7 +14168,7 @@
             ""
           ],
           "name": "Justyn-Henry Malloy",
-          "age": 25,
+          "age": 26,
           "team": "TB",
           "pos": "OF",
           "minors": false,
@@ -14402,7 +14402,7 @@
             ""
           ],
           "name": "Jake Irvin",
-          "age": 28,
+          "age": 29,
           "team": "WSH",
           "pos": "SP",
           "minors": false,
@@ -14565,9 +14565,9 @@
           ],
           "name": "Walker Buehler",
           "age": 31,
-          "team": "(N/A)",
+          "team": "SD",
           "pos": "SP",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Starting Pitcher"
@@ -14939,9 +14939,9 @@
           ],
           "name": "Mitch Garver",
           "age": 35,
-          "team": "(N/A)",
+          "team": "SEA",
           "pos": "C",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Catcher"
@@ -14957,9 +14957,9 @@
           ],
           "name": "Ty France",
           "age": 31,
-          "team": "(N/A)",
+          "team": "SD",
           "pos": "1B",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Infielder"
@@ -16251,24 +16251,6 @@
         },
         {
           "yearlyContract": [
-            71,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Bowden Francis",
-          "age": 29,
-          "team": "TOR",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1,
-          "posGroup": "Starting Pitcher"
-        },
-        {
-          "yearlyContract": [
             "Free Agent",
             "",
             "",
@@ -16374,6 +16356,24 @@
           "injured": false,
           "yearsRemaining": 0,
           "posGroup": "Relief Pitcher"
+        },
+        {
+          "yearlyContract": [
+            71,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Bowden Francis",
+          "age": 29,
+          "team": "TOR",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
         },
         {
           "yearlyContract": [
@@ -16532,5 +16532,5 @@
       "salaryCap": 2000
     }
   ],
-  "timestamp": "2/16/2026, 3:59:24 AM EST"
+  "timestamp": "2/23/2026, 3:59:44 AM EST"
 }
