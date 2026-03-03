@@ -108,7 +108,8 @@ interface LeagueCapInfo {
 
 interface League {
     name: string;
-    teams: string[];
+    teamIDs: string[];
+    teamNames: string[];
 }
 
 async function removeEmptyElements(elements) { // necessary because Age/Salary/Contract fields will bring in empty lines
@@ -131,8 +132,9 @@ interface LeagueTeamsResponse {
 async function getLeagueInfo(leagueID: string): Promise<League> {
     const response: LeagueTeamsResponse = await fetch(`https://www.fantrax.com/fxea/general/getLeagueInfo?leagueId=${leagueID}`).then(r => r.json());
     const name: string = response.leagueName;
-    const teams: string[] = Object.keys(response.teamInfo);
-    return {name, teams};
+    const teamIDs: string[] = Object.keys(response.teamInfo);
+    const teamNames: string[] = Object.values(response.teamInfo).map(team => team.name);
+    return {name, teamIDs, teamNames};
 }
 
 const {By, Builder} = require('selenium-webdriver');
@@ -155,16 +157,15 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             .setChromeOptions(options)
             .build();
         let capInfoList: TeamCapInfo[] = [];
-        const {name, teams} = await getLeagueInfo(leagueID);
-        console.log(`Scraping for league: ${name}. ${teams.length} teams to scrape.`);
-        for (const teamID of teams) {
+        const {name, teamIDs, teamNames} = await getLeagueInfo(leagueID);
+        console.log(`Scraping for league: ${name}. ${teamIDs.length} teams to scrape.`);
+        for (let i = 0; i < teamIDs.length; i++) {
+            let teamID = teamIDs[i];
+            let teamName = teamNames[i];
             await driver.get(`https://www.fantrax.com/fantasy/league/${leagueID}/team/roster;teamId=${teamID}`);
             await driver.sleep(2000); // short delay to render the table
     
             // Scrape and prepare data
-            // Team Name
-            let teamNameEl = await driver.findElement(By.xpath("//mat-select-trigger/article/h5"));
-            let teamName = await teamNameEl.getText();
             console.log(`Processing team: ${teamName}...`);
 
             // Active Players
