@@ -1913,7 +1913,7 @@
             ""
           ],
           "name": "Maikel Garcia",
-          "age": 25,
+          "age": 26,
           "team": "KC",
           "pos": "3B",
           "minors": false,
@@ -4671,7 +4671,7 @@
             ""
           ],
           "name": "Kyle Isbel",
-          "age": 28,
+          "age": 29,
           "team": "KC",
           "pos": "OF",
           "minors": false,
@@ -6399,6 +6399,24 @@
     },
     {
       "activePlayers": [
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Rainiel Rodriguez",
+          "age": 19,
+          "team": "STL",
+          "pos": "C",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 1,
+          "posGroup": "Catcher"
+        },
         {
           "yearlyContract": [
             109,
@@ -10283,6 +10301,24 @@
         },
         {
           "yearlyContract": [
+            2,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Gage Jump",
+          "age": 22,
+          "team": "ATH",
+          "pos": "SP",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 1,
+          "posGroup": "Starting Pitcher"
+        },
+        {
+          "yearlyContract": [
             5,
             "Free Agent",
             "",
@@ -11061,7 +11097,7 @@
             ""
           ],
           "name": "Jose Ferrer",
-          "age": 25,
+          "age": 26,
           "team": "SEA",
           "pos": "RP",
           "minors": false,
@@ -13920,7 +13956,7 @@
           "team": "MIL",
           "pos": "SP",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1,
           "posGroup": "Starting Pitcher"
         },
@@ -14042,6 +14078,24 @@
           "team": "ATL",
           "pos": "1B",
           "minors": false,
+          "injured": false,
+          "yearsRemaining": 1,
+          "posGroup": "Infielder"
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Justin Lebron",
+          "age": 21,
+          "team": "(N/A)",
+          "pos": "SS",
+          "minors": true,
           "injured": false,
           "yearsRemaining": 1,
           "posGroup": "Infielder"
@@ -15064,6 +15118,24 @@
         {
           "yearlyContract": [
             1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Ryan Waldschmidt",
+          "age": 23,
+          "team": "ARI",
+          "pos": "OF",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 1,
+          "posGroup": "Outfielder"
+        },
+        {
+          "yearlyContract": [
+            1,
             1,
             "Free Agent",
             "",
@@ -15596,5 +15668,5 @@
       "salaryCap": 4000
     }
   ],
-  "timestamp": "3/3/2026, 12:37:57 PM EST"
+  "timestamp": "3/4/2026, 3:32:06 AM EST"
 }
