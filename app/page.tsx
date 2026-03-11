@@ -17,10 +17,32 @@ import MinorLeagueTable from './components/MinorLeagueTable';
 import DeadCapTable from './components/DeadCapTable';
 import GroupByPosition from './components/GroupByPosition';
 import DarkModeToggle from './components/DarkModeToggle';
+import type { SortKey, SortDirection } from './components/ColumnHeaders';
  
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
   const [groupByPosition, setGroupByPosition] = useState(true);
+
+  const [sortKey, setSortKey] = useState<SortKey>('default');
+  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+
+  const handleSortChange = (columnKey: Exclude<SortKey, 'default'>) => {
+    if (sortKey !== columnKey) {
+      setSortKey(columnKey);
+      setSortDirection('asc');
+      return;
+    }
+
+    if (sortDirection === 'asc') {
+      setSortDirection('desc');
+      return;
+    }
+
+    // Third click resets to default salary/contract sorting
+    setSortKey('default');
+    setSortDirection(null);
+  };
+
   const selectedTeam = teamCapData.teams[selectedTeamIndex];
   // Set up order to show positional groups - different from what appears on Fantrax (batters first)
   const positionOrder = [
@@ -32,31 +54,79 @@ export default function HomePage() {
     'Designated Hitter'
   ];
 
+  // Order for sorting by position abbreviation when requested
+  const positionSortOrder = ['SP', 'RP', 'C', '1B', '2B', '3B', 'SS', 'OF', 'UT'];
+
+  const getPositionRank = (pos: string | undefined) => {
+    if (!pos) return positionSortOrder.length;
+    const primaryPos = pos.split(/[\/,\s]/)[0]; // Handle multi-position strings like "1B/3B"
+    const index = positionSortOrder.indexOf(primaryPos);
+    return index === -1 ? positionSortOrder.length : index;
+  };
+
   const majorLeaguePlayers = selectedTeam.activePlayers.filter(player => !player.minors);
   const minorLeaguePlayers = selectedTeam.activePlayers.filter(player => player.minors);
-  const deadCapHits = selectedTeam.deadCapHits;
+  const deadCapHits = [...selectedTeam.deadCapHits];
 
-  // Sort major leaguers by salary descending then contract length descending
-  majorLeaguePlayers.sort((a, b) => {
-    const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
-    const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
-    if (salaryA !== salaryB) {
-      return salaryB - salaryA;
-    }
-    return b.yearsRemaining - a.yearsRemaining;
-  });
+  const getSalary = (player: any) =>
+    typeof player.yearlyContract?.[0] === 'number' ? player.yearlyContract[0] : 0;
 
-  // Sort minor leaguers the same way
-  minorLeaguePlayers.sort((a, b) => {
-    const salaryA = typeof a.yearlyContract[0] === 'number' ? a.yearlyContract[0] : 0;
-    const salaryB = typeof b.yearlyContract[0] === 'number' ? b.yearlyContract[0] : 0;
-    if (salaryA !== salaryB) {
-      return salaryB - salaryA;
-    }
-    return b.yearsRemaining - a.yearsRemaining;
-  });
+  const getYearsRemaining = (player: any) =>
+    typeof player.yearsRemaining === 'number' ? player.yearsRemaining : 0;
 
-  // Sort dead cap hits the same way
+  const sortActivePlayers = (players: any[]) => {
+    const playersCopy = [...players];
+
+    const compareByDefault = (a: any, b: any) => {
+      const salaryA = getSalary(a);
+      const salaryB = getSalary(b);
+      if (salaryA !== salaryB) {
+        return salaryB - salaryA;
+      }
+      return getYearsRemaining(b) - getYearsRemaining(a);
+    };
+
+    const compare = (a: any, b: any) => {
+      // Default: salary descending then contract length descending
+      if (sortKey === 'default') {
+        return compareByDefault(a, b);
+      }
+
+      // Expected (ascending) comparators with salary/years as tie-breakers
+      let base = 0;
+
+      if (sortKey === 'age') {
+        const ageA = typeof a.age === 'number' ? a.age : Number.MAX_SAFE_INTEGER;
+        const ageB = typeof b.age === 'number' ? b.age : Number.MAX_SAFE_INTEGER;
+        base = ageA - ageB;
+      } else if (sortKey === 'position') {
+        base = getPositionRank(a.pos) - getPositionRank(b.pos);
+      } else if (sortKey === 'team') {
+        const teamA = (a.team || '').toString();
+        const teamB = (b.team || '').toString();
+        base = teamA.localeCompare(teamB);
+      } else if (sortKey === 'name') {
+        const nameA = (a.name || '').toString();
+        const nameB = (b.name || '').toString();
+        base = nameA.localeCompare(nameB);
+      }
+
+      if (base === 0) {
+        base = compareByDefault(a, b);
+      }
+
+      // Asc = expected order, Desc = full reverse (including salary/years)
+      return (sortDirection ?? 'asc') === 'asc' ? base : -base;
+    };
+
+    playersCopy.sort(compare);
+    return playersCopy;
+  };
+
+  const sortedMajorLeaguePlayers = sortActivePlayers(majorLeaguePlayers);
+  const sortedMinorLeaguePlayers = sortActivePlayers(minorLeaguePlayers);
+
+  // Sort dead cap hits by salary descending then contract length descending (unchanged)
   deadCapHits.sort((a, b) => {
     const salaryA = typeof a.yearlyCapHit[0] === 'number' ? a.yearlyCapHit[0] : 0;
     const salaryB = typeof b.yearlyCapHit[0] === 'number' ? b.yearlyCapHit[0] : 0;
@@ -66,8 +136,8 @@ export default function HomePage() {
     return b.yearsRemaining - a.yearsRemaining;
   });
 
-  // Group major leaguers for grouped view
-  const groupedPlayers = majorLeaguePlayers.reduce((groups, player) => {
+  // Group major leaguers for grouped view, preserving the current sort order within each group
+  const groupedPlayers = sortedMajorLeaguePlayers.reduce((groups, player) => {
     const group = player.posGroup || 'Unknown';
     if (!groups[group]) {
       groups[group] = [];
@@ -104,11 +174,21 @@ export default function HomePage() {
         groupByPosition={groupByPosition} 
         positionOrder={positionOrder} 
         groupedPlayers={groupedPlayers} 
-        majorLeaguePlayers={majorLeaguePlayers} 
+        majorLeaguePlayers={sortedMajorLeaguePlayers}
+        sortKey={sortKey}
+        sortDirection={sortDirection}
+        onSortChange={handleSortChange}
       />
 
       {/* Minor League Players */}
-      {minorLeaguePlayers.length > 0 && <MinorLeagueTable minorLeaguePlayers={minorLeaguePlayers} />}
+      {sortedMinorLeaguePlayers.length > 0 && (
+        <MinorLeagueTable
+          minorLeaguePlayers={sortedMinorLeaguePlayers}
+          sortKey={sortKey}
+          sortDirection={sortDirection}
+          onSortChange={handleSortChange}
+        />
+      )}
 
       {/* Dead Cap Hits */}
       {deadCapHits.length > 0 && <DeadCapTable deadCapHits={deadCapHits} />}
