@@ -1,7 +1,9 @@
 {
   "scripts": {
     "dev": "next dev",
-    "refresh-team-info": "node scripts/getTeamInfo.js"
+    "refresh-team-info": "node scripts/getTeamInfo.js",
+    "test": "vitest",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.1.18",
@@ -11,12 +13,19 @@
     "selenium-webdriver": "^4.35.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
     "@types/node": "24.3.1",
     "@types/react": "19.1.12",
+    "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.4.23",
+    "jsdom": "^28.1.0",
     "mocha": "^11.3.0",
+    "playwright": "^1.58.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.18",
-    "typescript": "5.9.2"
+    "typescript": "5.9.2",
+    "vitest": "^4.1.0"
   }
 }
