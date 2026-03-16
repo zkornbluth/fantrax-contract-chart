@@ -62,33 +62,6 @@ var ActivePlayer = /** @class */ (function () {
                 this.yearlyContract.push("");
             }
         }
-        switch (pos) {
-            case "SP":
-                this.posGroup = "Starting Pitcher";
-                break;
-            case "RP":
-                this.posGroup = "Relief Pitcher";
-                break;
-            case "C":
-                this.posGroup = "Catcher";
-                break;
-            case "1B":
-            case "2B":
-            case "SS":
-            case "3B":
-                this.posGroup = "Infielder";
-                break;
-            case "OF": // in our league, all OF are grouped, but include LF/CF/RF in case that varies by league
-            case "LF":
-            case "CF":
-            case "RF":
-                this.posGroup = "Outfielder";
-                break;
-            case "UT": // these are designated hitters, not utility players
-            case "DH": // in our league, all listed as UT but may vary by league
-                this.posGroup = "Designated Hitter";
-                break;
-        }
     }
     return ActivePlayer;
 }());
@@ -168,7 +141,7 @@ var chrome = require('selenium-webdriver/chrome');
 var leagueID = "0xhc53jbmgiftfp0";
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
-        var driver, options, capInfoList, _a, name_1, teamIDs, teamNames, i, teamID, teamName, divNum, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _b, ageEls_1, e, t, teamEls, teams, _c, teamEls_1, e, t, posEls, positions, _d, posEls_1, e, t, posList, playerContainerEls, minors, injured, _e, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _f, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _g, salaryEls_1, el, t, allContractEls, contractEls, contracts, _h, contractEls_1, el, t, deadCapNameEls, deadCapNames, _j, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _k, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _l, _m, el, t, currCapCeilEl, currCapCeil, capCeil, capInfo, i_1, newPlayer, i_2, newDeadCapHit, timestamp, e_1;
+        var driver, options, capInfoList, _a, name_1, teamIDs, teamNames, i, teamID, teamName, divNum, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _b, ageEls_1, e, t, teamEls, teams, _c, teamEls_1, e, t, posEls, positions, _d, posEls_1, e, t, playerContainerEls, minors, injured, _e, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _f, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _g, salaryEls_1, el, t, allContractEls, contractEls, contracts, _h, contractEls_1, el, t, deadCapNameEls, deadCapNames, _j, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _k, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _l, _m, el, t, currCapCeilEl, currCapCeil, capCeil, capInfo, i_1, newPlayer, i_2, newDeadCapHit, timestamp, e_1;
         return __generator(this, function (_o) {
             switch (_o.label) {
                 case 0:
@@ -278,16 +251,7 @@ function getTeamInfo() {
                     return [4 /*yield*/, e.getText()];
                 case 26:
                     t = _o.sent();
-                    posList = t.split(",");
-                    if (posList.length == 1) { // if posList is one item, player has 1 position - add it
-                        positions.push(posList[0]);
-                    }
-                    else if (posList[0] == "SP") { // player will have SP/RP eligibility, we want RP
-                        positions.push(posList[posList.length - 1]);
-                    }
-                    else { // player is a batter, we want the first one
-                        positions.push(posList[0]);
-                    }
+                    positions.push(t);
                     _o.label = 27;
                 case 27:
                     _d++;

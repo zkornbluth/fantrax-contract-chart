@@ -57,9 +57,39 @@ export default function HomePage() {
   // Order for sorting by position abbreviation when requested
   const positionSortOrder = ['SP', 'RP', 'C', '1B', '2B', '3B', 'SS', 'OF', 'UT'];
 
+  /** Derive primary position from full eligibility string: SP/RP -> RP; batters with multiple -> first. */
+  const getPrimaryPosition = (posStr: string | undefined): string => {
+    if (!posStr || !posStr.trim()) return '';
+    const posList = posStr.split(',').map(p => p.trim()).filter(Boolean);
+    if (posList.length === 1) return posList[0];
+    if (posList[0] === 'SP') return posList[posList.length - 1]; // reliever: use RP
+    return posList[0]; // batter with multiple: use first
+  };
+
+  /** Map primary position abbreviation to group name for display/grouping. */
+  const getPosGroup = (posStr: string | undefined): string => {
+    const primary = getPrimaryPosition(posStr);
+    switch (primary) {
+      case 'SP': return 'Starting Pitcher';
+      case 'RP': return 'Relief Pitcher';
+      case 'C': return 'Catcher';
+      case '1B':
+      case '2B':
+      case 'SS':
+      case '3B': return 'Infielder';
+      case 'OF':
+      case 'LF':
+      case 'CF':
+      case 'RF': return 'Outfielder';
+      case 'UT':
+      case 'DH': return 'Designated Hitter';
+      default: return 'Unknown';
+    }
+  };
+
   const getPositionRank = (pos: string | undefined) => {
-    if (!pos) return positionSortOrder.length;
-    const primaryPos = pos.split(/[\/,\s]/)[0]; // Handle multi-position strings like "1B/3B"
+    const primaryPos = getPrimaryPosition(pos);
+    if (!primaryPos) return positionSortOrder.length;
     const index = positionSortOrder.indexOf(primaryPos);
     return index === -1 ? positionSortOrder.length : index;
   };
@@ -138,7 +168,7 @@ export default function HomePage() {
 
   // Group major leaguers for grouped view, preserving the current sort order within each group
   const groupedPlayers = sortedMajorLeaguePlayers.reduce((groups, player) => {
-    const group = player.posGroup || 'Unknown';
+    const group = getPosGroup(player.pos) || 'Unknown';
     if (!groups[group]) {
       groups[group] = [];
     }

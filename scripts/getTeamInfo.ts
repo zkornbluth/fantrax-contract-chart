@@ -8,7 +8,6 @@ class ActivePlayer {
     age: number;
     team: string;
     pos: string;
-    posGroup: string; // SP, RP, C, IF, OF, DH, minors
     minors: boolean;
     injured: boolean;
     yearlyContract: any[] = [];
@@ -31,34 +30,6 @@ class ActivePlayer {
             } else {
                 this.yearlyContract.push("");
             }
-        }
-
-        switch (pos) {
-            case "SP":
-                this.posGroup = "Starting Pitcher";
-                break;
-            case "RP":
-                this.posGroup = "Relief Pitcher";
-                break;
-            case "C":
-                this.posGroup = "Catcher";
-                break;
-            case "1B":
-            case "2B":
-            case "SS":
-            case "3B":
-                this.posGroup = "Infielder";
-                break;
-            case "OF": // in our league, all OF are grouped, but include LF/CF/RF in case that varies by league
-            case "LF":
-            case "CF":
-            case "RF":
-                this.posGroup = "Outfielder";
-                break;
-            case "UT": // these are designated hitters, not utility players
-            case "DH": // in our league, all listed as UT but may vary by league
-                this.posGroup = "Designated Hitter";
-                break;
         }
     }
 }
@@ -199,20 +170,12 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
                 teams.push(t.slice(2));
             }
 
-            // Position
+            // Position (store full eligibility string; primary position / grouping is derived in the app)
             let posEls = await driver.findElements(By.xpath(`//league-team-roster-tables/div/div[${divNum}]/div/div/scorer/div/div[2]/span[1]`));
             let positions: string[] = [];
             for (let e of posEls) {
                 let t = await e.getText();
-                let posList = t.split(",");
-        
-                if (posList.length == 1) { // if posList is one item, player has 1 position - add it
-                    positions.push(posList[0]);
-                } else if (posList[0] == "SP") { // player will have SP/RP eligibility, we want RP
-                    positions.push(posList[posList.length - 1]);
-                } else { // player is a batter, we want the first one
-                    positions.push(posList[0]);
-                }
+                positions.push(t);
             }
 
             // Minor League and Injured flags
