@@ -269,7 +269,17 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
 
             console.log(`Successfully scraped data for team: ${teamName}`);
         }
-        const timestamp = new Date().toLocaleString("en-US", { timeZone: "EST" }) + " EST";
+        // Format "Last refreshed" in America/New_York so it automatically shows EST vs EDT.
+        const timestamp = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/New_York",
+            timeZoneName: "short",
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "numeric",
+            minute: "2-digit",
+            second: "2-digit",
+        }).format(new Date());
         return {name: name, teams: capInfoList, timestamp: timestamp};
 
     } catch(e) {

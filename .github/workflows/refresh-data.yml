@@ -5,7 +5,10 @@ run-name: ${{ github.event_name == 'schedule' && 'Daily' || 'Manual' }} Fantrax 
 
 on:
   schedule:
-    - cron: '0 8 * * *'
+    # Run daily around 10:05 AM America/New_York time.
+    # GitHub cron schedules use UTC, so we run at 14:05 UTC (10:05 EDT)
+    # and then sleep/adjust in the job when we are on EST.
+    - cron: '5 14 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,6 +27,23 @@ jobs:
         with:
           node-version: 24
           cache: 'npm'
+
+      - name: Wait until 10:05 AM New York time
+        shell: bash
+        run: |
+          target_time="10:05:00"
+          now_epoch=$(TZ=America/New_York date +%s)
+          today_yyyy_mm_dd=$(TZ=America/New_York date +%F)
+          target_epoch=$(TZ=America/New_York date -d "$today_yyyy_mm_dd $target_time" +%s)
+          diff=$((target_epoch - now_epoch))
+
+          echo "Current NY time: $(TZ=America/New_York date '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "Target NY time:  $(TZ=America/New_York date -d \"$today_yyyy_mm_dd $target_time\" '+%Y-%m-%d %H:%M:%S %Z')"
+          echo "Sleeping seconds: $diff"
+
+          if [ "$diff" -gt 0 ]; then
+            sleep "$diff"
+          fi
 
       - name: Install dependencies
         run: npm install

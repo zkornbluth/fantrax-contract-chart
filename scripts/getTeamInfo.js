@@ -413,7 +413,16 @@ function getTeamInfo() {
                     i++;
                     return [3 /*break*/, 3];
                 case 68:
-                    timestamp = new Date().toLocaleString("en-US", { timeZone: "EST" }) + " EST";
+                    timestamp = new Intl.DateTimeFormat("en-US", {
+                        timeZone: "America/New_York",
+                        timeZoneName: "short",
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "numeric",
+                        minute: "2-digit",
+                        second: "2-digit",
+                    }).format(new Date());
                     return [2 /*return*/, { name: name_1, teams: capInfoList, timestamp: timestamp }];
                 case 69:
                     e_1 = _o.sent();
