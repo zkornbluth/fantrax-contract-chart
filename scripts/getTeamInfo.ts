@@ -100,6 +100,23 @@ interface LeagueTeamsResponse {
     teamInfo: Record<string, any>;
 }
 
+interface GetTeamRostersResponse {
+    rosters: Record<string, { salaryCap?: number | string }>;
+}
+
+async function getTeamRostersByLeague(leagueID: string): Promise<Record<string, { salaryCap?: number | string }>> {
+    const response: GetTeamRostersResponse = await fetch(
+        `https://www.fantrax.com/fxea/general/getTeamRosters?leagueId=${leagueID}`
+    ).then((r) => r.json());
+    return response.rosters ?? {};
+}
+
+function parseSalaryCapValue(raw: number | string | undefined): number {
+    if (raw === undefined) return NaN;
+    if (typeof raw === "number") return raw;
+    return parseFloat(String(raw).replace(/[$,]/g, ""));
+}
+
 async function getLeagueInfo(leagueID: string): Promise<League> {
     const response: LeagueTeamsResponse = await fetch(`https://www.fantrax.com/fxea/general/getLeagueInfo?leagueId=${leagueID}`).then(r => r.json());
     const name: string = response.leagueName;
@@ -129,6 +146,7 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
             .build();
         let capInfoList: TeamCapInfo[] = [];
         const {name, teamIDs, teamNames} = await getLeagueInfo(leagueID);
+        const rostersByTeamId = await getTeamRostersByLeague(leagueID);
         console.log(`Scraping for league: ${name}. ${teamIDs.length} teams to scrape.`);
         for (let i = 0; i < teamIDs.length; i++) {
             let teamID = teamIDs[i];
@@ -242,10 +260,11 @@ export async function getTeamInfo(): Promise<LeagueCapInfo> {
                 deadEndYears.push(parseInt(t));
             }
 
-            // Salary Cap
-            let currCapCeilEl = await driver.findElement(By.xpath("/html/body/app-root/section/app-league-team-roster/section/league-team-roster-salary-info/div[2]/div[2]/div[3]"));
-            let currCapCeil = await currCapCeilEl.getText();
-            let capCeil = parseFloat(currCapCeil.replace(/[$,]/g, ""));
+            // Salary cap from Fantrax API (getTeamRosters)
+            const capCeil = parseSalaryCapValue(rostersByTeamId[teamID]?.salaryCap);
+            if (Number.isNaN(capCeil)) {
+                throw new Error(`Missing or invalid salaryCap for team ${teamID} (${teamName}) in getTeamRosters response`);
+            }
 
             // Build TeamCapInfo object and return it
             let capInfo = new TeamCapInfo(teamName, capCeil);
