@@ -29,9 +29,6 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Compile TypeScript
-        run: tsc scripts/getTeamInfo.ts
-
       - name: Run scraper
         run: npm run refresh-team-info
 
