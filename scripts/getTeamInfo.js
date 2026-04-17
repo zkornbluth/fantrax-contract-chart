@@ -93,6 +93,12 @@ var TeamCapInfo = /** @class */ (function () {
     };
     return TeamCapInfo;
 }());
+/**
+ * Filters a list of Selenium WebElements, removing any whose text content is empty or whitespace-only.
+ * Necessary because Age/Salary/Contract table cells render empty lines in the DOM.
+ * @param elements - Array of Selenium WebElements to filter
+ * @returns A new array containing only elements with non-empty text
+ */
 function removeEmptyElements(elements) {
     return __awaiter(this, void 0, void 0, function () {
         var filteredElements, _i, elements_1, element, text;
@@ -120,6 +126,11 @@ function removeEmptyElements(elements) {
         });
     });
 }
+/**
+ * Fetches the full roster data for all teams in a given Fantrax league.
+ * @param leagueID - The Fantrax league ID
+ * @returns A map of team ID to roster data including optional salary cap
+ */
 function getTeamRostersByLeague(leagueID) {
     return __awaiter(this, void 0, void 0, function () {
         var response;
@@ -134,6 +145,11 @@ function getTeamRostersByLeague(leagueID) {
         });
     });
 }
+/**
+ * Parses a salary cap value from the raw API response, handling numeric, string, and undefined inputs.
+ * @param raw - The raw salary cap value, which may be a number, a formatted string (e.g. "$1,000"), or undefined
+ * @returns The parsed numeric value, or `NaN` if the input is undefined or unparseable
+ */
 function parseSalaryCapValue(raw) {
     if (raw === undefined)
         return NaN;
@@ -141,6 +157,11 @@ function parseSalaryCapValue(raw) {
         return raw;
     return parseFloat(String(raw).replace(/[$,]/g, ""));
 }
+/**
+ * Fetches league metadata from the Fantrax API, including the league name and all team IDs and names.
+ * @param leagueID - The Fantrax league ID
+ * @returns A `League` object containing the league name, team IDs, and team names
+ */
 function getLeagueInfo(leagueID) {
     return __awaiter(this, void 0, void 0, function () {
         var response, name, teamIDs, teamNames;
@@ -160,6 +181,13 @@ function getLeagueInfo(leagueID) {
 var _a = require('selenium-webdriver'), By = _a.By, Builder = _a.Builder;
 var chrome = require('selenium-webdriver/chrome');
 var leagueID = "0xhc53jbmgiftfp0";
+/**
+ * Scrapes Fantrax roster pages for all teams in the configured league and returns structured cap data.
+ * Uses a headless Chrome browser via Selenium to extract player names, ages, salaries, contract years,
+ * minor-league/injury flags, and dead cap hits.
+ * @returns A `LeagueCapInfo` object containing all teams' cap data and a formatted timestamp,
+ *          or `undefined` if an error occurs during scraping
+ */
 function getTeamInfo() {
     return __awaiter(this, void 0, void 0, function () {
         var driver, options, capInfoList, _a, name_1, teamIDs, teamNames, rostersByTeamId, i, teamID, teamName, divNum, nameEls, names, _i, nameEls_1, e, t, allAgeEls, ageEls, ages, _b, ageEls_1, e, t, teamEls, teams, _c, teamEls_1, e, t, posEls, positions, _d, posEls_1, e, t, playerContainerEls, minors, injured, _e, playerContainerEls_1, container, flagSpans, isMinors, isInjured, _f, flagSpans_1, span, classes, allSalaryEls, salaryEls, salaries, _g, salaryEls_1, el, t, allContractEls, contractEls, contracts, _h, contractEls_1, el, t, deadCapNameEls, deadCapNames, _j, deadCapNameEls_1, el, t, deadCapHitEls, deadCapHits, _k, deadCapHitEls_1, el, t, val, deadEndYearEls, deadEndYears, _l, _m, el, t, capCeil, capInfo, i_1, newPlayer, i_2, newDeadCapHit, timestamp, e_1;

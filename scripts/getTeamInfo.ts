@@ -10,7 +10,7 @@ class ActivePlayer {
     pos: string;
     minors: boolean;
     injured: boolean;
-    yearlyContract: any[] = [];
+    yearlyContract: (number | string)[] = [];
     yearsRemaining: number;
 
     constructor(name: string, age: number, team: string, pos: string, salary: number, contractEndYear: number, minors: boolean, injured: boolean) {
@@ -36,7 +36,7 @@ class ActivePlayer {
 
 class DeadCap {
     name: string;
-    yearlyCapHit: any[] = [];
+    yearlyCapHit: (number | string)[] = [];
     yearsRemaining: number;
 
     constructor(name: string, capHit: number, endYear: number) {
@@ -83,8 +83,20 @@ interface League {
     teamNames: string[];
 }
 
-async function removeEmptyElements(elements) { // necessary because Age/Salary/Contract fields will bring in empty lines
-    const filteredElements = [];
+interface SeleniumWebElement {
+    getText(): Promise<string>;
+    getAttribute(name: string): Promise<string>;
+    findElements(locator: unknown): Promise<SeleniumWebElement[]>;
+}
+
+/**
+ * Filters a list of Selenium WebElements, removing any whose text content is empty or whitespace-only.
+ * Necessary because Age/Salary/Contract table cells render empty lines in the DOM.
+ * @param elements - Array of Selenium WebElements to filter
+ * @returns A new array containing only elements with non-empty text
+ */
+async function removeEmptyElements(elements: SeleniumWebElement[]): Promise<SeleniumWebElement[]> {
+    const filteredElements: SeleniumWebElement[] = [];
     for (const element of elements) {
         const text = await element.getText();
         if (text.trim() !== "") {
@@ -97,13 +109,18 @@ async function removeEmptyElements(elements) { // necessary because Age/Salary/C
 
 interface LeagueTeamsResponse {
     leagueName: string;
-    teamInfo: Record<string, any>;
+    teamInfo: Record<string, { name: string }>;
 }
 
 interface GetTeamRostersResponse {
     rosters: Record<string, { salaryCap?: number | string }>;
 }
 
+/**
+ * Fetches the full roster data for all teams in a given Fantrax league.
+ * @param leagueID - The Fantrax league ID
+ * @returns A map of team ID to roster data including optional salary cap
+ */
 async function getTeamRostersByLeague(leagueID: string): Promise<Record<string, { salaryCap?: number | string }>> {
     const response: GetTeamRostersResponse = await fetch(
         `https://www.fantrax.com/fxea/general/getTeamRosters?leagueId=${leagueID}`
@@ -111,12 +128,22 @@ async function getTeamRostersByLeague(leagueID: string): Promise<Record<string, 
     return response.rosters ?? {};
 }
 
+/**
+ * Parses a salary cap value from the raw API response, handling numeric, string, and undefined inputs.
+ * @param raw - The raw salary cap value, which may be a number, a formatted string (e.g. "$1,000"), or undefined
+ * @returns The parsed numeric value, or `NaN` if the input is undefined or unparseable
+ */
 function parseSalaryCapValue(raw: number | string | undefined): number {
     if (raw === undefined) return NaN;
     if (typeof raw === "number") return raw;
     return parseFloat(String(raw).replace(/[$,]/g, ""));
 }
 
+/**
+ * Fetches league metadata from the Fantrax API, including the league name and all team IDs and names.
+ * @param leagueID - The Fantrax league ID
+ * @returns A `League` object containing the league name, team IDs, and team names
+ */
 async function getLeagueInfo(leagueID: string): Promise<League> {
     const response: LeagueTeamsResponse = await fetch(`https://www.fantrax.com/fxea/general/getLeagueInfo?leagueId=${leagueID}`).then(r => r.json());
     const name: string = response.leagueName;
@@ -129,8 +156,15 @@ const {By, Builder} = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const leagueID = "0xhc53jbmgiftfp0";
 
-export async function getTeamInfo(): Promise<LeagueCapInfo> {
-    let driver;
+/**
+ * Scrapes Fantrax roster pages for all teams in the configured league and returns structured cap data.
+ * Uses a headless Chrome browser via Selenium to extract player names, ages, salaries, contract years,
+ * minor-league/injury flags, and dead cap hits.
+ * @returns A `LeagueCapInfo` object containing all teams' cap data and a formatted timestamp,
+ *          or `undefined` if an error occurs during scraping
+ */
+export async function getTeamInfo(): Promise<LeagueCapInfo | undefined> {
+    let driver: any;
 
     try {
         let options = new chrome.Options();
