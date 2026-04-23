@@ -8,6 +8,7 @@ import DeadCapRow from './DeadCapRow';
 
 const defaultDeadCap = {
   name: 'Released Player',
+  yearsRemaining: 2,
   yearlyCapHit: [500000, 250000, 0],
 };
 
@@ -40,6 +41,7 @@ describe('DeadCapRow', () => {
   it('formats decimal numbers to two places', () => {
     const deadCap = {
       name: 'Other',
+      yearsRemaining: 2,
       yearlyCapHit: [100.5, 200.123],
     };
     render(
@@ -56,6 +58,7 @@ describe('DeadCapRow', () => {
   it('renders non-numeric values as-is', () => {
     const deadCap = {
       name: 'Other',
+      yearsRemaining: 1,
       yearlyCapHit: [100, 'N/A'],
     };
     render(

@@ -11,8 +11,10 @@ const basePlayer = {
   team: 'BOS',
   pos: 'SP',
   age: 25,
-  yearlyContract: [1e6, 0, 0, 0, 0, 0],
+  minors: false,
+  injured: false,
   yearsRemaining: 1,
+  yearlyContract: [1e6, 0, 0, 0, 0, 0],
 };
 
 describe('MajorLeagueTables', () => {

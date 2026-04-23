@@ -11,8 +11,10 @@ const basePlayer = {
   team: 'BOS',
   pos: 'SP',
   age: 20,
-  yearlyContract: [500000, 0, 0, 0, 0, 0],
+  minors: true,
+  injured: false,
   yearsRemaining: 1,
+  yearlyContract: [500000, 0, 0, 0, 0, 0],
 };
 
 describe('MinorLeagueTable', () => {

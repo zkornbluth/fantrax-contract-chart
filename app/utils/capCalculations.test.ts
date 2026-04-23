@@ -47,8 +47,8 @@ describe('getPositionalSum', () => {
       makePlayer([0, 0, 0]),
     ];
 
-    expect(getPositionalSum(players, 2026)).toBe(15); // 10 + 5
-    expect(getPositionalSum(players, 2027)).toBe(35); // 20 + 15
+    expect(getPositionalSum(players as any, 2026)).toBe(15); // 10 + 5
+    expect(getPositionalSum(players as any, 2027)).toBe(35); // 20 + 15
   });
 
   it('ignores non-numeric contract entries', () => {

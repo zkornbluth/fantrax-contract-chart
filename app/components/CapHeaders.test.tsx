@@ -11,9 +11,10 @@ vi.mock('../assets/paying.png', () => ({ default: { src: '/paying.png' } }));
 vi.mock('../assets/billstack.png', () => ({ default: { src: '/billstack.png' } }));
 
 const selectedTeam = {
+  teamName: 'Test Team',
   salaryCap: 200_000_000,
-  activePlayers: [{ yearlyContract: [10_000_000, 0, 0, 0, 0, 0] }],
-  deadCapHits: [{ yearlyCapHit: [2_000_000, 0, 0, 0, 0, 0] }],
+  activePlayers: [{ name: 'Player', age: 25, team: 'BOS', pos: 'SP', minors: false, injured: false, yearsRemaining: 1, yearlyContract: [10_000_000, 0, 0, 0, 0, 0] }],
+  deadCapHits: [{ name: 'Released', yearsRemaining: 1, yearlyCapHit: [2_000_000, 0, 0, 0, 0, 0] }],
 };
 
 describe('CapHeaders', () => {

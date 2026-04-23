@@ -7,8 +7,8 @@ import { render, screen, within } from '@testing-library/react';
 import DeadCapTable from './DeadCapTable';
 
 const deadCapHits = [
-  { name: 'Player A', yearlyCapHit: [100, 50, 0] },
-  { name: 'Player B', yearlyCapHit: [200, 0, 0] },
+  { name: 'Player A', yearsRemaining: 2, yearlyCapHit: [100, 50, 0] },
+  { name: 'Player B', yearsRemaining: 1, yearlyCapHit: [200, 0, 0] },
 ];
 
 describe('DeadCapTable', () => {

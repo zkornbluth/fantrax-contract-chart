@@ -11,6 +11,9 @@ const defaultPlayer = {
   team: 'BOS',
   pos: 'SP',
   age: 25,
+  minors: false,
+  injured: false,
+  yearsRemaining: 3,
   yearlyContract: [1000000, 2000000, 3000000],
 };
 

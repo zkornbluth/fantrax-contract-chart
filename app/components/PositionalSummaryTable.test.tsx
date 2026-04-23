@@ -6,15 +6,19 @@ import { describe, it, expect } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import PositionalSummaryTable from './PositionalSummaryTable';
 
+const makePlayer = (yearlyContract: number[]) => ({
+  name: 'Player', age: 25, team: 'BOS', pos: 'SP', minors: false, injured: false, yearsRemaining: 1, yearlyContract,
+});
+
 const players = {
   SP: [
-    { yearlyContract: [10_000_000, 12_000_000, 0, 0, 0, 0] },
-    { yearlyContract: [8_000_000, 0, 0, 0, 0, 0] },
+    makePlayer([10_000_000, 12_000_000, 0, 0, 0, 0]),
+    makePlayer([8_000_000, 0, 0, 0, 0, 0]),
   ],
-  RP: [{ yearlyContract: [2_000_000, 2_000_000, 0, 0, 0, 0] }],
+  RP: [makePlayer([2_000_000, 2_000_000, 0, 0, 0, 0])],
 };
 const posOrder = ['SP', 'RP', 'C'];
-const minorLeaguers = [{ yearlyContract: [500_000, 0, 0, 0, 0, 0] }];
+const minorLeaguers = [makePlayer([500_000, 0, 0, 0, 0, 0])];
 
 describe('PositionalSummaryTable', () => {
   it('renders Positional Summary header', () => {
