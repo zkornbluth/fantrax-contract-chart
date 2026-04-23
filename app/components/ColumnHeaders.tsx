@@ -3,8 +3,8 @@
  * @author Zachary Kornbluth <github.com/zkornbluth>
  */
 
-export type SortKey = 'default' | 'age' | 'position' | 'team' | 'name';
-export type SortDirection = 'asc' | 'desc' | null;
+import type { SortKey, SortDirection } from '../types';
+export type { SortKey, SortDirection };
 
 interface ColumnHeadersProps {
   count?: number;

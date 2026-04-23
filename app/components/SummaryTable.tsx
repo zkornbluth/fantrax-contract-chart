@@ -8,9 +8,10 @@ import ColumnHeaders from './ColumnHeaders';
 import PositionGroupHeader from './PositionGroupHeader';
 import SummaryTableRow from './SummaryTableRow';
 import { getActivePayroll, getDeadCapSum, getCapHit, getCapSpace } from '../utils/capCalculations';
+import type { TeamCapInfo } from '../types';
 
 interface SummaryTableProps {
-  selectedTeam: any;
+  selectedTeam: TeamCapInfo;
 }
 
 export default function SummaryTable({selectedTeam}: SummaryTableProps) {

@@ -7,15 +7,16 @@ import React from "react";
 import PositionGroupHeader from "./PositionGroupHeader";
 import ColumnHeaders from "./ColumnHeaders";
 import ActivePlayerRow from "./ActivePlayerRow";
+import type { ActivePlayer, SortKey, SortDirection } from '../types';
 
 interface MajorLeagueTableProps {
     groupByPosition: boolean;
     positionOrder: string[];
-    groupedPlayers: any;
-    majorLeaguePlayers: any[];
-    sortKey: 'default' | 'age' | 'position' | 'team' | 'name';
-    sortDirection: 'asc' | 'desc' | null;
-    onSortChange: (columnKey: 'age' | 'position' | 'team' | 'name') => void;
+    groupedPlayers: Record<string, ActivePlayer[]>;
+    majorLeaguePlayers: ActivePlayer[];
+    sortKey: SortKey;
+    sortDirection: SortDirection;
+    onSortChange: (columnKey: Exclude<SortKey, 'default'>) => void;
 }
 
 function GroupedMajorLeagueTable({
@@ -62,7 +63,7 @@ function UngroupedMajorLeagueTable({
     sortDirection,
     onSortChange,
 }: {
-    players: any[];
+    players: ActivePlayer[];
     sortKey: MajorLeagueTableProps['sortKey'];
     sortDirection: MajorLeagueTableProps['sortDirection'];
     onSortChange: MajorLeagueTableProps['onSortChange'];

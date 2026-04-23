@@ -7,12 +7,13 @@ import React from "react";
 import PositionGroupHeader from "./PositionGroupHeader";
 import ActivePlayerRow from "./ActivePlayerRow";
 import ColumnHeaders from "./ColumnHeaders";
+import type { ActivePlayer, SortKey, SortDirection } from '../types';
 
 interface MinorLeagueTableProps {
-    minorLeaguePlayers: any[];
-    sortKey: 'default' | 'age' | 'position' | 'team' | 'name';
-    sortDirection: 'asc' | 'desc' | null;
-    onSortChange: (columnKey: 'age' | 'position' | 'team' | 'name') => void;
+    minorLeaguePlayers: ActivePlayer[];
+    sortKey: SortKey;
+    sortDirection: SortDirection;
+    onSortChange: (columnKey: Exclude<SortKey, 'default'>) => void;
 }
 
 export default function MinorLeagueTable({

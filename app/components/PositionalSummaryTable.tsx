@@ -8,11 +8,12 @@ import ColumnHeaders from './ColumnHeaders';
 import PositionGroupHeader from './PositionGroupHeader';
 import SummaryTableRow from './SummaryTableRow';
 import { getPositionalSum } from '../utils/capCalculations';
+import type { ActivePlayer } from '../types';
 
 interface PositionalSummaryTableProps {
-  players: { [key: string]: any[] };
+  players: Record<string, ActivePlayer[]>;
   posOrder: string[];
-  minorLeaguers: any[];
+  minorLeaguers: ActivePlayer[];
 }
 
 export default function PositionalSummaryTable({players, posOrder, minorLeaguers}: PositionalSummaryTableProps) {
@@ -20,7 +21,7 @@ export default function PositionalSummaryTable({players, posOrder, minorLeaguers
 
   // Get list of position groups (from major league players)
   let posGroups = Object.keys(players);
-  let posGroupSums = {};
+  let posGroupSums: Record<string, number[]> = {};
 
   // For each position group, sum up salaries for each year
   for (let posGroup of posGroups) {

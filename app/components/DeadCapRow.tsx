@@ -1,13 +1,12 @@
-/** 
+/**
  * @fileoverview Creates the DeadCapRow component
  * @author Zachary Kornbluth <github.com/zkornbluth>
  */
 
+import type { DeadCapHit } from '../types';
+
 interface DeadCapRowProps {
-  deadCapHit: {
-    name: string;
-    yearlyCapHit: (number | string)[];
-  };
+  deadCapHit: DeadCapHit;
 }
 
 export default function DeadCapRow({deadCapHit}: DeadCapRowProps) { // Generates one row for one dead cap hit

@@ -17,7 +17,7 @@ import MinorLeagueTable from './components/MinorLeagueTable';
 import DeadCapTable from './components/DeadCapTable';
 import GroupByPosition from './components/GroupByPosition';
 import DarkModeToggle from './components/DarkModeToggle';
-import type { SortKey, SortDirection } from './components/ColumnHeaders';
+import type { SortKey, SortDirection, ActivePlayer } from './types';
  
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
@@ -98,16 +98,16 @@ export default function HomePage() {
   const minorLeaguePlayers = selectedTeam.activePlayers.filter(player => player.minors);
   const deadCapHits = [...selectedTeam.deadCapHits];
 
-  const getSalary = (player: any) =>
+  const getSalary = (player: ActivePlayer) =>
     typeof player.yearlyContract?.[0] === 'number' ? player.yearlyContract[0] : 0;
 
-  const getYearsRemaining = (player: any) =>
+  const getYearsRemaining = (player: ActivePlayer) =>
     typeof player.yearsRemaining === 'number' ? player.yearsRemaining : 0;
 
-  const sortActivePlayers = (players: any[]) => {
+  const sortActivePlayers = (players: ActivePlayer[]) => {
     const playersCopy = [...players];
 
-    const compareByDefault = (a: any, b: any) => {
+    const compareByDefault = (a: ActivePlayer, b: ActivePlayer) => {
       const salaryA = getSalary(a);
       const salaryB = getSalary(b);
       if (salaryA !== salaryB) {
@@ -116,7 +116,7 @@ export default function HomePage() {
       return getYearsRemaining(b) - getYearsRemaining(a);
     };
 
-    const compare = (a: any, b: any) => {
+    const compare = (a: ActivePlayer, b: ActivePlayer) => {
       // Default: salary descending then contract length descending
       if (sortKey === 'default') {
         return compareByDefault(a, b);
@@ -174,7 +174,7 @@ export default function HomePage() {
     }
     groups[group].push(player);
     return groups;
-  }, {});
+  }, {} as Record<string, ActivePlayer[]>);
 
   return (
     <div>

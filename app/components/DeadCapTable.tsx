@@ -7,8 +7,9 @@ import React from "react";
 import PositionGroupHeader from "./PositionGroupHeader";
 import DeadCapRow from "./DeadCapRow";
 import ColumnHeaders from "./ColumnHeaders";
+import type { DeadCapHit } from '../types';
 
-export default function DeadCapTable({deadCapHits}) {
+export default function DeadCapTable({ deadCapHits }: { deadCapHits: DeadCapHit[] }) {
     return (
          <React.Fragment key="deadCap">
             <PositionGroupHeader posGroup="Dead Cap Hit" />

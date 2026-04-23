@@ -6,16 +6,10 @@
 import React from 'react';
 import Image from 'next/image';
 import injured from '../assets/injured.png';
+import type { ActivePlayer } from '../types';
 
 interface ActivePlayerRowProps {
-  activePlayer: {
-    name: string;
-    injured?: boolean;
-    team: string;
-    pos: string;
-    age: number;
-    yearlyContract: (number | string)[];
-  };
+  activePlayer: ActivePlayer;
 }
 
 export default function ActivePlayerRow({ activePlayer }: ActivePlayerRowProps) { // Generates one row for one active player

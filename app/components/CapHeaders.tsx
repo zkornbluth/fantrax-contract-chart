@@ -8,15 +8,10 @@ import { getCapSpace, getCapHit } from '../utils/capCalculations';
 import bills from '../assets/bills.png';
 import paying from '../assets/paying.png';
 import billstack from '../assets/billstack.png';
-
-interface Team {
-  salaryCap: number;
-  activePlayers: any[];
-  deadCapHits?: any[];
-}
+import type { TeamCapInfo } from '../types';
 
 interface HeaderCardsProps {
-  selectedTeam: Team;
+  selectedTeam: TeamCapInfo;
 }
 
 function CapSpaceHeader({selectedTeam}: HeaderCardsProps) {
@@ -43,7 +38,7 @@ function CapMaxHeader({selectedTeam}: HeaderCardsProps) {
   )
 }
 
-export default function CapHeaders({selectedTeam}) {
+export default function CapHeaders({ selectedTeam }: HeaderCardsProps) {
   return (
     <div className="text-center grid grid-cols-[auto_auto_auto] justify-center gap-2.5 mb-6">
       <CapMaxHeader selectedTeam={selectedTeam} />
