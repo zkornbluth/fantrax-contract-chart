@@ -340,7 +340,7 @@
           "team": "SF",
           "pos": "OF",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1
         },
         {
@@ -543,7 +543,7 @@
           "age": 22,
           "team": "MIN",
           "pos": "OF",
-          "minors": true,
+          "minors": false,
           "injured": false,
           "yearsRemaining": 3
         },
@@ -1552,7 +1552,7 @@
           "team": "LAA",
           "pos": "3B",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1
         },
         {
@@ -4392,23 +4392,6 @@
         },
         {
           "yearlyContract": [
-            29,
-            29,
-            29,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Spencer Steer",
-          "age": 28,
-          "team": "CIN",
-          "pos": "1B,OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3
-        },
-        {
-          "yearlyContract": [
             2,
             "Free Agent",
             "",
@@ -4438,8 +4421,25 @@
           "team": "NYY",
           "pos": "2B,3B,SS,OF",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
+            8,
+            8,
+            8,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Tyler Freeman",
+          "age": 27,
+          "team": "COL",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
         },
         {
           "yearlyContract": [
@@ -4454,6 +4454,23 @@
           "age": 26,
           "team": "NYY",
           "pos": "C",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            29,
+            29,
+            29,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Spencer Steer",
+          "age": 28,
+          "team": "CIN",
+          "pos": "1B,OF",
           "minors": false,
           "injured": false,
           "yearsRemaining": 3
@@ -4487,23 +4504,6 @@
           "name": "Dylan Crews",
           "age": 24,
           "team": "WSH",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3
-        },
-        {
-          "yearlyContract": [
-            8,
-            8,
-            8,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Tyler Freeman",
-          "age": 27,
-          "team": "COL",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -4698,23 +4698,6 @@
         },
         {
           "yearlyContract": [
-            83,
-            83,
-            83,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Sandy Alcantara",
-          "age": 30,
-          "team": "MIA",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 3
-        },
-        {
-          "yearlyContract": [
             5,
             "Free Agent",
             "",
@@ -4776,6 +4759,23 @@
           "name": "Tyler Holton",
           "age": 29,
           "team": "DET",
+          "pos": "SP,RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            2,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Tobias Myers",
+          "age": 27,
+          "team": "NYM",
           "pos": "SP,RP",
           "minors": false,
           "injured": false,
@@ -4868,6 +4868,23 @@
         },
         {
           "yearlyContract": [
+            83,
+            83,
+            83,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Sandy Alcantara",
+          "age": 30,
+          "team": "MIA",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
             2,
             2,
             2,
@@ -4930,23 +4947,6 @@
           "age": 34,
           "team": "KC",
           "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            2,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Tobias Myers",
-          "age": 27,
-          "team": "NYM",
-          "pos": "SP,RP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -5371,7 +5371,7 @@
           "team": "COL",
           "pos": "OF",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1
         },
         {
@@ -5623,7 +5623,7 @@
           ],
           "name": "Jose Miranda",
           "age": 27,
-          "team": "SD",
+          "team": "(N/A)",
           "pos": "3B",
           "minors": true,
           "injured": false,
@@ -5676,7 +5676,7 @@
           "age": 23,
           "team": "CHC",
           "pos": "OF",
-          "minors": true,
+          "minors": false,
           "injured": false,
           "yearsRemaining": 4
         },
@@ -6405,7 +6405,7 @@
           "team": "TB",
           "pos": "OF",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 1
         },
         {
@@ -6750,6 +6750,23 @@
         },
         {
           "yearlyContract": [
+            42,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Brayan Bello",
+          "age": 27,
+          "team": "BOS",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             76,
             "Free Agent",
             "",
@@ -6784,23 +6801,6 @@
         },
         {
           "yearlyContract": [
-            10,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Tyler Mahle",
-          "age": 31,
-          "team": "SF",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             22,
             22,
             22,
@@ -6818,20 +6818,20 @@
         },
         {
           "yearlyContract": [
-            2,
-            2,
-            2,
+            4,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Jacob Misiorowski",
-          "age": 24,
-          "team": "MIL",
+          "name": "Walbert Urena",
+          "age": 22,
+          "team": "LAA",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -6897,23 +6897,6 @@
           "age": 26,
           "team": "TEX",
           "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            42,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Brayan Bello",
-          "age": 27,
-          "team": "BOS",
-          "pos": "SP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -6988,6 +6971,40 @@
         },
         {
           "yearlyContract": [
+            10,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Tyler Mahle",
+          "age": 31,
+          "team": "SF",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            2,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Jacob Misiorowski",
+          "age": 24,
+          "team": "MIL",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
             11,
             "Free Agent",
             "",
@@ -7036,23 +7053,6 @@
           "minors": true,
           "injured": false,
           "yearsRemaining": 5
-        },
-        {
-          "yearlyContract": [
-            4,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Walbert Urena",
-          "age": 22,
-          "team": "LAA",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -7735,16 +7735,16 @@
         },
         {
           "yearlyContract": [
-            356,
+            21,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Aaron Judge",
-          "age": 34,
-          "team": "NYY",
+          "name": "Tyler O'Neill",
+          "age": 30,
+          "team": "BAL",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -7753,19 +7753,19 @@
         {
           "yearlyContract": [
             1,
+            1,
+            1,
             "Free Agent",
-            "",
-            "",
             "",
             ""
           ],
-          "name": "Richie Palacios",
-          "age": 29,
-          "team": "TB",
-          "pos": "2B,OF",
+          "name": "Jesus Sanchez",
+          "age": 28,
+          "team": "TOR",
+          "pos": "OF",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 1
+          "yearsRemaining": 3
         },
         {
           "yearlyContract": [
@@ -7780,6 +7780,23 @@
           "age": 29,
           "team": "MIN",
           "pos": "OF,UT",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            3,
+            3,
+            3,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Jonah Heim",
+          "age": 30,
+          "team": "ATH",
+          "pos": "C",
           "minors": false,
           "injured": false,
           "yearsRemaining": 3
@@ -7803,23 +7820,6 @@
         },
         {
           "yearlyContract": [
-            3,
-            3,
-            3,
-            3,
-            "Free Agent",
-            ""
-          ],
-          "name": "Ryan McMahon",
-          "age": 31,
-          "team": "NYY",
-          "pos": "3B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 4
-        },
-        {
-          "yearlyContract": [
             1,
             1,
             "Free Agent",
@@ -7840,17 +7840,17 @@
             3,
             3,
             3,
+            3,
             "Free Agent",
-            "",
             ""
           ],
-          "name": "Jonah Heim",
-          "age": 30,
-          "team": "ATH",
-          "pos": "C",
+          "name": "Ryan McMahon",
+          "age": 31,
+          "team": "NYY",
+          "pos": "3B",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -7888,16 +7888,16 @@
         },
         {
           "yearlyContract": [
-            21,
+            356,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Tyler O'Neill",
-          "age": 30,
-          "team": "BAL",
+          "name": "Aaron Judge",
+          "age": 34,
+          "team": "NYY",
           "pos": "OF",
           "minors": false,
           "injured": false,
@@ -7906,19 +7906,19 @@
         {
           "yearlyContract": [
             1,
-            1,
-            1,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Jesus Sanchez",
-          "age": 28,
-          "team": "TOR",
-          "pos": "OF",
+          "name": "Richie Palacios",
+          "age": 29,
+          "team": "TB",
+          "pos": "2B,OF",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -8194,6 +8194,23 @@
         },
         {
           "yearlyContract": [
+            10,
+            10,
+            10,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Taj Bradley",
+          "age": 25,
+          "team": "MIN",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
             1,
             1,
             "Free Agent",
@@ -8242,23 +8259,6 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Cam Schlittler",
-          "age": 25,
-          "team": "NYY",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -8398,6 +8398,23 @@
         },
         {
           "yearlyContract": [
+            2,
+            2,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Cam Schlittler",
+          "age": 25,
+          "team": "NYY",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
             39,
             "Free Agent",
             "",
@@ -8429,23 +8446,6 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            10,
-            10,
-            10,
-            "Free Agent",
-            "",
-            ""
-          ],
-          "name": "Taj Bradley",
-          "age": 25,
-          "team": "MIN",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 3
         },
         {
           "yearlyContract": [
@@ -8860,17 +8860,17 @@
         },
         {
           "yearlyContract": [
-            2,
+            39,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Jose Fernandez",
-          "age": 22,
-          "team": "ARI",
-          "pos": "1B,SS",
+          "name": "Eugenio Suarez",
+          "age": 34,
+          "team": "CIN",
+          "pos": "3B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -9030,23 +9030,6 @@
         },
         {
           "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Adrian Del Castillo",
-          "age": 26,
-          "team": "ARI",
-          "pos": "C",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             2,
             "Free Agent",
             "",
@@ -9064,19 +9047,19 @@
         },
         {
           "yearlyContract": [
-            39,
+            2,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Eugenio Suarez",
-          "age": 34,
-          "team": "CIN",
-          "pos": "3B",
+          "name": "Jose Fernandez",
+          "age": 22,
+          "team": "ARI",
+          "pos": "1B,SS",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 1
         },
         {
@@ -9285,23 +9268,6 @@
         },
         {
           "yearlyContract": [
-            24,
-            24,
-            24,
-            24,
-            "Free Agent",
-            ""
-          ],
-          "name": "Chase Burns",
-          "age": 23,
-          "team": "CIN",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 4
-        },
-        {
-          "yearlyContract": [
             2,
             "Free Agent",
             "",
@@ -9329,6 +9295,23 @@
           "name": "Tyler Alexander",
           "age": 31,
           "team": "TEX",
+          "pos": "SP,RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Caleb Kilian",
+          "age": 28,
+          "team": "SF",
           "pos": "SP,RP",
           "minors": false,
           "injured": false,
@@ -9387,6 +9370,23 @@
         },
         {
           "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Graham Ashcraft",
+          "age": 28,
+          "team": "CIN",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             5,
             5,
             "Free Agent",
@@ -9421,20 +9421,20 @@
         },
         {
           "yearlyContract": [
-            4,
-            4,
+            24,
+            24,
+            24,
+            24,
             "Free Agent",
-            "",
-            "",
             ""
           ],
-          "name": "Louis Varland",
-          "age": 28,
-          "team": "TOR",
-          "pos": "RP",
+          "name": "Chase Burns",
+          "age": 23,
+          "team": "CIN",
+          "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 2
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -9452,6 +9452,23 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 4
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Shane Drohan",
+          "age": 27,
+          "team": "MIL",
+          "pos": "SP,RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -9483,23 +9500,6 @@
           "age": 27,
           "team": "LAD",
           "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Graham Ashcraft",
-          "age": 28,
-          "team": "CIN",
-          "pos": "RP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -9564,23 +9564,6 @@
             "",
             ""
           ],
-          "name": "Caleb Kilian",
-          "age": 28,
-          "team": "SF",
-          "pos": "SP,RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
           "name": "Anthony Nunez",
           "age": 24,
           "team": "BAL",
@@ -9605,6 +9588,23 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            4,
+            4,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Louis Varland",
+          "age": 28,
+          "team": "TOR",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -10015,6 +10015,18 @@
         },
         {
           "yearlyCapHit": [
+            0.5,
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Adrian Del Castillo",
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyCapHit": [
             1,
             "",
             "",
@@ -10126,7 +10138,7 @@
             ""
           ],
           "name": "Jonathan Aranda",
-          "age": 27,
+          "age": 28,
           "team": "TB",
           "pos": "1B",
           "minors": false,
@@ -10193,10 +10205,10 @@
             "",
             ""
           ],
-          "name": "Nick Loftin",
+          "name": "Blake Dunn",
           "age": 27,
-          "team": "KC",
-          "pos": "2B,OF",
+          "team": "CIN",
+          "pos": "OF",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -10645,20 +10657,20 @@
         },
         {
           "yearlyContract": [
-            8,
-            8,
-            8,
+            20,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Matthew Liberatore",
-          "age": 26,
-          "team": "STL",
+          "name": "Grant Holmes",
+          "age": 30,
+          "team": "ATL",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -10798,23 +10810,6 @@
         },
         {
           "yearlyContract": [
-            20,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Grant Holmes",
-          "age": 30,
-          "team": "ATL",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             2,
             2,
             2,
@@ -10825,6 +10820,23 @@
           "name": "Shota Imanaga",
           "age": 32,
           "team": "CHC",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            8,
+            8,
+            8,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Matthew Liberatore",
+          "age": 26,
+          "team": "STL",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -11478,6 +11490,18 @@
         {
           "yearlyCapHit": [
             0.5,
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Nick Loftin",
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyCapHit": [
+            0.5,
             0.5,
             "",
             "",
@@ -11696,23 +11720,6 @@
         },
         {
           "yearlyContract": [
-            11,
-            11,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "JJ Bleday",
-          "age": 28,
-          "team": "CIN",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
             10,
             "Free Agent",
             "",
@@ -11727,6 +11734,23 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            31,
+            31,
+            31,
+            31,
+            "Free Agent",
+            ""
+          ],
+          "name": "Colton Cowser",
+          "age": 26,
+          "team": "BAL",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -11832,20 +11856,20 @@
         },
         {
           "yearlyContract": [
-            31,
-            31,
-            31,
-            31,
+            11,
+            11,
             "Free Agent",
+            "",
+            "",
             ""
           ],
-          "name": "Colton Cowser",
-          "age": 26,
-          "team": "BAL",
+          "name": "JJ Bleday",
+          "age": 28,
+          "team": "CIN",
           "pos": "OF",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 4
+          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -12070,6 +12094,23 @@
         },
         {
           "yearlyContract": [
+            170,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Jacob deGrom",
+          "age": 37,
+          "team": "TEX",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             33,
             33,
             33,
@@ -12087,20 +12128,20 @@
         },
         {
           "yearlyContract": [
-            71,
-            71,
-            71,
+            19,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Mitch Keller",
-          "age": 30,
-          "team": "PIT",
+          "name": "Jeffrey Springs",
+          "age": 33,
+          "team": "ATH",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -12114,23 +12155,6 @@
           "name": "Ranger Suarez",
           "age": 30,
           "team": "BOS",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Trey Yesavage",
-          "age": 22,
-          "team": "TOR",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -12206,20 +12230,20 @@
         },
         {
           "yearlyContract": [
-            170,
+            71,
+            71,
+            71,
             "Free Agent",
-            "",
-            "",
             "",
             ""
           ],
-          "name": "Jacob deGrom",
-          "age": 37,
-          "team": "TEX",
+          "name": "Mitch Keller",
+          "age": 30,
+          "team": "PIT",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 1
+          "yearsRemaining": 3
         },
         {
           "yearlyContract": [
@@ -12274,20 +12298,20 @@
         },
         {
           "yearlyContract": [
-            19,
+            2,
+            2,
             "Free Agent",
-            "",
             "",
             "",
             ""
           ],
-          "name": "Jeffrey Springs",
-          "age": 33,
-          "team": "ATH",
+          "name": "Trey Yesavage",
+          "age": 22,
+          "team": "TOR",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 1
+          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -12543,10 +12567,10 @@
             "Free Agent",
             ""
           ],
-          "name": "Ben Rice",
-          "age": 27,
-          "team": "NYY",
-          "pos": "C,1B",
+          "name": "Dalton Rushing",
+          "age": 25,
+          "team": "LAD",
+          "pos": "C",
           "minors": false,
           "injured": false,
           "yearsRemaining": 4
@@ -12655,6 +12679,23 @@
         },
         {
           "yearlyContract": [
+            34,
+            34,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Willi Castro",
+          "age": 29,
+          "team": "COL",
+          "pos": "2B,3B,OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
             1,
             "Free Agent",
             "",
@@ -12686,23 +12727,6 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
-            46,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Cedric Mullins",
-          "age": 31,
-          "team": "TB",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -12774,17 +12798,17 @@
         },
         {
           "yearlyContract": [
-            2,
+            70,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Anthony Volpe",
-          "age": 25,
-          "team": "NYY",
-          "pos": "SS",
+          "name": "Shohei Ohtani",
+          "age": 31,
+          "team": "LAD",
+          "pos": "UT,SP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -12798,30 +12822,13 @@
             "Free Agent",
             ""
           ],
-          "name": "Dalton Rushing",
-          "age": 25,
-          "team": "LAD",
-          "pos": "C",
+          "name": "Ben Rice",
+          "age": 27,
+          "team": "NYY",
+          "pos": "C,1B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 4
-        },
-        {
-          "yearlyContract": [
-            34,
-            34,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Willi Castro",
-          "age": 29,
-          "team": "COL",
-          "pos": "2B,3B,OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -12859,20 +12866,37 @@
         },
         {
           "yearlyContract": [
-            26,
-            26,
-            26,
+            2,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Josh Lowe",
-          "age": 28,
-          "team": "LAA",
+          "name": "Anthony Volpe",
+          "age": 25,
+          "team": "NYY",
+          "pos": "SS",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            46,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Cedric Mullins",
+          "age": 31,
+          "team": "TB",
           "pos": "OF",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -12995,6 +13019,23 @@
         },
         {
           "yearlyContract": [
+            26,
+            26,
+            26,
+            "Free Agent",
+            "",
+            ""
+          ],
+          "name": "Josh Lowe",
+          "age": 28,
+          "team": "LAA",
+          "pos": "OF",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
             2,
             2,
             2,
@@ -13029,17 +13070,17 @@
         },
         {
           "yearlyContract": [
-            70,
+            2,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Shohei Ohtani",
-          "age": 31,
-          "team": "LAD",
-          "pos": "UT,SP",
+          "name": "Landen Roupp",
+          "age": 27,
+          "team": "SF",
+          "pos": "SP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -13114,23 +13155,6 @@
         },
         {
           "yearlyContract": [
-            58,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "David Bednar",
-          "age": 31,
-          "team": "NYY",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             1,
             "Free Agent",
             "",
@@ -13182,6 +13206,23 @@
         },
         {
           "yearlyContract": [
+            21,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Tony Santillan",
+          "age": 29,
+          "team": "CIN",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             48,
             "Free Agent",
             "",
@@ -13224,7 +13265,7 @@
             ""
           ],
           "name": "Zebby Matthews",
-          "age": 25,
+          "age": 26,
           "team": "MIN",
           "pos": "SP",
           "minors": false,
@@ -13250,17 +13291,17 @@
         },
         {
           "yearlyContract": [
-            2,
+            58,
             "Free Agent",
             "",
             "",
             "",
             ""
           ],
-          "name": "Landen Roupp",
-          "age": 27,
-          "team": "SF",
-          "pos": "SP",
+          "name": "David Bednar",
+          "age": 31,
+          "team": "NYY",
+          "pos": "RP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -13277,23 +13318,6 @@
           "name": "Jose Ferrer",
           "age": 26,
           "team": "SEA",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            21,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Tony Santillan",
-          "age": 29,
-          "team": "CIN",
           "pos": "RP",
           "minors": false,
           "injured": false,
@@ -14232,18 +14256,18 @@
           "yearlyContract": [
             2,
             2,
+            2,
             "Free Agent",
-            "",
             "",
             ""
           ],
-          "name": "Brandon Pfaadt",
-          "age": 27,
-          "team": "ARI",
-          "pos": "SP,RP",
+          "name": "Christian Scott",
+          "age": 26,
+          "team": "NYM",
+          "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 2
+          "yearsRemaining": 3
         },
         {
           "yearlyContract": [
@@ -14453,18 +14477,18 @@
           "yearlyContract": [
             2,
             2,
-            2,
             "Free Agent",
+            "",
             "",
             ""
           ],
-          "name": "Christian Scott",
-          "age": 26,
-          "team": "NYM",
-          "pos": "SP",
+          "name": "Brandon Pfaadt",
+          "age": 27,
+          "team": "ARI",
+          "pos": "SP,RP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -15671,7 +15695,7 @@
           "age": 22,
           "team": "NYM",
           "pos": "SP",
-          "minors": true,
+          "minors": false,
           "injured": false,
           "yearsRemaining": 4
         },
@@ -15748,20 +15772,20 @@
         },
         {
           "yearlyContract": [
-            50,
-            50,
-            50,
-            50,
+            67,
+            67,
             "Free Agent",
+            "",
+            "",
             ""
           ],
-          "name": "Nathaniel Lowe",
-          "age": 30,
-          "team": "CIN",
+          "name": "Christian Walker",
+          "age": 35,
+          "team": "HOU",
           "pos": "1B",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 4
+          "yearsRemaining": 2
         },
         {
           "yearlyContract": [
@@ -15772,10 +15796,10 @@
             "",
             ""
           ],
-          "name": "Edouard Julien",
-          "age": 27,
-          "team": "COL",
-          "pos": "1B,2B",
+          "name": "Cole Young",
+          "age": 22,
+          "team": "SEA",
+          "pos": "2B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -15816,20 +15840,20 @@
         },
         {
           "yearlyContract": [
-            67,
-            67,
+            50,
+            50,
+            50,
+            50,
             "Free Agent",
-            "",
-            "",
             ""
           ],
-          "name": "Christian Walker",
-          "age": 35,
-          "team": "HOU",
+          "name": "Nathaniel Lowe",
+          "age": 30,
+          "team": "CIN",
           "pos": "1B",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 2
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -15840,9 +15864,9 @@
             "",
             ""
           ],
-          "name": "Cole Young",
-          "age": 22,
-          "team": "SEA",
+          "name": "Michael Massey",
+          "age": 28,
+          "team": "KC",
           "pos": "2B",
           "minors": false,
           "injured": false,
@@ -15918,6 +15942,57 @@
         },
         {
           "yearlyContract": [
+            64,
+            64,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Victor Robles",
+          "age": 29,
+          "team": "SEA",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Henry Davis",
+          "age": 26,
+          "team": "PIT",
+          "pos": "C",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Jackson Holliday",
+          "age": 22,
+          "team": "BAL",
+          "pos": "2B",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
             95,
             95,
             95,
@@ -15942,10 +16017,10 @@
             "",
             ""
           ],
-          "name": "Henry Davis",
-          "age": 26,
-          "team": "PIT",
-          "pos": "C",
+          "name": "Justin Foscue",
+          "age": 27,
+          "team": "TEX",
+          "pos": "1B,2B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -15959,61 +16034,10 @@
             "",
             ""
           ],
-          "name": "Nick Morabito",
-          "age": 23,
-          "team": "NYM",
-          "pos": "OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            1,
-            1,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Moises Ballesteros",
-          "age": 22,
-          "team": "CHC",
-          "pos": "UT",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Jackson Holliday",
-          "age": 22,
-          "team": "BAL",
-          "pos": "2B",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Michael Massey",
-          "age": 28,
-          "team": "KC",
-          "pos": "2B",
+          "name": "Edouard Julien",
+          "age": 27,
+          "team": "COL",
+          "pos": "1B,2B",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -16071,19 +16095,36 @@
         },
         {
           "yearlyContract": [
-            64,
-            64,
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Nick Morabito",
+          "age": 23,
+          "team": "NYM",
+          "pos": "OF",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            1,
+            1,
             "Free Agent",
             "",
             "",
             ""
           ],
-          "name": "Victor Robles",
-          "age": 29,
-          "team": "SEA",
-          "pos": "OF",
+          "name": "Moises Ballesteros",
+          "age": 22,
+          "team": "CHC",
+          "pos": "UT",
           "minors": false,
-          "injured": true,
+          "injured": false,
           "yearsRemaining": 2
         },
         {
@@ -16275,23 +16316,6 @@
         },
         {
           "yearlyContract": [
-            175,
-            175,
-            "Free Agent",
-            "",
-            "",
-            ""
-          ],
-          "name": "Gerrit Cole",
-          "age": 35,
-          "team": "NYY",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
             166,
             166,
             166,
@@ -16350,6 +16374,23 @@
             "",
             ""
           ],
+          "name": "Colin Rea",
+          "age": 35,
+          "team": "CHC",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
           "name": "Sean Newcomb",
           "age": 32,
           "team": "CHW",
@@ -16370,23 +16411,6 @@
           "name": "Clayton Beeter",
           "age": 27,
           "team": "WSH",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            90,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Camilo Doval",
-          "age": 28,
-          "team": "NYY",
           "pos": "RP",
           "minors": false,
           "injured": false,
@@ -16428,6 +16452,23 @@
         },
         {
           "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Keaton Winn",
+          "age": 28,
+          "team": "SF",
+          "pos": "RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             4,
             4,
             "Free Agent",
@@ -16438,6 +16479,23 @@
           "name": "Kyle Bradish",
           "age": 29,
           "team": "BAL",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
+            175,
+            175,
+            "Free Agent",
+            "",
+            "",
+            ""
+          ],
+          "name": "Gerrit Cole",
+          "age": 35,
+          "team": "NYY",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -16496,23 +16554,6 @@
         },
         {
           "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Colin Rea",
-          "age": 35,
-          "team": "CHC",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             40,
             "Free Agent",
             "",
@@ -16560,23 +16601,6 @@
           "pos": "SP",
           "minors": false,
           "injured": true,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Keaton Winn",
-          "age": 28,
-          "team": "SF",
-          "pos": "RP",
-          "minors": false,
-          "injured": false,
           "yearsRemaining": 1
         },
         {
@@ -16734,6 +16758,18 @@
             ""
           ],
           "name": "Walbert Urena",
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyCapHit": [
+            45,
+            "",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Camilo Doval",
           "yearsRemaining": 1
         },
         {
@@ -17100,7 +17136,7 @@
           "team": "CIN",
           "pos": "3B",
           "minors": false,
-          "injured": false,
+          "injured": true,
           "yearsRemaining": 4
         },
         {
@@ -18102,19 +18138,53 @@
         {
           "yearlyContract": [
             1,
-            1,
-            1,
             "Free Agent",
+            "",
+            "",
             "",
             ""
           ],
-          "name": "Trevor McDonald",
-          "age": 25,
-          "team": "SF",
+          "name": "J.T. Ginn",
+          "age": 27,
+          "team": "ATH",
           "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 3
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            1,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Kyle Hurt",
+          "age": 27,
+          "team": "LAD",
+          "pos": "SP,RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            40,
+            40,
+            40,
+            40,
+            "Free Agent",
+            ""
+          ],
+          "name": "Chad Patrick",
+          "age": 27,
+          "team": "MIL",
+          "pos": "SP,RP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -18128,40 +18198,6 @@
           "name": "Connor Prielipp",
           "age": 25,
           "team": "MIN",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            38,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Cristopher Sanchez",
-          "age": 29,
-          "team": "PHI",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            20,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Jameson Taillon",
-          "age": 34,
-          "team": "CHC",
           "pos": "SP",
           "minors": false,
           "injured": false,
@@ -18288,23 +18324,6 @@
         },
         {
           "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "J.T. Ginn",
-          "age": 27,
-          "team": "ATH",
-          "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             110,
             "Free Agent",
             "",
@@ -18316,23 +18335,6 @@
           "age": 36,
           "team": "BOS",
           "pos": "SP",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
-            1,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Kyle Hurt",
-          "age": 27,
-          "team": "LAD",
-          "pos": "SP,RP",
           "minors": false,
           "injured": false,
           "yearsRemaining": 1
@@ -18373,20 +18375,54 @@
         },
         {
           "yearlyContract": [
-            40,
-            40,
-            40,
-            40,
+            1,
+            1,
+            1,
             "Free Agent",
+            "",
             ""
           ],
-          "name": "Chad Patrick",
-          "age": 27,
-          "team": "MIL",
-          "pos": "SP,RP",
+          "name": "Trevor McDonald",
+          "age": 25,
+          "team": "SF",
+          "pos": "SP",
           "minors": false,
           "injured": false,
-          "yearsRemaining": 4
+          "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            38,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Cristopher Sanchez",
+          "age": 29,
+          "team": "PHI",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
+            20,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Jameson Taillon",
+          "age": 34,
+          "team": "CHC",
+          "pos": "SP",
+          "minors": false,
+          "injured": false,
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -18935,5 +18971,5 @@
       "salaryCap": 2000
     }
   ],
-  "timestamp": "05/22/2026, 12:37:28 PM EDT"
+  "timestamp": "05/23/2026, 11:16:35 AM EDT"
 }
