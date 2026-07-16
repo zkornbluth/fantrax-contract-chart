@@ -438,7 +438,7 @@
             ""
           ],
           "name": "Tre' Morgan",
-          "age": 23,
+          "age": 24,
           "team": "TB",
           "pos": "1B",
           "minors": true,
@@ -1521,7 +1521,7 @@
             ""
           ],
           "name": "Masataka Yoshida",
-          "age": 32,
+          "age": 33,
           "team": "BOS",
           "pos": "UT",
           "minors": false,
@@ -1544,6 +1544,23 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 3
+        },
+        {
+          "yearlyContract": [
+            2,
+            2,
+            2,
+            2,
+            "Free Agent",
+            ""
+          ],
+          "name": "Tommy White",
+          "age": 23,
+          "team": "ATH",
+          "pos": "3B",
+          "minors": true,
+          "injured": false,
+          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -1697,23 +1714,6 @@
           "minors": true,
           "injured": false,
           "yearsRemaining": 2
-        },
-        {
-          "yearlyContract": [
-            2,
-            2,
-            2,
-            2,
-            "Free Agent",
-            ""
-          ],
-          "name": "Tommy White",
-          "age": 23,
-          "team": "ATH",
-          "pos": "3B",
-          "minors": true,
-          "injured": false,
-          "yearsRemaining": 4
         },
         {
           "yearlyContract": [
@@ -6097,7 +6097,7 @@
           ],
           "name": "Lance McCullers Jr.",
           "age": 32,
-          "team": "HOU",
+          "team": "MIL",
           "pos": "SP",
           "minors": false,
           "injured": true,
@@ -8133,23 +8133,6 @@
         },
         {
           "yearlyContract": [
-            2,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Tommy Troy",
-          "age": 24,
-          "team": "ARI",
-          "pos": "2B,OF",
-          "minors": false,
-          "injured": false,
-          "yearsRemaining": 1
-        },
-        {
-          "yearlyContract": [
             14,
             14,
             14,
@@ -8198,6 +8181,23 @@
           "minors": false,
           "injured": false,
           "yearsRemaining": 2
+        },
+        {
+          "yearlyContract": [
+            2,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Tommy Troy",
+          "age": 24,
+          "team": "ARI",
+          "pos": "2B,OF",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -9999,7 +9999,7 @@
             ""
           ],
           "name": "Shunpeita Yamashita",
-          "age": 23,
+          "age": 24,
           "team": "(N/A)",
           "pos": "SP",
           "minors": true,
@@ -10685,7 +10685,7 @@
             ""
           ],
           "name": "Ildemaro Vargas",
-          "age": 34,
+          "age": 35,
           "team": "ARI",
           "pos": "1B,2B",
           "minors": false,
@@ -14893,7 +14893,7 @@
           "age": 31,
           "team": "ATH",
           "pos": "SP",
-          "minors": false,
+          "minors": true,
           "injured": false,
           "yearsRemaining": 1
         },
@@ -18869,23 +18869,6 @@
         },
         {
           "yearlyContract": [
-            43,
-            43,
-            43,
-            43,
-            "Free Agent",
-            ""
-          ],
-          "name": "Mike Burrows",
-          "age": 26,
-          "team": "HOU",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 4
-        },
-        {
-          "yearlyContract": [
             110,
             "Free Agent",
             "",
@@ -18988,6 +18971,23 @@
         },
         {
           "yearlyContract": [
+            20,
+            "Free Agent",
+            "",
+            "",
+            "",
+            ""
+          ],
+          "name": "Jameson Taillon",
+          "age": 34,
+          "team": "CHC",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 1
+        },
+        {
+          "yearlyContract": [
             3,
             "Free Agent",
             "",
@@ -19039,6 +19039,23 @@
         },
         {
           "yearlyContract": [
+            43,
+            43,
+            43,
+            43,
+            "Free Agent",
+            ""
+          ],
+          "name": "Mike Burrows",
+          "age": 26,
+          "team": "HOU",
+          "pos": "SP",
+          "minors": false,
+          "injured": true,
+          "yearsRemaining": 4
+        },
+        {
+          "yearlyContract": [
             34,
             34,
             34,
@@ -19087,23 +19104,6 @@
           "minors": false,
           "injured": true,
           "yearsRemaining": 3
-        },
-        {
-          "yearlyContract": [
-            20,
-            "Free Agent",
-            "",
-            "",
-            "",
-            ""
-          ],
-          "name": "Jameson Taillon",
-          "age": 34,
-          "team": "CHC",
-          "pos": "SP",
-          "minors": false,
-          "injured": true,
-          "yearsRemaining": 1
         },
         {
           "yearlyContract": [
@@ -19847,5 +19847,5 @@
       "salaryCap": 2000
     }
   ],
-  "timestamp": "07/15/2026, 11:45:05 AM EDT"
+  "timestamp": "07/16/2026, 11:47:10 AM EDT"
 }
