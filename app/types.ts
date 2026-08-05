@@ -35,3 +35,5 @@ export interface LeagueCapInfo {
 
 export type SortKey = 'default' | 'age' | 'position' | 'team' | 'name';
 export type SortDirection = 'asc' | 'desc' | null;
+
+export type LeagueSortKey = 'default' | 'teamName' | 'capTotal' | 'capSpace' | 'rosterCount' | 'mlbCount' | 'minorsCount' | 'injuredCount';

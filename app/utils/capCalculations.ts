@@ -60,6 +60,54 @@ export function getCapHit(selectedTeam: TeamCapInfo, year: number): number {
 }
 
 /**
+ * Counts non-injured players on a team's active roster (majors + minors).
+ * @param selectedTeam - The team whose roster to count
+ * @returns Number of active players not marked as injured
+ */
+export function getRosterCount(selectedTeam: TeamCapInfo): number {
+  if (!selectedTeam.activePlayers || !Array.isArray(selectedTeam.activePlayers)) {
+    return 0;
+  }
+  return selectedTeam.activePlayers.filter(player => !player.injured).length;
+}
+
+/**
+ * Counts non-injured major league players on a team's active roster.
+ * @param selectedTeam - The team whose roster to count
+ * @returns Number of active players not in the minors and not injured
+ */
+export function getMajorLeagueCount(selectedTeam: TeamCapInfo): number {
+  if (!selectedTeam.activePlayers || !Array.isArray(selectedTeam.activePlayers)) {
+    return 0;
+  }
+  return selectedTeam.activePlayers.filter(player => !player.minors && !player.injured).length;
+}
+
+/**
+ * Counts minor league players on a team's active roster.
+ * @param selectedTeam - The team whose roster to count
+ * @returns Number of active players marked as minors
+ */
+export function getMinorLeagueCount(selectedTeam: TeamCapInfo): number {
+  if (!selectedTeam.activePlayers || !Array.isArray(selectedTeam.activePlayers)) {
+    return 0;
+  }
+  return selectedTeam.activePlayers.filter(player => player.minors).length;
+}
+
+/**
+ * Counts injured players on a team's active roster.
+ * @param selectedTeam - The team whose roster to count
+ * @returns Number of active players marked as injured
+ */
+export function getInjuredCount(selectedTeam: TeamCapInfo): number {
+  if (!selectedTeam.activePlayers || !Array.isArray(selectedTeam.activePlayers)) {
+    return 0;
+  }
+  return selectedTeam.activePlayers.filter(player => player.injured).length;
+}
+
+/**
  * Calculates the total salary for a group of players in a given year.
  * Position filtering is the caller's responsibility; `getActivePayroll` passes all players.
  * @param players - The players whose salaries to sum

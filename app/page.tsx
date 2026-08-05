@@ -5,7 +5,8 @@
 
 'use client';
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import Link from 'next/link';
 import './globals.css';
 import teamCapData from '../data/teamCapInfo.json';
 import CapHeaders from './components/CapHeaders';
@@ -22,6 +23,15 @@ import type { SortKey, SortDirection, ActivePlayer } from './types';
 export default function HomePage() {
   const [selectedTeamIndex, setSelectedTeamIndex] = useState(teamCapData.teams.length > 13 ? 13 : 0); // Default to my team
   const [groupByPosition, setGroupByPosition] = useState(true);
+
+  // Allow deep-linking to a specific team from the league summary page, e.g. /?team=<teamName>
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const teamName = params.get('team');
+    if (!teamName) return;
+    const index = teamCapData.teams.findIndex(team => team.teamName === teamName);
+    if (index !== -1) setSelectedTeamIndex(index);
+  }, []);
 
   const [sortKey, setSortKey] = useState<SortKey>('default');
   const [sortDirection, setSortDirection] = useState<SortDirection>(null);
@@ -179,16 +189,22 @@ export default function HomePage() {
   return (
     <div>
       <DarkModeToggle />
+      <Link
+        href="/league"
+        className="fixed top-2.5 left-14 h-9 flex items-center text-xs text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        Back to League Summary
+      </Link>
       <div className="absolute top-2.5 right-2.5 text-xs text-gray-600 dark:text-gray-400">
         Last refreshed: {teamCapData.timestamp}
       </div>
       <h1 className="text-center text-3xl font-bold pt-6 pb-2 text-gray-900 dark:text-white">
         {teamCapData.name}: Multi-Year Payroll Table
       </h1>
-      
+
       <div className="my-5 flex justify-center items-center gap-5 flex-wrap">
         {/* Team Selector Dropdown */}
-        <TeamSelector 
+        <TeamSelector
           teams={teamCapData.teams}
           selectedTeamIndex={selectedTeamIndex}
           onTeamChange={setSelectedTeamIndex}

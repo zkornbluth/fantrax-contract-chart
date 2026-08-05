@@ -9,10 +9,19 @@ import {
   getDeadCapSum,
   getCapHit,
   getPositionalSum,
+  getRosterCount,
+  getMajorLeagueCount,
+  getMinorLeagueCount,
+  getInjuredCount,
 } from './capCalculations';
 
-const makePlayer = (yearlyContract: Array<number | null | undefined>) => ({
+const makePlayer = (
+  yearlyContract: Array<number | null | undefined>,
+  options: { minors?: boolean; injured?: boolean } = {}
+) => ({
   yearlyContract,
+  minors: options.minors ?? false,
+  injured: options.injured ?? false,
 });
 
 const makeDeadCapEntry = (yearlyCapHit: Array<number | null | undefined>) => ({
@@ -145,6 +154,47 @@ describe('getCapSpace', () => {
     });
 
     expect(getCapSpace(team as any, 2026)).toBe(150);
+  });
+});
+
+describe('roster count functions', () => {
+  const activePlayers = [
+    makePlayer([10], { minors: false, injured: false }), // MLB, healthy
+    makePlayer([5], { minors: false, injured: true }), // MLB, injured
+    makePlayer([1], { minors: true, injured: false }), // minors, healthy
+    makePlayer([1], { minors: true, injured: true }), // minors, injured
+  ];
+  const team = makeTeam({ activePlayers });
+
+  it('getRosterCount counts non-injured players', () => {
+    expect(getRosterCount(team as any)).toBe(2);
+  });
+
+  it('getMajorLeagueCount counts non-minors, non-injured players', () => {
+    expect(getMajorLeagueCount(team as any)).toBe(1);
+  });
+
+  it('getMinorLeagueCount counts players marked as minors', () => {
+    expect(getMinorLeagueCount(team as any)).toBe(2);
+  });
+
+  it('getInjuredCount counts players marked as injured', () => {
+    expect(getInjuredCount(team as any)).toBe(2);
+  });
+
+  it('all count functions return 0 when activePlayers is missing or invalid', () => {
+    const teamWithoutPlayers = makeTeam({ activePlayers: null });
+    const teamWithInvalidPlayers = makeTeam({ activePlayers: {} as any });
+
+    expect(getRosterCount(teamWithoutPlayers as any)).toBe(0);
+    expect(getMajorLeagueCount(teamWithoutPlayers as any)).toBe(0);
+    expect(getMinorLeagueCount(teamWithoutPlayers as any)).toBe(0);
+    expect(getInjuredCount(teamWithoutPlayers as any)).toBe(0);
+
+    expect(getRosterCount(teamWithInvalidPlayers as any)).toBe(0);
+    expect(getMajorLeagueCount(teamWithInvalidPlayers as any)).toBe(0);
+    expect(getMinorLeagueCount(teamWithInvalidPlayers as any)).toBe(0);
+    expect(getInjuredCount(teamWithInvalidPlayers as any)).toBe(0);
   });
 });
 
