@@ -20,8 +20,11 @@ describe('LeagueColumnHeaders', () => {
     expect(screen.getByText('2026 CAP SPACE')).toBeInTheDocument();
     expect(screen.getByText('ROSTER')).toBeInTheDocument();
     expect(screen.getByText('MLB')).toBeInTheDocument();
-    expect(screen.getByText('MINORS')).toBeInTheDocument();
+    expect(screen.getByText('MiLB')).toBeInTheDocument();
     expect(screen.getByText('INJURED')).toBeInTheDocument();
+    expect(screen.getByText('PITCHERS')).toBeInTheDocument();
+    expect(screen.getByText('HITTERS')).toBeInTheDocument();
+    expect(screen.getByText('MINORS')).toBeInTheDocument();
   });
 
   it('calls onSortChange with the clicked column key', () => {
@@ -38,6 +41,9 @@ describe('LeagueColumnHeaders', () => {
     onSortChange.mockClear();
     fireEvent.click(within(container).getByText('INJURED'));
     expect(onSortChange).toHaveBeenCalledWith('injuredCount');
+    onSortChange.mockClear();
+    fireEvent.click(within(container).getByText('PITCHERS'));
+    expect(onSortChange).toHaveBeenCalledWith('pitcherCapHit');
   });
 
   it('renders sort arrow when sortKey and sortDirection match', () => {

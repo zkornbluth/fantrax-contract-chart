@@ -8,12 +8,16 @@ import LeagueTableRow, { LeagueTeamRow } from './LeagueTableRow';
 
 const makeRow = (overrides: Partial<LeagueTeamRow> = {}): LeagueTeamRow => ({
   teamName: 'Worst To First',
+  salaryCap: 2000,
   capTotal: 1500,
   capSpace: 500.5,
   rosterCount: 20,
   mlbCount: 15,
   minorsCount: 5,
   injuredCount: 2,
+  pitcherCapHit: 600,
+  hitterCapHit: 800,
+  minorsCapHit: 100,
   ...overrides,
 });
 
@@ -44,5 +48,18 @@ describe('LeagueTableRow', () => {
     expect(within(container).getByText('15')).toBeInTheDocument();
     expect(within(container).getByText('5')).toBeInTheDocument();
     expect(within(container).getByText('2')).toBeInTheDocument();
+  });
+
+  it('renders the pitcher/hitter/minors cap breakdown cells', () => {
+    const { container } = render(
+      <table>
+        <tbody>
+          <LeagueTableRow row={makeRow()} />
+        </tbody>
+      </table>
+    );
+    expect(within(container).getByText('$600')).toBeInTheDocument();
+    expect(within(container).getByText('$800')).toBeInTheDocument();
+    expect(within(container).getByText('$100')).toBeInTheDocument();
   });
 });

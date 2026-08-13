@@ -10,12 +10,14 @@ import teamCapData from '../../data/teamCapInfo.json';
 import LeagueColumnHeaders from '../components/LeagueColumnHeaders';
 import LeagueTableRow, { LeagueTeamRow } from '../components/LeagueTableRow';
 import DarkModeToggle from '../components/DarkModeToggle';
-import { getCapHit, getCapSpace, getRosterCount, getMajorLeagueCount, getMinorLeagueCount, getInjuredCount } from '../utils/capCalculations';
+import { getCapHit, getCapSpace, getRosterCount, getMajorLeagueCount, getMinorLeagueCount, getInjuredCount, getPositionalSum, getPosGroup } from '../utils/capCalculations';
 import type { LeagueSortKey, SortDirection } from '../types';
 
+const pitcherPosGroups = ['Starting Pitcher', 'Relief Pitcher'];
+
 export default function LeaguePage() {
-  const [sortKey, setSortKey] = useState<LeagueSortKey>('default');
-  const [sortDirection, setSortDirection] = useState<SortDirection>(null);
+  const [sortKey, setSortKey] = useState<LeagueSortKey>('capTotal');
+  const [sortDirection, setSortDirection] = useState<SortDirection>('desc');
 
   const handleSortChange = (columnKey: Exclude<LeagueSortKey, 'default'>) => {
     if (sortKey !== columnKey) {
@@ -34,15 +36,26 @@ export default function LeaguePage() {
     setSortDirection(null);
   };
 
-  const rows: LeagueTeamRow[] = teamCapData.teams.map(team => ({
-    teamName: team.teamName,
-    capTotal: getCapHit(team, 2026),
-    capSpace: getCapSpace(team, 2026),
-    rosterCount: getRosterCount(team),
-    mlbCount: getMajorLeagueCount(team),
-    minorsCount: getMinorLeagueCount(team),
-    injuredCount: getInjuredCount(team),
-  }));
+  const rows: LeagueTeamRow[] = teamCapData.teams.map(team => {
+    const majorLeaguePlayers = team.activePlayers.filter(player => !player.minors);
+    const minorLeaguePlayers = team.activePlayers.filter(player => player.minors);
+    const pitchers = majorLeaguePlayers.filter(player => pitcherPosGroups.includes(getPosGroup(player.pos)));
+    const hitters = majorLeaguePlayers.filter(player => !pitcherPosGroups.includes(getPosGroup(player.pos)));
+
+    return {
+      teamName: team.teamName,
+      salaryCap: team.salaryCap,
+      capTotal: getCapHit(team, 2026),
+      capSpace: getCapSpace(team, 2026),
+      rosterCount: getRosterCount(team),
+      mlbCount: getMajorLeagueCount(team),
+      minorsCount: getMinorLeagueCount(team),
+      injuredCount: getInjuredCount(team),
+      pitcherCapHit: getPositionalSum(pitchers, 2026),
+      hitterCapHit: getPositionalSum(hitters, 2026),
+      minorsCapHit: getPositionalSum(minorLeaguePlayers, 2026),
+    };
+  });
 
   const sortedRows = [...rows];
   if (sortKey !== 'default' && sortDirection) {

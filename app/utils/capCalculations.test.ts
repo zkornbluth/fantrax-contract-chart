@@ -13,6 +13,8 @@ import {
   getMajorLeagueCount,
   getMinorLeagueCount,
   getInjuredCount,
+  getPrimaryPosition,
+  getPosGroup,
 } from './capCalculations';
 
 const makePlayer = (
@@ -195,6 +197,62 @@ describe('roster count functions', () => {
     expect(getMajorLeagueCount(teamWithInvalidPlayers as any)).toBe(0);
     expect(getMinorLeagueCount(teamWithInvalidPlayers as any)).toBe(0);
     expect(getInjuredCount(teamWithInvalidPlayers as any)).toBe(0);
+  });
+});
+
+describe('getPrimaryPosition', () => {
+  it('returns the single position when only one is listed', () => {
+    expect(getPrimaryPosition('SS')).toBe('SS');
+  });
+
+  it('returns empty string for missing or blank input', () => {
+    expect(getPrimaryPosition(undefined)).toBe('');
+    expect(getPrimaryPosition('')).toBe('');
+    expect(getPrimaryPosition('   ')).toBe('');
+  });
+
+  it('treats SP-first pitchers as relievers (last listed position)', () => {
+    expect(getPrimaryPosition('SP,RP')).toBe('RP');
+  });
+
+  it('uses the first listed position for batters, even with incidental RP eligibility', () => {
+    expect(getPrimaryPosition('OF,RP')).toBe('OF');
+    expect(getPrimaryPosition('1B,2B')).toBe('1B');
+  });
+});
+
+describe('getPosGroup', () => {
+  it('maps pitcher positions to their groups', () => {
+    expect(getPosGroup('SP')).toBe('Starting Pitcher');
+    expect(getPosGroup('RP')).toBe('Relief Pitcher');
+    expect(getPosGroup('SP,RP')).toBe('Relief Pitcher');
+  });
+
+  it('maps infield positions to Infielder', () => {
+    expect(getPosGroup('1B')).toBe('Infielder');
+    expect(getPosGroup('2B')).toBe('Infielder');
+    expect(getPosGroup('3B')).toBe('Infielder');
+    expect(getPosGroup('SS')).toBe('Infielder');
+  });
+
+  it('maps outfield positions to Outfielder', () => {
+    expect(getPosGroup('OF')).toBe('Outfielder');
+    expect(getPosGroup('LF')).toBe('Outfielder');
+  });
+
+  it('maps catcher and DH/UT appropriately', () => {
+    expect(getPosGroup('C')).toBe('Catcher');
+    expect(getPosGroup('DH')).toBe('Designated Hitter');
+    expect(getPosGroup('UT')).toBe('Designated Hitter');
+  });
+
+  it('classifies a batter with incidental RP eligibility as a hitter group, not a pitcher group', () => {
+    expect(getPosGroup('OF,RP')).toBe('Outfielder');
+  });
+
+  it('returns Unknown for unrecognized positions', () => {
+    expect(getPosGroup('XX')).toBe('Unknown');
+    expect(getPosGroup(undefined)).toBe('Unknown');
   });
 });
 

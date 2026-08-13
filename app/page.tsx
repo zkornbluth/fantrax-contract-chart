@@ -18,6 +18,7 @@ import MinorLeagueTable from './components/MinorLeagueTable';
 import DeadCapTable from './components/DeadCapTable';
 import GroupByPosition from './components/GroupByPosition';
 import DarkModeToggle from './components/DarkModeToggle';
+import { getPrimaryPosition, getPosGroup } from './utils/capCalculations';
 import type { SortKey, SortDirection, ActivePlayer } from './types';
  
 export default function HomePage() {
@@ -66,36 +67,6 @@ export default function HomePage() {
 
   // Order for sorting by position abbreviation when requested
   const positionSortOrder = ['SP', 'RP', 'C', '1B', '2B', '3B', 'SS', 'OF', 'UT'];
-
-  /** Derive primary position from full eligibility string: SP/RP -> RP; batters with multiple -> first. */
-  const getPrimaryPosition = (posStr: string | undefined): string => {
-    if (!posStr || !posStr.trim()) return '';
-    const posList = posStr.split(',').map(p => p.trim()).filter(Boolean);
-    if (posList.length === 1) return posList[0];
-    if (posList[0] === 'SP') return posList[posList.length - 1]; // reliever: use RP
-    return posList[0]; // batter with multiple: use first
-  };
-
-  /** Map primary position abbreviation to group name for display/grouping. */
-  const getPosGroup = (posStr: string | undefined): string => {
-    const primary = getPrimaryPosition(posStr);
-    switch (primary) {
-      case 'SP': return 'Starting Pitcher';
-      case 'RP': return 'Relief Pitcher';
-      case 'C': return 'Catcher';
-      case '1B':
-      case '2B':
-      case 'SS':
-      case '3B': return 'Infielder';
-      case 'OF':
-      case 'LF':
-      case 'CF':
-      case 'RF': return 'Outfielder';
-      case 'UT':
-      case 'DH': return 'Designated Hitter';
-      default: return 'Unknown';
-    }
-  };
 
   const getPositionRank = (pos: string | undefined) => {
     const primaryPos = getPrimaryPosition(pos);
@@ -191,7 +162,7 @@ export default function HomePage() {
       <DarkModeToggle />
       <Link
         href="/league"
-        className="fixed top-2.5 left-14 h-9 flex items-center text-xs text-blue-600 dark:text-blue-400 hover:underline"
+        className="fixed top-2.5 left-14 h-9 flex items-center px-3 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-xs text-blue-600 dark:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors shadow-sm z-10"
       >
         Back to League Summary
       </Link>

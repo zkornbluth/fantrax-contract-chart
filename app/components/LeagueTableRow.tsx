@@ -4,15 +4,20 @@
  */
 
 import Link from 'next/link';
+import CapBreakdownCell from './CapBreakdownCell';
 
 export interface LeagueTeamRow {
   teamName: string;
+  salaryCap: number;
   capTotal: number;
   capSpace: number;
   rosterCount: number;
   mlbCount: number;
   minorsCount: number;
   injuredCount: number;
+  pitcherCapHit: number;
+  hitterCapHit: number;
+  minorsCapHit: number;
 }
 
 interface LeagueTableRowProps {
@@ -35,10 +40,19 @@ export default function LeagueTableRow({ row }: LeagueTableRowProps) { // Create
       </td>
       <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{formatCurrency(row.capTotal)}</td>
       <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{formatCurrency(row.capSpace)}</td>
-      <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{row.rosterCount}</td>
-      <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{row.mlbCount}</td>
-      <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{row.minorsCount}</td>
-      <td className="text-center py-1 px-4 text-gray-900 dark:text-white">{row.injuredCount}</td>
+      <td className="text-center py-1 px-2 text-gray-900 dark:text-white">{row.rosterCount}</td>
+      <td className="text-center py-1 px-2 text-gray-900 dark:text-white">{row.mlbCount}</td>
+      <td className="text-center py-1 px-2 text-gray-900 dark:text-white">{row.minorsCount}</td>
+      <td className="text-center py-1 px-2 text-gray-900 dark:text-white">{row.injuredCount}</td>
+      <td className="py-1 px-2">
+        <CapBreakdownCell value={row.pitcherCapHit} salaryCap={row.salaryCap} />
+      </td>
+      <td className="py-1 px-2">
+        <CapBreakdownCell value={row.hitterCapHit} salaryCap={row.salaryCap} />
+      </td>
+      <td className="py-1 px-2">
+        <CapBreakdownCell value={row.minorsCapHit} salaryCap={row.salaryCap} />
+      </td>
     </tr>
   );
 }

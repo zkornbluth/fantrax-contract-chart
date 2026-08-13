@@ -108,6 +108,46 @@ export function getInjuredCount(selectedTeam: TeamCapInfo): number {
 }
 
 /**
+ * Derives a player's primary position from their full eligibility string.
+ * SP+RP eligible pitchers are treated as relievers; batters with multiple eligible
+ * positions (even including incidental RP eligibility) use the first listed position.
+ * @param posStr - Comma-separated position eligibility string
+ * @returns The primary position abbreviation, or '' if none
+ */
+export function getPrimaryPosition(posStr: string | undefined): string {
+  if (!posStr || !posStr.trim()) return '';
+  const posList = posStr.split(',').map(p => p.trim()).filter(Boolean);
+  if (posList.length === 1) return posList[0];
+  if (posList[0] === 'SP') return posList[posList.length - 1]; // reliever: use RP
+  return posList[0]; // batter with multiple: use first
+}
+
+/**
+ * Maps a player's position eligibility string to a display position group.
+ * @param posStr - Comma-separated position eligibility string
+ * @returns One of the position group names, or 'Unknown' if unrecognized
+ */
+export function getPosGroup(posStr: string | undefined): string {
+  const primary = getPrimaryPosition(posStr);
+  switch (primary) {
+    case 'SP': return 'Starting Pitcher';
+    case 'RP': return 'Relief Pitcher';
+    case 'C': return 'Catcher';
+    case '1B':
+    case '2B':
+    case 'SS':
+    case '3B': return 'Infielder';
+    case 'OF':
+    case 'LF':
+    case 'CF':
+    case 'RF': return 'Outfielder';
+    case 'UT':
+    case 'DH': return 'Designated Hitter';
+    default: return 'Unknown';
+  }
+}
+
+/**
  * Calculates the total salary for a group of players in a given year.
  * Position filtering is the caller's responsibility; `getActivePayroll` passes all players.
  * @param players - The players whose salaries to sum
